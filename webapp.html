@@ -75,6 +75,26 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
 }
 .cart-dot.show{display:flex}
 
+/* ── LANG BUTTON ── */
+.lang-btn{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.25);
+  color:var(--cream);border-radius:6px;
+  padding:4px 11px;font-size:.65rem;font-weight:700;
+  cursor:pointer;letter-spacing:.8px;
+  font-family:'Inter',sans-serif;
+  transition:background .2s;
+  line-height:1.6;
+}
+.lang-btn:active{background:rgba(201,162,54,.25);border-color:var(--gold)}
+.page-header .lang-btn{
+  position:absolute;right:16px;top:50%;transform:translateY(-50%);
+}
+.home-hero-top{
+  display:flex;justify-content:flex-end;
+  padding:10px 16px 4px;
+}
+
 /* ── HEADER ── */
 .page-header{
   padding:20px 18px 14px;
@@ -317,6 +337,16 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
 }
 .quick-btn:active{background:rgba(201,162,54,.1);border-color:var(--gold);color:var(--gold)}
 
+.msg-btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.msg-btn{
+  background:rgba(201,162,54,.12);border:1px solid rgba(201,162,54,.4);
+  border-radius:16px;padding:6px 12px;
+  font-size:.7rem;color:var(--gold);
+  cursor:pointer;transition:all .2s;
+  font-family:'Inter',sans-serif;
+}
+.msg-btn:active{background:rgba(201,162,54,.25)}
+
 .typing{display:flex;gap:4px;padding:8px 12px;align-items:center}
 .typing span{
   width:7px;height:7px;background:var(--muted);border-radius:50%;
@@ -463,24 +493,27 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
   <!-- ═══ HOME ═══ -->
   <div class="screen active" id="screen-home">
     <div class="home-hero">
+      <div class="home-hero-top">
+        <button class="lang-btn" onclick="toggleLang()">UZ</button>
+      </div>
       <div class="home-logo">DONATTI</div>
       <div class="home-sub">P R O F E S S I O N A L</div>
       <div class="home-divider"></div>
-      <div class="home-desc">Профессиональная косметика из Бразилии<br>Официальный дистрибьютор в Узбекистане</div>
+      <div class="home-desc" data-i18n-html="home_desc">Профессиональная косметика из Бразилии<br>Официальный дистрибьютор в Узбекистане</div>
     </div>
 
     <div class="home-stats">
       <div class="stat-card">
         <div class="stat-num">165</div>
-        <div class="stat-label">ТОВАРОВ</div>
+        <div class="stat-label" data-i18n="stat_products">ТОВАРОВ</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">12</div>
-        <div class="stat-label">ЛИНЕЕК</div>
+        <div class="stat-label" data-i18n="stat_lines">ЛИНЕЕК</div>
       </div>
       <div class="stat-card">
         <div class="stat-num">−15%</div>
-        <div class="stat-label">ОПТ</div>
+        <div class="stat-label" data-i18n="stat_opt">ОПТ</div>
       </div>
     </div>
 
@@ -488,24 +521,24 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
       <div class="home-btn gold" onclick="goTo('catalog')">
         <span class="btn-icon">📦</span>
         <div class="btn-text">
-          <div class="btn-title">Каталог продукции</div>
-          <div class="btn-sub">165 позиций · 12 линеек</div>
+          <div class="btn-title" data-i18n="btn_catalog_title">Каталог продукции</div>
+          <div class="btn-sub" data-i18n="btn_catalog_sub">165 позиций · 12 линеек</div>
         </div>
         <span class="btn-arrow">›</span>
       </div>
       <div class="home-btn" onclick="goTo('consultant')">
         <span class="btn-icon">🧴</span>
         <div class="btn-text">
-          <div class="btn-title">AI Консультант</div>
-          <div class="btn-sub">Подбор по типу волос и проблеме</div>
+          <div class="btn-title" data-i18n="btn_consultant_title">AI Консультант</div>
+          <div class="btn-sub" data-i18n="btn_consultant_sub">Подбор по типу волос и проблеме</div>
         </div>
         <span class="btn-arrow">›</span>
       </div>
       <div class="home-btn" onclick="goTo('cart')">
         <span class="btn-icon">🛒</span>
         <div class="btn-text">
-          <div class="btn-title">Моя корзина</div>
-          <div id="home-cart-sub" class="btn-sub">Корзина пуста</div>
+          <div class="btn-title" data-i18n="btn_cart_title">Моя корзина</div>
+          <div id="home-cart-sub" class="btn-sub" data-i18n="cart_empty_text">Корзина пуста</div>
         </div>
         <span class="btn-arrow">›</span>
       </div>
@@ -515,16 +548,18 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
   <!-- ═══ CATALOG ═══ -->
   <div class="screen" id="screen-catalog">
     <div class="page-header">
-      <div class="page-title">Каталог</div>
-      <div class="page-sub">12 линеек · 165 позиций</div>
+      <div class="page-title" data-i18n="catalog_title">Каталог</div>
+      <div class="page-sub" data-i18n="catalog_sub">12 линеек · 165 позиций</div>
+      <button class="lang-btn" onclick="toggleLang()">UZ</button>
     </div>
     <div class="search-wrap">
       <input class="search-input" type="text" id="searchInput"
+             data-i18n-ph="search_placeholder"
              placeholder="🔍 Поиск товара..." oninput="onSearch(this.value)">
     </div>
     <div id="sectionList" class="section-list"></div>
     <div id="productView" style="display:none">
-      <button class="product-back" onclick="showSections()">‹ Назад к линейкам</button>
+      <button class="product-back" onclick="showSections()" data-i18n="back_to_sections">‹ Назад к линейкам</button>
       <div class="section-banner" id="sectionBanner"></div>
       <div class="product-grid" id="productGrid"></div>
     </div>
@@ -532,7 +567,7 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
       <div class="product-grid" id="searchGrid"></div>
     </div>
     <div id="detailView" class="product-detail">
-      <button class="product-back" id="detailBack" onclick="closeDetail()">‹ Назад</button>
+      <button class="product-back" id="detailBack" onclick="closeDetail()" data-i18n="back">‹ Назад</button>
       <div id="detailContent"></div>
     </div>
   </div>
@@ -540,14 +575,16 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
   <!-- ═══ CONSULTANT ═══ -->
   <div class="screen" id="screen-consultant">
     <div class="page-header">
-      <div class="page-title">AI Консультант</div>
-      <div class="page-sub">Эксперт по уходу за волосами</div>
+      <div class="page-title" data-i18n="consultant_title">AI Консультант</div>
+      <div class="page-sub" data-i18n="consultant_sub">Эксперт по уходу за волосами</div>
+      <button class="lang-btn" onclick="toggleLang()">UZ</button>
     </div>
     <div class="quick-topics" id="quickTopics"></div>
     <div class="chat-messages" id="chatMessages"></div>
     <div class="chat-input-wrap">
       <textarea class="chat-input" id="chatInput"
         rows="1" placeholder="Задайте вопрос о волосах..."
+        data-i18n-ph="chat_placeholder"
         oninput="autoResize(this)"
         onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage()}">
       </textarea>
@@ -558,8 +595,9 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
   <!-- ═══ CART ═══ -->
   <div class="screen" id="screen-cart">
     <div class="page-header">
-      <div class="page-title">Корзина</div>
-      <div class="page-sub" id="cart-header-sub">Пусто</div>
+      <div class="page-title" data-i18n="cart_title">Корзина</div>
+      <div class="page-sub" id="cart-header-sub" data-i18n="cart_empty_status">Пусто</div>
+      <button class="lang-btn" onclick="toggleLang()">UZ</button>
     </div>
     <div id="cartContent"></div>
   </div>
@@ -570,27 +608,29 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
 <nav class="nav">
   <button class="nav-btn active" id="nav-home" onclick="goTo('home')">
     <span class="icon">🏠</span>
-    <span>Главная</span>
+    <span data-i18n="nav_home">Главная</span>
   </button>
   <button class="nav-btn" id="nav-catalog" onclick="goTo('catalog')">
     <span class="icon">📦</span>
-    <span>Каталог</span>
+    <span data-i18n="nav_catalog">Каталог</span>
   </button>
   <button class="nav-btn" id="nav-consultant" onclick="goTo('consultant')">
     <span class="icon">🧴</span>
-    <span>Консультант</span>
+    <span data-i18n="nav_consultant">Консультант</span>
   </button>
   <button class="nav-btn" id="nav-cart" onclick="goTo('cart')">
     <span class="icon">🛒</span>
     <div class="cart-dot" id="cartDot"></div>
-    <span>Корзина</span>
+    <span data-i18n="nav_cart">Корзина</span>
   </button>
 </nav>
 
 <div class="toast" id="toast"></div>
 
+<script src="translations.js"></script>
 <script src="catalog_data_embed.js"></script>
 <script src="hair_problems_database.js"></script>
+<script src="consultant.js"></script>
 <script>
 /* ════════════════════════════════════════
    TELEGRAM WEB APP INIT
@@ -612,10 +652,10 @@ let currentScreen  = 'home';
 let chatHistory    = [];
 
 const DISCOUNT_TIERS = [
-  { min: 100, pct: 0.15, name: 'Крупный опт' },
-  { min: 50,  pct: 0.10, name: 'Средний опт' },
-  { min: 10,  pct: 0.05, name: 'Мелкий опт'  },
-  { min: 0,   pct: 0,    name: 'Розница'      },
+  { min: 100, pct: 0.15, key: 'tier_big'    },
+  { min: 50,  pct: 0.10, key: 'tier_med'    },
+  { min: 10,  pct: 0.05, key: 'tier_small'  },
+  { min: 0,   pct: 0,    key: 'tier_retail' },
 ];
 
 const SECTION_ICONS = {
@@ -684,10 +724,10 @@ function openSection(id) {
   const icon = SECTION_ICONS[id] || '•';
   const desc = currentSection.description.split(' - ')[1] || currentSection.description;
   document.getElementById('sectionBanner').innerHTML = `
-    <div style="font-size:.7rem;color:rgba(201,162,54,.5);letter-spacing:3px;margin-bottom:6px;">${icon} ЛИНЕЙКА</div>
+    <div style="font-size:.7rem;color:rgba(201,162,54,.5);letter-spacing:3px;margin-bottom:6px;">${icon} ${t('section_label')}</div>
     <div class="banner-name">${currentSection.name}</div>
     <div class="banner-desc">${desc}</div>
-    <div style="font-size:.7rem;color:var(--muted);margin-top:8px;">${currentSection.product_count} позиций</div>
+    <div style="font-size:.7rem;color:var(--muted);margin-top:8px;">${currentSection.product_count} ${window.LANG==='uz'?'ta mahsulot':'позиций'}</div>
   `;
 
   document.getElementById('productGrid').innerHTML =
@@ -705,11 +745,11 @@ function showSections() {
 function productCardHTML(p) {
   return `
     <div class="product-card" onclick="openDetail(${p.number})">
-      <div class="prod-art">АРТ. ${p.number}</div>
+      <div class="prod-art">${t('article_prefix')} ${p.number}</div>
       <div class="prod-name">${p.name}</div>
-      <div class="prod-price">${fmt(p.price_sum)} сум</div>
+      <div class="prod-price">${fmt(p.price_sum)} ${t('sum_currency')}</div>
       <div class="prod-price-usd">${fmtUSD(p.price_sum)}</div>
-      <button class="prod-add" onclick="event.stopPropagation();addToCart(${p.number})">+ В корзину</button>
+      <button class="prod-add" onclick="event.stopPropagation();addToCart(${p.number})">${t('add_to_cart')}</button>
     </div>`;
 }
 
@@ -723,21 +763,21 @@ function openDetail(num) {
 
   const icon = SECTION_ICONS[section.id] || '•';
   document.getElementById('detailContent').innerHTML = `
-    <div class="detail-art">АРТ. ${product.number}</div>
+    <div class="detail-art">${t('article_prefix')} ${product.number}</div>
     <div class="detail-name">${product.name}</div>
     <div>
       <span class="detail-section">${icon} ${section.name}</span>
     </div>
     <div class="detail-divider"></div>
-    <div class="detail-price">${fmt(product.price_sum)} сум</div>
+    <div class="detail-price">${fmt(product.price_sum)} ${t('sum_currency')}</div>
     <div class="detail-price-usd">${fmtUSD(product.price_sum)} · ${product.price_eur.toFixed(2)} €</div>
     <div class="detail-divider"></div>
     <div style="font-size:.75rem;color:var(--muted);line-height:1.7;">
       🇧🇷 Donatti Professional — Made in Brazil<br>
-      ✅ Сертификат EU CPNP · 100% оригинал
+      ${t('certificate')}
     </div>
     <button class="detail-add" onclick="addToCart(${product.number});closeDetail()">
-      🛒 Добавить в корзину
+      ${t('add_to_cart_detail')}
     </button>`;
 
   document.getElementById('detailView').style.display   = 'block';
@@ -779,7 +819,7 @@ function onSearch(val) {
   document.getElementById('searchResults').style.display = 'block';
   document.getElementById('searchGrid').innerHTML = results.length
     ? results.map(p => productCardHTML(p)).join('')
-    : `<div style="padding:40px 16px;text-align:center;color:var(--muted);font-size:.85rem;">Ничего не найдено</div>`;
+    : `<div style="padding:40px 16px;text-align:center;color:var(--muted);font-size:.85rem;">${t('nothing_found')}</div>`;
 }
 
 /* ════════════════════════════════════════
@@ -802,7 +842,9 @@ function updateCartDot() {
 function updateHomeCart() {
   const sub = document.getElementById('home-cart-sub');
   const total = cart.reduce((s, i) => s + i.qty, 0);
-  sub.textContent = total > 0 ? `${total} позиций` : 'Корзина пуста';
+  sub.textContent = total > 0
+    ? `${total} ${window.LANG==='uz'?'ta mahsulot':'позиций'}`
+    : t('cart_empty_text');
 }
 
 function addToCart(num) {
@@ -833,13 +875,13 @@ function renderCart() {
   const headerSub = document.getElementById('cart-header-sub');
 
   if (cart.length === 0) {
-    headerSub.textContent = 'Пусто';
+    headerSub.textContent = t('cart_empty_status');
     content.innerHTML = `
       <div class="cart-empty">
         <div class="cart-empty-icon">🛒</div>
-        <h3>Корзина пуста</h3>
-        <p>Добавьте товары из каталога</p>
-        <button class="go-catalog-btn" onclick="goTo('catalog')">Перейти в каталог</button>
+        <h3>${t('cart_empty_h3')}</h3>
+        <p>${t('cart_empty_p')}</p>
+        <button class="go-catalog-btn" onclick="goTo('catalog')">${t('go_catalog_btn')}</button>
       </div>`;
     return;
   }
@@ -849,14 +891,14 @@ function renderCart() {
   const tier      = getDiscount(totalQty);
   const discountAmt = Math.round(subtotal * tier.pct);
   const total     = subtotal - discountAmt;
-  headerSub.textContent = `${totalQty} позиций`;
+  headerSub.textContent = `${totalQty} ${window.LANG==='uz'?'ta mahsulot':'позиций'}`;
 
   const itemsHTML = cart.map(item => `
     <div class="cart-item">
       <div class="cart-item-info">
-        <div class="cart-item-art">АРТ. ${item.num}</div>
+        <div class="cart-item-art">${t('article_prefix')} ${item.num}</div>
         <div class="cart-item-name">${item.name}</div>
-        <div class="cart-item-price">${fmt(item.price * item.qty)} сум</div>
+        <div class="cart-item-price">${fmt(item.price * item.qty)} ${t('sum_currency')}</div>
       </div>
       <div class="cart-item-controls">
         <button class="qty-btn" onclick="changeQty(${item.num},-1)">−</button>
@@ -866,25 +908,32 @@ function renderCart() {
       </div>
     </div>`).join('');
 
-  const nextTier = DISCOUNT_TIERS.find(t => t.pct > tier.pct);
+  const nextTier = DISCOUNT_TIERS.find(t2 => t2.pct > tier.pct);
+  const tierName = t(tier.key);
   const nextTierHTML = nextTier
-    ? `<div class="next-tier">💡 Ещё ${nextTier.min - totalQty} шт. → скидка ${nextTier.pct*100}%</div>`
-    : `<div class="next-tier">🏆 Максимальная скидка активна!</div>`;
+    ? `<div class="next-tier">💡 ${window.LANG==='uz'
+        ? `Yana ${nextTier.min - totalQty} ta → ${nextTier.pct*100}% chegirma`
+        : `Ещё ${nextTier.min - totalQty} шт. → скидка ${nextTier.pct*100}%`}</div>`
+    : `<div class="next-tier">${t('max_discount')}</div>`;
+
+  const discountLabel = window.LANG==='uz'
+    ? `Chegirma ${tier.pct*100}% (${tierName})`
+    : `Скидка ${tier.pct*100}% (${tierName})`;
 
   content.innerHTML = `
     <div class="cart-items">${itemsHTML}</div>
     <div class="cart-summary">
-      <div class="summary-row"><span>Товаров</span><span>${totalQty} шт.</span></div>
-      <div class="summary-row"><span>Сумма</span><span>${fmt(subtotal)} сум</span></div>
+      <div class="summary-row"><span>${t('qty_label')}</span><span>${totalQty} ${t('pcs')}</span></div>
+      <div class="summary-row"><span>${t('sum_label')}</span><span>${fmt(subtotal)} ${t('sum_currency')}</span></div>
       ${tier.pct > 0 ? `<div class="summary-row discount-row">
-        <span>Скидка ${tier.pct*100}% (${tier.name})</span>
-        <span>−${fmt(discountAmt)} сум</span></div>` : ''}
-      <div class="summary-row"><span>Итого</span>
-        <span class="summary-total">${fmt(total)} сум</span></div>
-      ${tier.pct > 0 ? `<div class="tier-badge">🎉 ${tier.name} −${tier.pct*100}%</div>` : ''}
+        <span>${discountLabel}</span>
+        <span>−${fmt(discountAmt)} ${t('sum_currency')}</span></div>` : ''}
+      <div class="summary-row"><span>${t('total_label')}</span>
+        <span class="summary-total">${fmt(total)} ${t('sum_currency')}</span></div>
+      ${tier.pct > 0 ? `<div class="tier-badge">🎉 ${tierName} −${tier.pct*100}%</div>` : ''}
       ${nextTierHTML}
     </div>
-    <button class="checkout-btn" onclick="checkout()">✅ Оформить заказ</button>`;
+    <button class="checkout-btn" onclick="checkout()">${t('checkout_btn')}</button>`;
 }
 
 function checkout() {
@@ -901,39 +950,209 @@ function checkout() {
     tg.sendData(orderData);
   } else {
     // fallback для браузера
-    alert(`Заказ на ${fmt(total)} сум отправлен менеджеру!`);
+    alert(window.LANG==='uz'
+      ? `Buyurtma ${fmt(total)} so'm uchun menejerga yuborildi!`
+      : `Заказ на ${fmt(total)} сум отправлен менеджеру!`);
   }
 }
 
 /* ════════════════════════════════════════
+   I18N
+════════════════════════════════════════ */
+window.LANG = 'ru';
+const TRANSLATIONS = {
+  ru: {
+    cons_greeting: '👋 Привет! Я DONATTI AI — трихологический помощник.\n\nОпишите вашу проблему с волосами или кожей головы своими словами, и я задам несколько уточняющих вопросов, чтобы подобрать подходящий уход.\n\nИли выберите тему выше 👆',
+    qt_hairloss: '💧 Выпадение',       qt_hairloss_q: 'Волосы выпадают больше обычного',
+    qt_dandruff: '❄️ Перхоть',         qt_dandruff_q: 'Есть перхоть или зуд кожи головы',
+    qt_oily:     '💦 Жирные волосы',   qt_oily_q:     'Волосы быстро жирнеют',
+    qt_dry:      '🌵 Сухие волосы',    qt_dry_q:      'Волосы сухие и ломкие',
+    qt_irritation:'😣 Раздражение',    qt_irritation_q:'Раздражение и покраснение кожи головы',
+    qt_curly:    '🌀 Кудрявые',        qt_curly_q:    'Уход за кудрявыми волосами',
+    qt_bleached: '⚗️ После осветления', qt_bleached_q: 'Восстановление после осветления',
+    qt_colored:  '🎨 Окрашенные',      qt_colored_q:  'Уход за окрашенными волосами',
+    qty_label: 'Позиций', sum_label: 'Сумма', total_label: 'Итого',
+    pcs: 'шт.', sum_currency: 'сум', max_discount: '🏆 Максимальная скидка!',
+    checkout_btn: '✅ Оформить заявку',
+  }
+};
+function t(key) {
+  return (TRANSLATIONS[window.LANG] || TRANSLATIONS.ru)[key] || key;
+}
+function applyLang() {}
+
+/* ════════════════════════════════════════
+   CONSULTANT ENGINE
+════════════════════════════════════════ */
+const SCALP_PROBLEMS = {
+  oily_seborrhea: {
+    name: 'жирная себорея / гиперсекреция сальных желёз',
+    symptoms: ['жирн','сальн','быстро жирне','быстро грязн','лосниться','блест','через день уже','к вечеру жирн'],
+    clarifyQ: [
+      'Как быстро волосы становятся жирными после мытья? (к вечеру того же дня / на следующий день / через 2+ дня)',
+      'Есть ли зуд или покраснение кожи головы?',
+      'Моете ли голову ежедневно?',
+    ],
+    sections: ['BIODETOX','SPECIALE'],
+    sectionLabels: ['🍃 Смотреть BIODETOX','✨ Смотреть SPECIALE'],
+    advice: '💦 *Жирная кожа головы*\n\nПо вашему описанию это может быть связано с *гиперактивностью сальных желёз* — они вырабатывают слишком много себума.\n\nЭто часто усиливается при ежедневном мытье: кожа "компенсирует" пересыхание ещё большей выработкой жира.\n\n*Что может помочь:*\n• **BIODETOX** — активированный уголь мягко регулирует себум и очищает кожу головы без пересушивания\n• **SPECIALE Nutri** — восстанавливает баланс без утяжеления\n\n_Попробуйте мыть голову через день и наносить шампунь только на кожу, не на длину._\n\n⚕️ _При длительном сильном зуде или шелушении рекомендуем обратиться к дерматологу._',
+  },
+  dry_scalp: {
+    name: 'сухость и обезвоженность кожи головы',
+    symptoms: ['сух','стяги','шелуш','обезвожен','трескает','ломк','хрупк','пересуш'],
+    clarifyQ: [
+      'Ощущаете ли стянутость кожи головы после мытья?',
+      'Есть ли мелкое шелушение (не крупные хлопья, а мелкая пыль)?',
+      'Часто ли используете фен или утюжок?',
+    ],
+    sections: ['SPECIALE','NATURALE'],
+    sectionLabels: ['✨ Смотреть SPECIALE','🌸 Смотреть NATURALE'],
+    advice: '🌵 *Сухость кожи головы*\n\nПо описанию это может быть *обезвоженность кожи головы* — недостаток влаги и липидов.\n\nПричины бывают разные: агрессивные шампуни, частое использование горячих инструментов, жёсткая вода, сухой воздух.\n\n*Что может помочь:*\n• **SPECIALE Nutri** — линейка глубокого питания, способствует восстановлению баланса влаги\n• **NATURALE** — мягкие натуральные компоненты (monoi, ojon) для чувствительной кожи\n\n_Попробуйте использовать маску 1–2 раза в неделю, держать 10–15 минут._\n\n⚕️ _При сильном шелушении и зуде лучше проконсультироваться с трихологом._',
+  },
+  dandruff: {
+    name: 'перхоть',
+    symptoms: ['перхот','хлопь','белые чешуйки','чешуйк','зуд','чешется','чешет','себоре'],
+    clarifyQ: [
+      'Хлопья крупные и жирноватые или мелкие и сухие?',
+      'Есть ли зуд или раздражение?',
+      'Как давно появилась перхоть?',
+    ],
+    sections: ['BIODETOX','SPECIALE'],
+    sectionLabels: ['🍃 Смотреть BIODETOX','✨ Смотреть SPECIALE'],
+    advice: '❄️ *Перхоть*\n\nПо описанию это может быть *нарушение микробиома кожи головы* — дисбаланс pH или активность грибка Malassezia.\n\nВажно различать: жирная перхоть (крупные хлопья) и сухая перхоть (мелкая пыль) требуют немного разного ухода.\n\n*Что может помочь:*\n• **BIODETOX** — активированный уголь помогает восстановить баланс кожи и уменьшить шелушение\n• **SPECIALE Nutri** — поддерживающий уход для нормализации кожи головы\n\n_Применяйте BIODETOX 2 раза в неделю, оставляйте на 2–3 минуты перед смыванием._\n\n⚕️ _При сильной или хронической перхоти рекомендуем консультацию дерматолога._',
+  },
+  irritation: {
+    name: 'раздражение кожи головы',
+    symptoms: ['раздражен','покрасне','воспален','болезнен','чувствительн','жжен','пощипыва'],
+    clarifyQ: [
+      'Когда появилось раздражение — после смены шампуня или само по себе?',
+      'Есть ли покраснение или сыпь на коже головы?',
+      'Используете ли красители или химические процедуры?',
+    ],
+    sections: ['NATURALE','BIODETOX'],
+    sectionLabels: ['🌸 Смотреть NATURALE','🍃 Смотреть BIODETOX'],
+    advice: '😣 *Раздражение кожи головы*\n\nПо описанию это может быть *контактная чувствительность* или реакция на компоненты косметики, красители, жёсткую воду.\n\n*Что может помочь:*\n• **NATURALE** — линейка на натуральных компонентах без агрессивных сульфатов, разработана для чувствительной кожи\n• **BIODETOX** — мягкое очищение и помощь в восстановлении баланса\n\n_Временно откажитесь от красителей и укладочных средств — это поможет понять причину._\n\n⚕️ _При сильном раздражении, высыпаниях или долгих симптомах обязательно обратитесь к дерматологу._',
+  },
+  hairloss: {
+    name: 'выпадение волос',
+    symptoms: ['выпада','выпадают','теряю волосы','лысе','редеют','облысен','алопец','много волос'],
+    clarifyQ: [
+      'Выпадение равномерное по всей голове или в определённом месте?',
+      'Когда началось — было ли перед этим сильное переживание, болезнь или изменение питания?',
+      'Принимаете ли какие-то лекарства?',
+    ],
+    sections: ['SPECIALE','BIODETOX'],
+    sectionLabels: ['✨ Смотреть SPECIALE','🍃 Смотреть BIODETOX'],
+    advice: '💧 *Выпадение волос*\n\nПо описанию это может быть *телогеновое выпадение* — реакция организма на стресс, дефициты или гормональные изменения. Обычно начинается через 2–3 месяца после триггера.\n\n*Что может помочь:*\n• **SPECIALE Nutri** — питание и укрепление волосяных фолликулов, способствует здоровью кожи головы\n• **BIODETOX** — очищение кожи головы улучшает циркуляцию и подготавливает к питательному уходу\n\n_Внешний уход помогает улучшить состояние, но при сильном выпадении важно выяснить причину изнутри._\n\n⚕️ _Рекомендуем сдать анализ крови на ферритин, ТТГ и витамин D, а также обратиться к трихологу._',
+  },
+  damaged: {
+    name: 'повреждение структуры волос',
+    symptoms: ['повреждён','после осветлен','после химии','после краски','ломаются','рвутся','пористые','секутся','слабые'],
+    clarifyQ: [
+      'Делали ли осветление, химическую завивку или выпрямление?',
+      'Как давно появилась ломкость?',
+      'Используете ли термоинструменты (утюжок, плойка)?',
+    ],
+    sections: ['DNAVANZE','THEION'],
+    sectionLabels: ['🧬 Смотреть DNAVANZE','⚗️ Смотреть THEION'],
+    advice: '⚗️ *Повреждение структуры волос*\n\nПо описанию это может быть *разрушение дисульфидных связей* волоса — типичное последствие химических процедур и термовоздействия.\n\n*Что может помочь:*\n• **DNAVANZE** — Mimetecnol Technology, способствует восстановлению связей волоса изнутри (аналог Olaplex)\n• **THEION** — профессиональная реконструкция с серой, помогает восстановить эластичность\n\n_Оба продукта работают лучше в комплексе. DNAVANZE можно применять при каждом мытье._\n\n⚕️ _Если волосы продолжают ломаться у корня — стоит проверить уровень микроэлементов._',
+  },
+};
+
+const consultantEngine = (() => {
+  let state = 'init';       // init | clarify | done
+  let detectedProblem = null;
+  let clarifyIdx = 0;
+  let userAnswers = [];
+
+  function scoreProblems(text) {
+    const low = text.toLowerCase();
+    const scores = {};
+    for (const [key, prob] of Object.entries(SCALP_PROBLEMS)) {
+      scores[key] = prob.symptoms.filter(kw => low.includes(kw)).length;
+    }
+    const best = Object.entries(scores).sort((a,b) => b[1]-a[1])[0];
+    return best[1] > 0 ? best[0] : null;
+  }
+
+  function reset() {
+    state = 'init';
+    detectedProblem = null;
+    clarifyIdx = 0;
+    userAnswers = [];
+  }
+
+  function handleInput(text) {
+    if (state === 'init') {
+      const prob = scoreProblems(text);
+      if (prob) {
+        detectedProblem = prob;
+        state = 'clarify';
+        clarifyIdx = 0;
+        userAnswers = [text];
+        const q = SCALP_PROBLEMS[prob].clarifyQ[0];
+        return { message: `Понял вас. Чтобы дать более точную рекомендацию, уточню несколько моментов.\n\n❓ ${q}` };
+      } else {
+        return { message: 'Расскажите подробнее — что именно вас беспокоит? Например: жирность, перхоть, выпадение, сухость, раздражение, ломкость после осветления...' };
+      }
+    }
+
+    if (state === 'clarify') {
+      userAnswers.push(text);
+      clarifyIdx++;
+      const prob = SCALP_PROBLEMS[detectedProblem];
+      if (clarifyIdx < prob.clarifyQ.length) {
+        return { message: `❓ ${prob.clarifyQ[clarifyIdx]}` };
+      }
+      // Все вопросы заданы — даём рекомендацию
+      state = 'done';
+      const btns = prob.sections.map((s, i) => ({ section: s, label: prob.sectionLabels[i] }));
+      btns.push({ section: null, label: '📋 Новая консультация' });
+      return { message: prob.advice, buttons: btns };
+    }
+
+    if (state === 'done') {
+      // Новый вопрос — сбрасываем
+      reset();
+      return handleInput(text);
+    }
+  }
+
+  return { reset, handleInput };
+})();
+
+/* ════════════════════════════════════════
    AI CONSULTANT
 ════════════════════════════════════════ */
-const QUICK_TOPICS = [
-  ['💧 Выпадение',    'выпадение волос'],
-  ['❄️ Перхоть',      'перхоть себорея'],
-  ['🌵 Сухие волосы', 'сухие ломкие волосы'],
-  ['🌀 Кудрявые',     'кудрявые волосы'],
-  ['👱 Желтизна',     'желтизна блонд'],
-  ['💎 Кератин',      'кератиновое выпрямление'],
-  ['🎨 Окрашенные',   'окрашенные волосы'],
-  ['🍃 Детокс',       'детокс биодетокс'],
-];
+function getQuickTopics() {
+  return [
+    [t('qt_hairloss'),   t('qt_hairloss_q')  ],
+    [t('qt_dandruff'),   t('qt_dandruff_q')  ],
+    [t('qt_oily'),       t('qt_oily_q')      ],
+    [t('qt_dry'),        t('qt_dry_q')       ],
+    [t('qt_irritation'), t('qt_irritation_q')],
+    [t('qt_curly'),      t('qt_curly_q')     ],
+    [t('qt_bleached'),   t('qt_bleached_q')  ],
+    [t('qt_colored'),    t('qt_colored_q')   ],
+  ];
+}
+
+function renderQuickTopics() {
+  document.getElementById('quickTopics').innerHTML =
+    getQuickTopics().map(([label, query]) =>
+      `<button class="quick-btn" onclick="askTopic(${JSON.stringify(query)})">${label}</button>`
+    ).join('');
+}
 
 function initConsultant() {
-  document.getElementById('quickTopics').innerHTML =
-    QUICK_TOPICS.map(([label, query]) =>
-      `<button class="quick-btn" onclick="askTopic('${query}')">${label}</button>`
-    ).join('');
-
-  addBotMessage(
-    '👋 Привет! Я *DONATTI AI* — эксперт по уходу за волосами.\n\n' +
-    'Расскажите о вашей проблеме или выберите тему выше, и я подберу подходящие продукты из линеек Donatti.'
-  );
+  consultantEngine.reset();
+  renderQuickTopics();
+  addBotMessage(t('cons_greeting'));
 }
 
 function askTopic(query) {
   addUserMessage(query);
-  processQuestion(query);
+  processInput(query);
 }
 
 function sendMessage() {
@@ -943,7 +1162,7 @@ function sendMessage() {
   input.value = '';
   input.style.height = 'auto';
   addUserMessage(text);
-  processQuestion(text);
+  processInput(text);
 }
 
 function autoResize(el) {
@@ -955,17 +1174,27 @@ function addUserMessage(text) {
   const el = document.createElement('div');
   el.className = 'msg user';
   el.innerHTML = `<div class="msg-bubble">${escHtml(text)}</div>
-    <div class="msg-time">${new Date().toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'})}</div>`;
+    <div class="msg-time">${new Date().toLocaleTimeString(window.LANG==='uz'?'uz':'ru',{hour:'2-digit',minute:'2-digit'})}</div>`;
   document.getElementById('chatMessages').appendChild(el);
   scrollChat();
   chatHistory.push({ role: 'user', text });
 }
 
-function addBotMessage(text) {
+function addBotMessage(text, buttons) {
   const el = document.createElement('div');
   el.className = 'msg bot';
-  el.innerHTML = `<div class="msg-bubble">${formatMd(text)}</div>
-    <div class="msg-time">${new Date().toLocaleTimeString('ru',{hour:'2-digit',minute:'2-digit'})}</div>`;
+  let html = `<div class="msg-bubble">${formatMd(text)}</div>`;
+  if (buttons && buttons.length) {
+    html += `<div class="msg-btns">`;
+    for (const btn of buttons) {
+      html += btn.section
+        ? `<button class="msg-btn" onclick="goToSectionFromConsultant(${JSON.stringify(btn.section)})">${btn.label}</button>`
+        : `<button class="msg-btn" onclick="restartConsultant()">${btn.label}</button>`;
+    }
+    html += `</div>`;
+  }
+  html += `<div class="msg-time">${new Date().toLocaleTimeString(window.LANG==='uz'?'uz':'ru',{hour:'2-digit',minute:'2-digit'})}</div>`;
+  el.innerHTML = html;
   document.getElementById('chatMessages').appendChild(el);
   scrollChat();
 }
@@ -997,124 +1226,30 @@ function formatMd(s) {
   return escHtml(s)
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<strong>$1</strong>')
+    .replace(/_(.+?)_/g, '<em>$1</em>')
     .replace(/\n/g, '<br>');
 }
 
-// ── Встроенный AI на основе базы знаний ──
-function processQuestion(q) {
+// ── ConsultantEngine → обработка ввода ──
+function processInput(text) {
   showTyping();
   setTimeout(() => {
     hideTyping();
-    const answer = getAnswer(q.toLowerCase());
-    addBotMessage(answer);
-  }, 800 + Math.random() * 600);
+    const result = consultantEngine.handleInput(text);
+    if (!result) return;
+    addBotMessage(result.message, result.buttons);
+  }, 700 + Math.random() * 500);
 }
 
-function match(text, kw) { return kw.some(k => text.includes(k)); }
+// ── Переход из консультанта в раздел каталога ──
+function goToSectionFromConsultant(sectionId) {
+  goTo('catalog');
+  setTimeout(() => openSection(sectionId), 80);
+}
 
-function getAnswer(q) {
-  if (match(q,['выпадени','лысе','облысен','редеют','алопец']))
-    return '💧 *Выпадение волос* — одна из самых частых проблем.\n\n' +
-      'Причины: стресс, дефицит питательных веществ, гормоны, неправильный уход.\n\n' +
-      '**Рекомендую:**\n• **SPECIALE Nutri** — питание и укрепление от корней\n' +
-      '• **BIODETOX** — детокс кожи головы, восстановление pH\n' +
-      '• **THEION** — профессиональное восстановление структуры\n\n' +
-      '_При сильном выпадении обратитесь к трихологу._';
-
-  if (match(q,['перхот','себоре','чешуйк','чешется','зуд']))
-    return '❄️ *Перхоть и себорея*\n\n' +
-      'Перхоть часто связана с нарушением микробиома кожи головы и pH.\n\n' +
-      '**Рекомендую:**\n• **BIODETOX** — активированный уголь, глубокое очищение кожи\n' +
-      '• **SPECIALE Nutri Шаг 1** — балансировка кожи головы\n\n' +
-      '_Используйте 2 раза в неделю для лучшего результата._';
-
-  if (match(q,['сух','ломк','хрупк','пересуш']))
-    return '🌵 *Сухие и ломкие волосы*\n\n' +
-      'Волосам нужна влага и питательные масла.\n\n' +
-      '**Рекомендую:**\n• **SPECIALE Nutri** — маска + несмываемый уход\n' +
-      '• **NATURALE** — масло monoi и ojon, восстановление\n' +
-      '• **BAOBÁ уход** — масло баобаба, суперпитание\n\n' +
-      '_Маску держите 15–20 минут под тепловым колпаком._';
-
-  if (match(q,['кудр','вьющ','завитк','curly','ricci']))
-    return '🌀 *Кудрявые и вьющиеся волосы*\n\n' +
-      'Кудрявые волосы требуют особого увлажнения и защиты от фриза.\n\n' +
-      '**Специально для вас:**\n• **MIO RICCI** — линейка для кудрявых, без сульфатов\n' +
-      '• Совместима с методом Curly Girl\n' +
-      '• Шампунь + маска + несмываемый крем\n\n' +
-      '_Не расчёсывайте сухие кудри — только влажные!_';
-
-  if (match(q,['желтизн','желт','блонд','нейтрализ','violet']))
-    return '👱 *Желтизна у блондинок*\n\n' +
-      'Желтизна появляется из-за остаточного пигмента и минералов из воды.\n\n' +
-      '**Рекомендую:**\n• **PREMIUM VIOLET** — фиолетовый пигмент нейтрализует желтизну\n' +
-      '• **CREAM BLOND** — уход после осветления, восстановление\n\n' +
-      '_Используйте фиолетовый шампунь 1–2 раза в неделю._';
-
-  if (match(q,['кератин','разглаж','выпрямл','baoba','baobá']))
-    return '💎 *Кератиновое выпрямление BAOBÁ*\n\n' +
-      'Профессиональная 3-шаговая система:\n\n' +
-      '• **Шаг 1 — Dilatador** (шампунь, открывает чешуйки)\n' +
-      '• **Шаг 2 — Разглаживатель** (кератин + масло баобаба)\n' +
-      '• **Шаг 3 — Mukua Стабилизатор** (фиксирует результат)\n\n' +
-      '✅ Без формальдегида · Результат до 3–4 месяцев\n' +
-      'Есть варианты: Baobá Classic, Reduce (афро), Blond (светлые)';
-
-  if (match(q,['окрашен','краск','цвет волос','colore']))
-    return '🎨 *Уход за окрашенными волосами*\n\n' +
-      'Окрашивание делает волосы более пористыми и уязвимыми к вымыванию цвета.\n\n' +
-      '**Рекомендую:**\n• **COLORE** — специальная линейка для окрашенных\n' +
-      '• Защищает пигмент, предотвращает выгорание\n' +
-      '• Добавляет блеск и мягкость\n\n' +
-      '_Мойте голову тёплой водой — горячая смывает цвет быстрее._';
-
-  if (match(q,['детокс','biodetox','уголь','очищ']))
-    return '🍃 *Детокс кожи головы — BIODETOX*\n\n' +
-      'Активированный уголь притягивает загрязнения, токсины и излишки себума.\n\n' +
-      '**Подходит для:**\n• Жирной кожи головы\n• Перхоти и себореи\n' +
-      '• Подготовки к профессиональным процедурам\n' +
-      '• После окрашивания — очищение остатков красителя\n\n' +
-      '_Используйте 1 раз в неделю как ритуал очищения._';
-
-  if (match(q,['осветл','bleach','обесцвеч','dnavanze']))
-    return '⚗️ *Восстановление после осветления*\n\n' +
-      'Осветление разрушает дисульфидные связи волоса.\n\n' +
-      '**Рекомендую:**\n• **DNAVANZE** — Mimetecnol Technology\n' +
-      '  Восстанавливает связи волоса изнутри (аналог Olaplex)\n' +
-      '• **CREAM BLOND** — уход за светлыми волосами\n' +
-      '• **THEION** — глубокая реконструкция структуры\n\n' +
-      '_Применяйте DNAVANZE перед, во время и после осветления._';
-
-  if (match(q,['жирн','сальн','быстро грязн']))
-    return '💦 *Жирные волосы*\n\n' +
-      'Причина — гиперактивность сальных желёз, часто из-за неправильного ухода.\n\n' +
-      '**Рекомендую:**\n• **BIODETOX** — балансировка себума, детокс\n' +
-      '• Не мойте голову каждый день — это усиливает жирность\n' +
-      '• Используйте шампунь только на кожу головы\n\n' +
-      '_Не наносите маску на корни — только на длину._';
-
-  if (match(q,['секущ','кончик']))
-    return '✂️ *Секущиеся кончики*\n\n' +
-      'Секущиеся концы — признак механического повреждения.\n\n' +
-      '**Уход:**\n• **SPECIALE Несмываемый Nutri** — запаивает кончики\n' +
-      '• **NATURALE** — масло для кончиков\n' +
-      '• Подрезайте кончики каждые 6–8 недель\n\n' +
-      '_Наносите несмываемый уход только на длину, не на корни._';
-
-  if (match(q,['термо','утюж','плойк','фен']))
-    return '♨️ *Термозащита*\n\n' +
-      'Перед укладкой при температуре выше 180°C необходима защита.\n\n' +
-      '**Рекомендую:**\n• **SPECIALE Несмываемый Nutri** — базовая защита + питание\n' +
-      '• **LUXURY** — термозащитные продукты премиум класса\n\n' +
-      '_Распределяйте по влажным волосам перед феном._';
-
-  // Дефолтный ответ с рекомендацией
-  return '🧴 Я проанализировал ваш вопрос!\n\n' +
-    'Чтобы дать точную рекомендацию, уточните:\n' +
-    '• Тип ваших волос (сухие / жирные / нормальные)\n' +
-    '• Основная проблема или желаемый результат\n' +
-    '• Делаете ли процедуры (окрашивание, осветление)?\n\n' +
-    'Или выберите тему выше — я подберу подходящую линейку Donatti 👆';
+function restartConsultant() {
+  document.getElementById('chatMessages').innerHTML = '';
+  initConsultant();
 }
 
 /* ════════════════════════════════════════
@@ -1130,6 +1265,7 @@ function showToast(msg) {
 /* ════════════════════════════════════════
    INIT
 ════════════════════════════════════════ */
+applyLang();
 updateCartDot();
 initConsultant();
 renderSections();
