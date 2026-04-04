@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DONATTI Консультант</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .header {
+            background: linear-gradient(135deg, #c9a236, #f4d799);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            color: #000;
+            margin: 0;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        button {
+            background: #c9a236;
+            color: #000;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        button:hover {
+            background: #f4d799;
+        }
+        .chat {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+            min-height: 400px;
+            margin-bottom: 20px;
+        }
+        .msg {
+            background: rgba(201,162,54,0.15);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            border-left: 4px solid #c9a236;
+        }
+        .product {
+            background: rgba(201,162,54,0.2);
+            padding: 12px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+        input {
+            width: calc(100% - 120px);
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid #c9a236;
+            color: #fff;
+            border-radius: 25px;
+            font-size: 16px;
+        }
+        .send {
+            width: 100px;
+            padding: 15px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>DONATTI Консультант</h1>
+        <p>Профессиональный уход за волосами</p>
+    </div>
+    
+    <div class="buttons">
+        <button onclick="show(1)">Сухость/ломкость</button>
+        <button onclick="show(2)">Выпадение волос</button>
+        <button onclick="show(3)">Перхоть</button>
+        <button onclick="show(4)">Жирная кожа</button>
+        <button onclick="show(5)">После окрашивания</button>
+        <button onclick="show(6)">Кудрявые волосы</button>
+        <button onclick="show(7)">Псориаз</button>
+        <button onclick="show(8)">Зуд/воспаление</button>
+    </div>
+    
+    <div class="chat" id="chat"></div>
+    
+    <div>
+        <input type="text" id="input" placeholder="Или напишите свой вопрос..." onkeypress="if(event.key=='Enter')send()">
+        <button class="send" onclick="send()">Отправить</button>
+    </div>
+
+    <script>
+        const responses = {
+            1: `<div class="msg">
+                <h3 style="color:#c9a236">📋 Сухие и ломкие волосы</h3>
+                <p><strong>Проблема:</strong> Трихоптилоз — расщепление волосяного стержня</p>
+                <p><strong>Причины:</strong> Жёсткая вода, UV-излучение, низкая влажность</p>
+                <div class="product">
+                    <h4 style="color:#c9a236">✨ РЕШЕНИЕ DONATTI:</h4>
+                    <p><strong>Этап 1 (2 недели):</strong><br>
+                    🧴 NATURALE Shampoo — 3 раза/неделю</p>
+                    <p><strong>Этап 2 (4-6 недель):</strong><br>
+                    🥥 BAOBÁ REDUCE маска — 2 раза/неделю, 20 минут</p>
+                    <p><strong>Этап 3 (постоянно):</strong><br>
+                    ✨ Oil Miracle — ежедневно на кончики</p>
+                </div>
+                <p style="color:#64ff64"><strong>РЕЗУЛЬТАТ:</strong> Улучшение через 3-4 недели</p>
+            </div>`,
+            
+            2: `<div class="msg">
+                <h3 style="color:#c9a236">📋 Выпадение волос</h3>
+                <p><strong>Проблема:</strong> Диффузная алопеция</p>
+                <p><strong>Факторы:</strong> Дефицит витамина D, стресс, дефицит железа</p>
+                <div class="product">
+                    <h4 style="color:#c9a236">⚕️ КОМПЛЕКС BIODETOX:</h4>
+                    <p>🧴 <strong>Shampoo Antiqueda BIODETOX</strong><br>
+                    Ежедневно, массаж 3 минуты</p>
+                    <p>💧 <strong>Tônico Antiqueda</strong><br>
+                    2 раза/день на кожу головы</p>
+                    <p>💉 <strong>Ampola Antiqueda</strong><br>
+                    2-3 раза/неделю, курс 8-12 недель</p>
+                </div>
+                <p><strong>ДОПОЛНИТЕЛЬНО:</strong><br>
+                • Витамин D3: 5000 МЕ<br>
+                • Биотин: 5000 мкг/день<br>
+                • Омега-3: 1000 мг</p>
+                <p style="color:#64ff64"><strong>РЕЗУЛЬТАТ:</strong> Стабилизация через 1-2 месяца</p>
+            </div>`,
+            
+            3: `<div class="msg">
+                <h3 style="color:#c9a236">📋 Перхоть</h3>
+                <p><strong>Проблема:</strong> Себорейный дерматит</p>
+                <p><strong>Причина:</strong> Грибок Malassezia + дисфункция сальных желёз</p>
+                <div class="product">
+                    <h4 style="color:#c9a236">⚕️ ANTI-FUNGAL ПРОТОКОЛ:</h4>
+                    <p>🧴 <strong>Shampoo Anticaspa BIODETOX</strong><br>
+                    3 раза/неделю, оставить на 3-5 минут</p>
+                    <p>💧 <strong>Tônico Anticaspa</strong><br>
+                    Ежедневно на кожу головы</p>
+                </div>
+                <p><strong>РЕЖИМ:</strong><br>
+                • Острая фаза (4 недели): 3 раза/неделю<br>
+                • Поддержка: 1 раз/неделю</p>
+                <p style="color:#64ff64"><strong>РЕЗУЛЬТАТ:</strong> Улучшение через 7-10 дней</p>
+            </div>`,
+            
+            4: `<div class="msg">
+                <h3 style="color:#c9a236">📋 Жирная кожа головы</h3>
+                <p><strong>Проблема:</strong> Гиперсеборея — избыточная продукция кожного сала</p>
+                <div class="product">
+                    <h4 style="color:#c9a236">⚕️ SEBUM-CONTROL:</h4>
+                    <p>🧴 <strong>Shampoo для жирных волос</strong><br>
+                    Ежедневно или через день</p>
+                    <p>💧 <strong>Tônico сужающий поры</strong><br>
+                    После каждого мытья</p>
+                    <p>🥥 <strong>BAOBÁ REDUCE</strong><br>
+                    1 раз/неделю — детокс кожи головы</p>
+                </div>
+                <p><strong>РЕКОМЕНДАЦИИ:</strong><br>
+                • Мыть только кожу головы (не длину)<br>
+                • Холодное ополаскивание<br>
+                • Питание: ↓Жирное, ↑Цинк, Омега-3</p>
+                <p style="color:#64ff64"><strong>РЕЗУЛЬТАТ:</strong> Нормализация за 3-4 недели</p>
+            </div>`,
+            
+            5: `<div class="msg">
+                <h3 style="color:#c9a236">📋 После окрашивания</h3>
+                <p><strong>Повреждение:</strong> Аммиак/пероксид разрушают структуру</p>
+                <div class="product">
+                    <h4 style="color:#c9a236">⚕️ POST-COLOR ПРОТОКОЛ:</h4>
+                    <p>🧴 <strong>COLOR PROTECTION Shampoo</strong><br>
+                    Первое мытьё через 48 часов, без сульфатов</p>
+                    <p>🥥 <strong>BAOBÁ REDUCE</strong><br>
+                    2 раза/неделю, 30 минут</p>
+                    <p>✨ <strong>Oil Miracle</strong><br>
+                    Ежедневно — UV-защита цвета</p>
+                </div>
+                <p style="color:#ff6464"><strong>⚠️ ЗАПРЕТ 2 НЕДЕЛИ:</strong><br>
+                • Хлор (бассейны)<br>
+                • Морская вода<br>
+                • Горячая укладка >180°C</p>
+            </div>`,
+            
+            6: `<div class="msg">
+                <h3 style="color:#c9a236">📋 Кудрявые волосы</h3>
+                <p><strong>Особенности:</strong> Повышенная пористость, склонность к сухости</p>
+                <div class="product">
+                    <h4 style="color:#c9a236">⚕️ CURLY HAIR МЕТОД:</h4>
+                    <p>🧴 <strong>NATURALE Shampoo</strong><br>
+                    1-2 раза/неделю, обжимающие движения</p>
+                    <p>🥥 <strong>BAOBÁ REDUCE</strong><br>
+                    Как несмываемый кондиционер</p>
+                    <p>✨ <strong>Oil Miracle</strong><br>
+                    На влажные волосы для "мокрого" эффекта</p>
+                </div>
+                <p><strong>МЕТОД:</strong><br>
+                ❌ НЕТ: расчёсыванию в сухом виде<br>
+                ✅ ДА: пальцевое расчёсывание в душе</p>
+            </div>`,
+            
+            7: `<div class="msg">
+                <h3 style="color:#c9a236">📋 Псориаз</h3>
+                <p><strong>Диагноз:</strong> Psoriasis capitis — аутоиммунное заболевание</p>
+                <p style="color:#ff6464"><strong>⚠️ ВАЖНО:</strong> Псориаз требует лечения у дерматолога!<br>
+                DONATTI — только вспомогательный уход.</p>
+                <div class="product">
+                    <h4 style="color:#c9a236">⚕️ ПОДДЕРЖИВАЮЩИЙ УХОД:</h4>
+                    <p>🧴 <strong>NATURALE Shampoo</strong><br>
+                    2-3 раза/неделю, без травматизации</p>
+                    <p>🥥 <strong>BAOBÁ REDUCE</strong><br>
+                    Увлажнение, размягчение чешуек</p>
+                    <p>✨ <strong>Oil Miracle</strong><br>
+                    Уменьшение зуда</p>
+                </div>
+            </div>`,
+            
+            8: `<div class="msg">
+                <h3 style="color:#c9a236">📋 Зуд/воспаление</h3>
+                <p><strong>Возможно:</strong> Фолликулит (воспаление фолликулов)</p>
+                <p style="color:#ff6464"><strong>⚠️ К ВРАЧУ если:</strong><br>
+                • Температура<br>
+                • Гнойное отделяемое<br>
+                • Распространение процесса</p>
+                <div class="product">
+                    <h4 style="color:#c9a236">⚕️ АНТИСЕПТИЧЕСКИЙ УХОД:</h4>
+                    <p>🧴 <strong>Shampoo Anticaspa BIODETOX</strong><br>
+                    Ежедневно до стихания, оставить на 5 минут</p>
+                    <p>💧 <strong>Tônico BIODETOX</strong><br>
+                    2 раза/день на поражённые зоны</p>
+                    <p><strong>⛔ НЕ ПРИМЕНЯТЬ:</strong> Oil Miracle (масло усугубит!)</p>
+                </div>
+            </div>`
+        };
+        
+        function show(id) {
+            document.getElementById('chat').innerHTML = responses[id];
+        }
+        
+        function send() {
+            const input = document.getElementById('input');
+            const msg = input.value.trim().toLowerCase();
+            input.value = '';
+            
+            if (!msg) return;
+            
+            if (msg.includes('сух') || msg.includes('ломк')) show(1);
+            else if (msg.includes('выпад')) show(2);
+            else if (msg.includes('перхот')) show(3);
+            else if (msg.includes('жирн')) show(4);
+            else if (msg.includes('окраш')) show(5);
+            else if (msg.includes('кудряв')) show(6);
+            else if (msg.includes('псориаз')) show(7);
+            else if (msg.includes('зуд')) show(8);
+            else {
+                document.getElementById('chat').innerHTML = `
+                    <div class="msg">
+                        <h3 style="color:#c9a236">📋 Для диагностики нужна информация:</h3>
+                        <p>1. <strong>Проблема:</strong> что беспокоит?</p>
+                        <p>2. <strong>Давность:</strong> как давно?</p>
+                        <p>3. <strong>Симптомы:</strong> зуд / перхоть / выпадение / ломкость?</p>
+                        <p>4. <strong>Уход:</strong> как часто моете / окрашивание?</p>
+                        <hr style="border:1px solid #c9a236;margin:15px 0;">
+                        <p style="color:#c9a236"><strong>Или выберите готовую проблему из кнопок выше ⬆️</strong></p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Показать приветствие
+        document.getElementById('chat').innerHTML = `
+            <div class="msg">
+                <h3 style="color:#c9a236">Консультация DONATTI</h3>
+                <p>Выберите проблему из кнопок выше или опишите своими словами ⬆️</p>
+            </div>
+        `;
+    </script>
+</body>
+</html>
