@@ -23,6 +23,7 @@
   --green:    #25d366;
   --radius:   14px;
   --nav-h:    68px;
+  --safe-bottom: max(env(safe-area-inset-bottom, 0px), 20px);
 }
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;overflow:hidden;background:var(--bg)}
@@ -33,7 +34,7 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
 .screen{
   position:absolute;inset:0;
   overflow-y:auto;overflow-x:hidden;
-  padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom, 16px) + 20px);
+  padding-bottom:calc(var(--nav-h) + var(--safe-bottom) + 16px);
   display:none;
   -webkit-overflow-scrolling:touch;
 }
@@ -46,15 +47,15 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
 /* ── BOTTOM NAV ── */
 .nav{
   position:fixed;bottom:0;left:0;right:0;
-  height:calc(var(--nav-h) + env(safe-area-inset-bottom, 20px));
+  height:calc(var(--nav-h) + var(--safe-bottom));
   background:rgba(10,10,10,.97);
   border-top:1px solid var(--border);
   display:flex;
-  align-items:center;
+  align-items:flex-start;
+  padding-top:8px;
   z-index:100;
   backdrop-filter:blur(20px);
-  padding-bottom:env(safe-area-inset-bottom, 20px);
-  padding-top:0;
+  padding-bottom:var(--safe-bottom);
 }
 .nav-btn{
   flex:1;display:flex;flex-direction:column;
