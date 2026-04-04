@@ -1093,7 +1093,9 @@ function processInput(text) {
 // ── Переход из консультанта в раздел каталога ──
 function goToSectionFromConsultant(sectionId) {
   goTo('catalog');
-  setTimeout(() => openSection(sectionId), 80);
+  // Сначала показываем список линеек, потом открываем нужную
+  showSections();
+  setTimeout(() => openSection(sectionId), 150);
 }
 
 function restartConsultant() {
