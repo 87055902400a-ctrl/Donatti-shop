@@ -184,11 +184,13 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
 }
 .section-card:active{transform:scale(.98);background:var(--card2)}
 .section-icon{
-  width:46px;height:46px;border-radius:12px;
+  width:64px;height:64px;border-radius:12px;
   background:rgba(201,162,54,.1);border:1px solid var(--border);
   display:flex;align-items:center;justify-content:center;
   font-size:1.4rem;flex-shrink:0;
+  overflow:hidden;
 }
+.section-icon img{width:100%;height:100%;object-fit:cover;border-radius:12px}
 .section-info{flex:1;min-width:0}
 .section-name{
   font-family:'Playfair Display',serif;
@@ -673,6 +675,19 @@ const DISCOUNT_TIERS = [
 ];
 
 const SECTION_ICONS = {
+  const SECTION_PHOTOS = {
+    'SPECIALE':       'https://87055902400a-ctrl.github.io/Donatti-shop/SPECIALE.jpeg',
+    'THEION':         'https://87055902400a-ctrl.github.io/Donatti-shop/THEION.jpeg',
+    'COLORE':         'https://87055902400a-ctrl.github.io/Donatti-shop/COLORE.jpeg',
+    'CREAM BLOND':    'https://87055902400a-ctrl.github.io/Donatti-shop/CREAM_BLOND.jpeg',
+    'BAOBÁ REDUCE':   'https://87055902400a-ctrl.github.io/Donatti-shop/BAOBA_REDUCE.jpeg',
+    'DNAVANZE':       'https://87055902400a-ctrl.github.io/Donatti-shop/DNAVANZE.jpeg',
+    'BIODETOX':       'https://87055902400a-ctrl.github.io/Donatti-shop/BIODETOX.jpeg',
+    'MIO RICCI':      'https://87055902400a-ctrl.github.io/Donatti-shop/MIO_RICCI.jpeg',
+    'NATURALE':       'https://87055902400a-ctrl.github.io/Donatti-shop/NATURALE.jpeg',
+    'LUXURY':         'https://87055902400a-ctrl.github.io/Donatti-shop/LUXURY.jpeg',
+    'PREMIUM VIOLET': 'https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg',
+  };
   'SPECIALE':'✨','THEION':'⚗️','COLORE':'🎨','CREAM BLOND':'💛',
   'BAOBÁ':'🌿','BAOBÁ REDUCE':'🌿','DNAVANZE':'🧬','BIODETOX':'🍃',
   'MIO RICCI':'🌀','NATURALE':'🌸','LUXURY':'👑','PREMIUM VIOLET':'💜','EXTRA':'⭐',
@@ -715,9 +730,13 @@ function renderSections() {
   list.innerHTML = CATALOG_DATA.sections.map(s => {
     const icon = SECTION_ICONS[s.id] || '•';
     const desc = s.description.split(' - ')[1] || s.description;
+    const photo = SECTION_PHOTOS[s.id];
+    const iconHtml = photo
+      ? `<img src="${photo}" alt="${s.name}" loading="lazy">`
+      : icon;
     return `
       <div class="section-card" onclick="openSection('${s.id}')">
-        <div class="section-icon">${icon}</div>
+        <div class="section-icon">${iconHtml}</div>
         <div class="section-info">
           <div class="section-name">${s.name}</div>
           <div class="section-desc">${desc}</div>
@@ -737,7 +756,9 @@ function openSection(id) {
 
   const icon = SECTION_ICONS[id] || '•';
   const desc = currentSection.description.split(' - ')[1] || currentSection.description;
+  const bannerPhoto = SECTION_PHOTOS[id];
   document.getElementById('sectionBanner').innerHTML = `
+    ${bannerPhoto ? `<img src="${bannerPhoto}" alt="${currentSection.name}" style="width:100%;max-height:180px;object-fit:cover;border-radius:10px;margin-bottom:12px;">` : ''}
     <div style="font-size:.7rem;color:rgba(201,162,54,.5);letter-spacing:3px;margin-bottom:6px;">${icon} ${t('section_label')}</div>
     <div class="banner-name">${currentSection.name}</div>
     <div class="banner-desc">${desc}</div>
