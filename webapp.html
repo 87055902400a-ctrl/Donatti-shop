@@ -10,8 +10,8 @@
 <style>
 :root {
   --bg:       #080808;
-  --card:     #111;
-  --card2:    #181818;
+  --card:     #ffffff;
+  --card2:    #f5f5f5;
   --gold:     #c9a236;
   --gold2:    #e8c96d;
   --cream:    #f5ede0;
@@ -114,7 +114,7 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
 
 /* ── HOME SCREEN ── */
 .home-hero{
-  background:linear-gradient(160deg,#0a0a0a,#1a1408);
+  background:linear-gradient(160deg,#3e2a18,#6b4423);
   padding:36px 20px 28px;
   text-align:center;
   border-bottom:1px solid var(--border);
@@ -194,9 +194,9 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
 .section-info{flex:1;min-width:0}
 .section-name{
   font-family:'Playfair Display',serif;
-  font-size:1rem;font-weight:700;color:var(--cream);letter-spacing:1px;
+  font-size:1rem;font-weight:700;color:#1a1a1a;letter-spacing:1px;
 }
-.section-desc{font-size:.72rem;color:var(--muted);margin-top:2px}
+.section-desc{font-size:.72rem;color:#666;margin-top:2px}
 .section-count{
   font-size:.68rem;color:var(--gold);
   background:rgba(201,162,54,.1);border:1px solid var(--border);
@@ -245,7 +245,7 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
   letter-spacing:1px;
 }
 .prod-name{
-  font-size:.78rem;color:var(--text);line-height:1.4;
+  font-size:.78rem;color:#1a1a1a;line-height:1.4;
   display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
   flex:1;
 }
@@ -674,20 +674,20 @@ const DISCOUNT_TIERS = [
   { min: 0,   pct: 0,    key: 'tier_retail' },
 ];
 
+const SECTION_PHOTOS = {
+  'SPECIALE':       'https://87055902400a-ctrl.github.io/Donatti-shop/SPECIALE.jpeg',
+  'THEION':         'https://87055902400a-ctrl.github.io/Donatti-shop/THEION.jpeg',
+  'COLORE':         'https://87055902400a-ctrl.github.io/Donatti-shop/COLORE.jpeg',
+  'CREAM BLOND':    'https://87055902400a-ctrl.github.io/Donatti-shop/CREAM_BLOND.jpeg',
+  'BAOBÁ REDUCE':   'https://87055902400a-ctrl.github.io/Donatti-shop/BAOBA_REDUCE.jpeg',
+  'DNAVANZE':       'https://87055902400a-ctrl.github.io/Donatti-shop/DNAVANZE.jpeg',
+  'BIODETOX':       'https://87055902400a-ctrl.github.io/Donatti-shop/BIODETOX.jpeg',
+  'MIO RICCI':      'https://87055902400a-ctrl.github.io/Donatti-shop/MIO_RICCI.jpeg',
+  'NATURALE':       'https://87055902400a-ctrl.github.io/Donatti-shop/NATURALE.jpeg',
+  'LUXURY':         'https://87055902400a-ctrl.github.io/Donatti-shop/LUXURY.jpeg',
+  'PREMIUM VIOLET': 'https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg',
+};
 const SECTION_ICONS = {
-  const SECTION_PHOTOS = {
-    'SPECIALE':       'https://87055902400a-ctrl.github.io/Donatti-shop/SPECIALE.jpeg',
-    'THEION':         'https://87055902400a-ctrl.github.io/Donatti-shop/THEION.jpeg',
-    'COLORE':         'https://87055902400a-ctrl.github.io/Donatti-shop/COLORE.jpeg',
-    'CREAM BLOND':    'https://87055902400a-ctrl.github.io/Donatti-shop/CREAM_BLOND.jpeg',
-    'BAOBÁ REDUCE':   'https://87055902400a-ctrl.github.io/Donatti-shop/BAOBA_REDUCE.jpeg',
-    'DNAVANZE':       'https://87055902400a-ctrl.github.io/Donatti-shop/DNAVANZE.jpeg',
-    'BIODETOX':       'https://87055902400a-ctrl.github.io/Donatti-shop/BIODETOX.jpeg',
-    'MIO RICCI':      'https://87055902400a-ctrl.github.io/Donatti-shop/MIO_RICCI.jpeg',
-    'NATURALE':       'https://87055902400a-ctrl.github.io/Donatti-shop/NATURALE.jpeg',
-    'LUXURY':         'https://87055902400a-ctrl.github.io/Donatti-shop/LUXURY.jpeg',
-    'PREMIUM VIOLET': 'https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg',
-  };
   'SPECIALE':'✨','THEION':'⚗️','COLORE':'🎨','CREAM BLOND':'💛',
   'BAOBÁ':'🌿','BAOBÁ REDUCE':'🌿','DNAVANZE':'🧬','BIODETOX':'🍃',
   'MIO RICCI':'🌀','NATURALE':'🌸','LUXURY':'👑','PREMIUM VIOLET':'💜','EXTRA':'⭐',
