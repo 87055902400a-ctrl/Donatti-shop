@@ -9,16 +9,16 @@
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 :root {
-  --bg:       #080808;
+  --bg:       #f2f0eb;
   --card:     #ffffff;
-  --card2:    #f5f5f5;
+  --card2:    #f7f5f0;
   --gold:     #c9a236;
-  --gold2:    #e8c96d;
-  --cream:    #f5ede0;
-  --text:     #e8e8e8;
-  --muted:    #777;
-  --dim:      #444;
-  --border:   rgba(201,162,54,.18);
+  --gold2:    #a07820;
+  --cream:    #3e2a18;
+  --text:     #1a1a1a;
+  --muted:    #888;
+  --dim:      #bbb;
+  --border:   rgba(201,162,54,.25);
   --red:      #e74c6d;
   --green:    #25d366;
   --radius:   14px;
@@ -48,7 +48,7 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
 .nav{
   position:fixed;bottom:0;left:0;right:0;
   height:calc(var(--nav-h) + var(--safe-bottom));
-  background:rgba(10,10,10,.97);
+  background:rgba(255,255,255,.97);
   border-top:1px solid var(--border);
   display:flex;
   align-items:flex-start;
@@ -80,9 +80,9 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
 
 /* ── LANG BUTTON ── */
 .lang-btn{
-  background:rgba(255,255,255,.1);
-  border:1px solid rgba(255,255,255,.25);
-  color:var(--cream);border-radius:6px;
+  background:rgba(201,162,54,.12);
+  border:1px solid var(--border);
+  color:var(--gold);border-radius:6px;
   padding:4px 11px;font-size:.65rem;font-weight:700;
   cursor:pointer;letter-spacing:.8px;
   font-family:'Inter',sans-serif;
@@ -101,7 +101,7 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
 /* ── HEADER ── */
 .page-header{
   padding:20px 18px 14px;
-  background:linear-gradient(180deg,rgba(14,12,5,.95),transparent);
+  background:rgba(242,240,235,.97);
   position:sticky;top:0;z-index:10;
   backdrop-filter:blur(10px);
 }
@@ -114,7 +114,7 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
 
 /* ── HOME SCREEN ── */
 .home-hero{
-  background:linear-gradient(160deg,#3e2a18,#6b4423);
+  background:linear-gradient(160deg,#3e2a18,#7a5030);
   padding:36px 20px 28px;
   text-align:center;
   border-bottom:1px solid var(--border);
@@ -212,13 +212,13 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
 .product-back:active{opacity:.7}
 .section-banner{
   margin:12px 12px 0;
-  background:linear-gradient(135deg,#0e0c05,#1a1508);
+  background:#ffffff;
   border:1px solid var(--border);border-radius:var(--radius);
   padding:18px;
 }
 .banner-name{
   font-family:'Playfair Display',serif;
-  font-size:1.6rem;font-weight:800;color:var(--gold2);letter-spacing:3px;
+  font-size:1.6rem;font-weight:800;color:#3e2a18;letter-spacing:3px;
 }
 .banner-desc{font-size:.75rem;color:var(--muted);margin-top:4px;font-style:italic}
 
@@ -307,7 +307,7 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
 .chat-input-wrap{
   position:fixed;
   bottom:var(--nav-h);left:0;right:0;
-  background:rgba(8,8,8,.97);
+  background:rgba(255,255,255,.97);
   border-top:1px solid var(--border);
   padding:10px 12px;
   display:flex;gap:8px;align-items:flex-end;
@@ -416,21 +416,21 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
 
 .cart-summary{
   margin:8px 12px;
-  background:linear-gradient(135deg,#0e0c05,#1a1508);
+  background:#ffffff;
   border:1px solid var(--border);border-radius:var(--radius);
   padding:16px;
 }
 .summary-row{
   display:flex;justify-content:space-between;
-  padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);
+  padding:7px 0;border-bottom:1px solid rgba(0,0,0,.06);
   font-size:.83rem;
 }
 .summary-row:last-child{border-bottom:none}
-.summary-row span:first-child{color:var(--muted)}
-.summary-row span:last-child{color:var(--text);font-weight:500}
+.summary-row span:first-child{color:#888}
+.summary-row span:last-child{color:#1a1a1a;font-weight:500}
 .summary-total{
   font-family:'Playfair Display',serif;
-  font-size:1.1rem;color:var(--gold2) !important;
+  font-size:1.1rem;color:var(--gold) !important;
   font-weight:700;
 }
 .discount-row span{color:var(--green) !important}
