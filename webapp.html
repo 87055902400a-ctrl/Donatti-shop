@@ -801,7 +801,11 @@ function openDetail(num) {
   if (!product) return;
 
   const icon = SECTION_ICONS[section.id] || '•';
+  const sectionPhoto = SECTION_PHOTOS[section.id];
   document.getElementById('detailContent').innerHTML = `
+    ${sectionPhoto ? `<div style="text-align:center;background:#fff;border-radius:12px;padding:12px;margin-bottom:14px;border:1px solid var(--border);">
+      <img src="${sectionPhoto}" alt="${product.name}" style="max-width:100%;max-height:200px;object-fit:contain;">
+    </div>` : ''}
     <div class="detail-art">${t('article_prefix')} ${product.number}</div>
     <div class="detail-name">${product.name}</div>
     <div>
