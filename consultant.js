@@ -20,10 +20,10 @@ class ConsultantEngine {
     this.collectedAnswers  = [];
   }
 
-  /** Возвращает поле объекта с учётом текущего языка */
+  /** Возвращает поле объекта с учётом текущего языка (ru/uz/pt) */
   _lf(obj, field) {
-    const uzField = field + '_uz';
-    if (window.LANG === 'uz' && obj[uzField]) return obj[uzField];
+    const localField = field + '_' + window.LANG;
+    if (window.LANG !== 'ru' && obj[localField]) return obj[localField];
     return obj[field];
   }
 

@@ -94,7 +94,7 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
   position:absolute;right:16px;top:50%;transform:translateY(-50%);
 }
 .home-hero-top{
-  display:flex;justify-content:flex-end;
+  display:flex;justify-content:space-between;align-items:center;
   padding:10px 16px 4px;
 }
 
@@ -492,6 +492,35 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
   cursor:pointer;font-family:'Inter',sans-serif;
   letter-spacing:.5px;margin-top:8px;
 }
+
+/* ── Бейдж пользователя ── */
+.user-badge{
+  font-size:.75rem;color:rgba(255,255,255,.8);
+  font-weight:500;letter-spacing:.3px;
+  max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+
+/* ── Отзывы ── */
+.reviews-block{padding:16px;margin-top:4px;border-top:1px solid var(--border)}
+.reviews-title{font-size:.85rem;font-weight:700;color:var(--cream);text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px}
+.review-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:10px}
+.review-header{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.review-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#9a7a26,#c8a84b);color:#fff;font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.review-meta{flex:1}
+.review-name{font-size:.8rem;font-weight:600;color:var(--text)}
+.review-date{font-size:.7rem;color:var(--muted);margin-top:1px}
+.review-stars{color:#f5a623;font-size:.85rem;letter-spacing:1px}
+.review-text{font-size:.82rem;color:var(--text);line-height:1.5;margin-top:4px}
+.reviews-empty{font-size:.82rem;color:var(--muted);text-align:center;padding:16px 0}
+.review-write-btn{width:100%;padding:11px;border-radius:var(--radius);background:transparent;border:1px solid var(--gold);color:var(--gold);font-size:.85rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;margin-top:6px;transition:background .2s}
+.review-form{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px;margin-top:10px}
+.review-stars-input{display:flex;gap:6px;margin:10px 0}
+.star-btn{font-size:1.4rem;cursor:pointer;background:none;border:none;padding:2px;line-height:1;transition:transform .15s}
+.review-name-input,.review-textarea{width:100%;box-sizing:border-box;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px;font-size:.85rem;color:var(--text);font-family:'Inter',sans-serif;outline:none;margin-bottom:8px}
+.review-textarea{resize:none;height:72px}
+.review-form-btns{display:flex;gap:8px}
+.review-submit-btn{flex:1;padding:10px;border-radius:8px;background:linear-gradient(135deg,#9a7a26,var(--gold));color:#000;border:none;font-size:.85rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif}
+.review-cancel-btn{padding:10px 16px;border-radius:8px;background:transparent;border:1px solid var(--border);color:var(--muted);font-size:.85rem;cursor:pointer;font-family:'Inter',sans-serif}
 </style>
 </head>
 <body>
@@ -502,6 +531,7 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
   <div class="screen active" id="screen-home">
     <div class="home-hero">
       <div class="home-hero-top">
+        <div id="userBadge" class="user-badge"></div>
         <button class="lang-btn" onclick="toggleLang()">UZ</button>
       </div>
       <div class="home-logo">DONATTI</div>
@@ -578,6 +608,7 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
       <button class="product-back" onclick="showSections()" data-i18n="back_to_sections">‹ Назад к линейкам</button>
       <div class="section-banner" id="sectionBanner"></div>
       <div class="product-grid" id="productGrid"></div>
+      <div id="reviewsBlock"></div>
     </div>
     <div id="searchResults" style="display:none">
       <div class="product-grid" id="searchGrid"></div>
@@ -658,6 +689,8 @@ if (tg) {
   tg.setHeaderColor('#3e2a18');
   tg.setBackgroundColor('#f2f0eb');
 }
+
+window.TG_USER = tg?.initDataUnsafe?.user || null;
 
 /* ════════════════════════════════════════
    STATE
@@ -764,7 +797,7 @@ function openSection(id) {
         <div style="font-size:.7rem;color:var(--gold);letter-spacing:3px;margin-bottom:4px;">${t('section_label')}</div>
         <div class="banner-name">${currentSection.name}</div>
         <div class="banner-desc">${desc}</div>
-        <div style="font-size:.7rem;color:var(--muted);margin-top:6px;">${currentSection.product_count} ${window.LANG==='uz'?'ta mahsulot':'позиций'}</div>
+        <div style="font-size:.7rem;color:var(--muted);margin-top:6px;">${currentSection.product_count} ${window.LANG==='uz'?'ta mahsulot':window.LANG==='pt'?'posições':'позиций'}</div>
       </div>
     </div>
   `;
@@ -772,6 +805,7 @@ function openSection(id) {
   document.getElementById('productGrid').innerHTML =
     currentSection.products.map(p => productCardHTML(p)).join('');
   document.getElementById('screen-catalog').scrollTop = 0;
+  renderReviewsBlock(id);
 }
 
 function showSections() {
@@ -1143,9 +1177,109 @@ function showToast(msg) {
 }
 
 /* ════════════════════════════════════════
+   REVIEWS
+════════════════════════════════════════ */
+function getSectionReviews(sectionId) {
+  try {
+    const all = JSON.parse(localStorage.getItem('donatti_reviews') || '{}');
+    return all[sectionId] || [];
+  } catch { return []; }
+}
+
+function saveReview(sectionId, rating, text, name) {
+  try {
+    const all = JSON.parse(localStorage.getItem('donatti_reviews') || '{}');
+    if (!all[sectionId]) all[sectionId] = [];
+    all[sectionId].unshift({
+      userId: TG_USER ? String(TG_USER.id) : 'guest_' + Date.now(),
+      name: name || (TG_USER ? TG_USER.first_name : 'Гость'),
+      rating,
+      text,
+      date: new Date().toLocaleDateString(window.LANG === 'pt' ? 'pt-BR' : window.LANG === 'uz' ? 'uz-UZ' : 'ru-RU')
+    });
+    localStorage.setItem('donatti_reviews', JSON.stringify(all));
+  } catch(e) { console.warn(e); }
+}
+
+function renderReviewsBlock(sectionId) {
+  const block = document.getElementById('reviewsBlock');
+  if (!block) return;
+  const reviews = getSectionReviews(sectionId);
+  const stars = n => '★'.repeat(n) + '☆'.repeat(5 - n);
+
+  const reviewItems = reviews.length
+    ? reviews.map(r => `
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">${(r.name || '?')[0].toUpperCase()}</div>
+          <div class="review-meta">
+            <div class="review-name">${r.name}</div>
+            <div class="review-date">${r.date}</div>
+          </div>
+          <div class="review-stars">${stars(r.rating)}</div>
+        </div>
+        <div class="review-text">${r.text}</div>
+      </div>`).join('')
+    : `<div class="reviews-empty">${t('reviews_empty')}</div>`;
+
+  block.innerHTML = `
+    <div class="reviews-block">
+      <div class="reviews-title">${t('reviews_title')}</div>
+      ${reviewItems}
+      <button class="review-write-btn" onclick="showReviewForm('${sectionId}')">${t('reviews_write')}</button>
+      <div id="reviewForm" style="display:none">
+        <div class="review-form">
+          ${!TG_USER ? `<input class="review-name-input" id="reviewNameInput" placeholder="${t('reviews_name')}">` : ''}
+          <div class="review-stars-input" id="starsInput">
+            ${[1,2,3,4,5].map(n => `<button class="star-btn" data-val="${n}" onclick="setReviewStar(${n})">☆</button>`).join('')}
+          </div>
+          <textarea class="review-textarea" id="reviewTextInput" placeholder="${t('reviews_ph')}"></textarea>
+          <div class="review-form-btns">
+            <button class="review-submit-btn" onclick="submitReview('${sectionId}')">${t('reviews_send')}</button>
+            <button class="review-cancel-btn" onclick="document.getElementById('reviewForm').style.display='none'">${t('reviews_cancel')}</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+let _reviewRating = 0;
+
+function showReviewForm(sectionId) {
+  _reviewRating = 0;
+  const f = document.getElementById('reviewForm');
+  if (f) f.style.display = 'block';
+  const block = document.getElementById('reviewsBlock');
+  if (block) block.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function setReviewStar(n) {
+  _reviewRating = n;
+  document.querySelectorAll('#starsInput .star-btn').forEach(btn => {
+    btn.textContent = Number(btn.dataset.val) <= n ? '★' : '☆';
+  });
+}
+
+function submitReview(sectionId) {
+  const text = (document.getElementById('reviewTextInput')?.value || '').trim();
+  if (!text) return;
+  if (!_reviewRating) { setReviewStar(5); }
+  const nameInput = document.getElementById('reviewNameInput');
+  const name = TG_USER ? TG_USER.first_name : (nameInput?.value.trim() || t('reviews_name'));
+  saveReview(sectionId, _reviewRating || 5, text, name);
+  renderReviewsBlock(sectionId);
+  if (tg?.showAlert) tg.showAlert(t('reviews_thanks'));
+  else alert(t('reviews_thanks'));
+}
+
+/* ════════════════════════════════════════
    INIT
 ════════════════════════════════════════ */
 applyLang();
+if (TG_USER) {
+  const badge = document.getElementById('userBadge');
+  if (badge) badge.textContent = '👤 ' + TG_USER.first_name;
+}
 updateCartDot();
 initConsultant();
 renderSections();
