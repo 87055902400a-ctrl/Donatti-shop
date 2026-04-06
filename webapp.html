@@ -920,7 +920,7 @@ function updateHomeCart() {
   const sub = document.getElementById('home-cart-sub');
   const total = cart.reduce((s, i) => s + i.qty, 0);
   sub.textContent = total > 0
-    ? `${total} ${window.LANG==='uz'?'ta mahsulot':'позиций'}`
+    ? `${total} ${t('pcs')}`
     : t('cart_empty_text');
 }
 
@@ -968,7 +968,7 @@ function renderCart() {
   const tier      = getDiscount(totalQty);
   const discountAmt = Math.round(subtotal * tier.pct);
   const total     = subtotal - discountAmt;
-  headerSub.textContent = `${totalQty} ${window.LANG==='uz'?'ta mahsulot':'позиций'}`;
+  headerSub.textContent = `${totalQty} ${t('pcs')}`;
 
   const itemsHTML = cart.map(item => `
     <div class="cart-item">
@@ -987,14 +987,19 @@ function renderCart() {
 
   const nextTier = DISCOUNT_TIERS.find(t2 => t2.pct > tier.pct);
   const tierName = t(tier.key);
+  const moreNeeded = nextTier ? nextTier.min - totalQty : 0;
   const nextTierHTML = nextTier
     ? `<div class="next-tier">💡 ${window.LANG==='uz'
-        ? `Yana ${nextTier.min - totalQty} ta → ${nextTier.pct*100}% chegirma`
-        : `Ещё ${nextTier.min - totalQty} шт. → скидка ${nextTier.pct*100}%`}</div>`
+        ? `Yana ${moreNeeded} ta → ${nextTier.pct*100}% chegirma`
+        : window.LANG==='pt'
+        ? `Mais ${moreNeeded} un. → desconto ${nextTier.pct*100}%`
+        : `Ещё ${moreNeeded} шт. → скидка ${nextTier.pct*100}%`}</div>`
     : `<div class="next-tier">${t('max_discount')}</div>`;
 
   const discountLabel = window.LANG==='uz'
     ? `Chegirma ${tier.pct*100}% (${tierName})`
+    : window.LANG==='pt'
+    ? `Desconto ${tier.pct*100}% (${tierName})`
     : `Скидка ${tier.pct*100}% (${tierName})`;
 
   content.innerHTML = `
@@ -1029,6 +1034,8 @@ function checkout() {
     // fallback для браузера
     alert(window.LANG==='uz'
       ? `Buyurtma ${fmt(total)} so'm uchun menejerga yuborildi!`
+      : window.LANG==='pt'
+      ? `Pedido de ${fmt(total)} UZS enviado ao gerente!`
       : `Заказ на ${fmt(total)} сум отправлен менеджеру!`);
   }
 }
@@ -1086,7 +1093,7 @@ function addUserMessage(text) {
   const el = document.createElement('div');
   el.className = 'msg user';
   el.innerHTML = `<div class="msg-bubble">${escHtml(text)}</div>
-    <div class="msg-time">${new Date().toLocaleTimeString(window.LANG==='uz'?'uz':'ru',{hour:'2-digit',minute:'2-digit'})}</div>`;
+    <div class="msg-time">${new Date().toLocaleTimeString(window.LANG==='uz'?'uz-UZ':window.LANG==='pt'?'pt-BR':'ru-RU',{hour:'2-digit',minute:'2-digit'})}</div>`;
   document.getElementById('chatMessages').appendChild(el);
   scrollChat();
   chatHistory.push({ role: 'user', text });
@@ -1105,7 +1112,7 @@ function addBotMessage(text, buttons) {
     }
     html += `</div>`;
   }
-  html += `<div class="msg-time">${new Date().toLocaleTimeString(window.LANG==='uz'?'uz':'ru',{hour:'2-digit',minute:'2-digit'})}</div>`;
+  html += `<div class="msg-time">${new Date().toLocaleTimeString(window.LANG==='uz'?'uz-UZ':window.LANG==='pt'?'pt-BR':'ru-RU',{hour:'2-digit',minute:'2-digit'})}</div>`;
   el.innerHTML = html;
   document.getElementById('chatMessages').appendChild(el);
   scrollChat();
@@ -1192,7 +1199,7 @@ function saveReview(sectionId, rating, text, name) {
     if (!all[sectionId]) all[sectionId] = [];
     all[sectionId].unshift({
       userId: TG_USER ? String(TG_USER.id) : 'guest_' + Date.now(),
-      name: name || (TG_USER ? TG_USER.first_name : 'Гость'),
+      name: name || (TG_USER ? TG_USER.first_name : t('guest')),
       rating,
       text,
       date: new Date().toLocaleDateString(window.LANG === 'pt' ? 'pt-BR' : window.LANG === 'uz' ? 'uz-UZ' : 'ru-RU')
