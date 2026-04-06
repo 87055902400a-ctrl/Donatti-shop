@@ -168,6 +168,10 @@ const TRANSLATIONS = {
   reviews_send:   { ru: 'Отправить',           uz: 'Yuborish',          pt: 'Enviar'              },
   reviews_cancel: { ru: 'Отмена',              uz: 'Bekor',             pt: 'Cancelar'            },
   reviews_thanks: { ru: 'Спасибо за отзыв!',   uz: 'Sharh uchun rahmat!', pt: 'Obrigado pela avaliação!' },
+
+  /* ── Misc ── */
+  guest:          { ru: 'Гость',    uz: 'Mehmon',      pt: 'Convidado'  },
+  positions_word: { ru: 'позиций', uz: 'ta mahsulot', pt: 'posições'   },
 };
 
 /**

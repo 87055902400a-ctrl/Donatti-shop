@@ -751,6 +751,82 @@ function fmtUSD(sum) {
 }
 
 /* ════════════════════════════════════════
+   CATALOG TRANSLATION HELPERS
+════════════════════════════════════════ */
+function getSectionDesc(s) {
+  if (window.LANG === 'pt' && s.description_pt) return s.description_pt;
+  if (window.LANG === 'uz' && s.description_uz) return s.description_uz;
+  return s.description.split(' - ')[1] || s.description;
+}
+
+const TERM_SUBS = {
+  pt: {
+    'Несмываемый уход': 'Tratamento leave-in',
+    'Осветляющий порошок': 'Pó descolorante',
+    'Осветляющий крем': 'Creme descolorante',
+    'Восполнитель углерода': 'Reposicionador de carbono',
+    'без сульфатов': 'sem sulfatos',
+    'Профессиональная': 'Profissional',
+    'Профессиональный': 'Profissional',
+    'Кондиционер': 'Condicionador',
+    'Текстуризатор': 'Texturizador',
+    'Разглаживатель': 'Alisador',
+    'Стабилизатор': 'Estabilizador',
+    'Регенератор': 'Regenerador',
+    'Реставратор': 'Restaurador',
+    'Выравниватель': 'Equalizador',
+    'Окислитель': 'Oxidante',
+    'Шампунь': 'Xampu',
+    'Маска': 'Máscara',
+    'Масло': 'Óleo',
+    'Бальзам': 'Bálsamo',
+    'Уход': 'Cuidado',
+    'Шаг': 'Etapa',
+    'Саше': 'Sachê',
+    'объёмов': 'volumes',
+    'рефил': 'refil',
+    'афро': 'afro',
+  },
+  uz: {
+    'Несмываемый уход': 'Yuvilmaydigan parvarish',
+    'Осветляющий порошок': 'Oqartiruvchi kukun',
+    'Осветляющий крем': 'Oqartiruvchi krem',
+    'Восполнитель углерода': "Ko'mir to'ldiruvchisi",
+    'без сульфатов': 'sulfatsiz',
+    'Профессиональная': 'Professional',
+    'Профессиональный': 'Professional',
+    'Кондиционер': 'Konditsioner',
+    'Текстуризатор': 'Tekturizator',
+    'Разглаживатель': 'Tekislovchi',
+    'Стабилизатор': 'Stabilizator',
+    'Регенератор': 'Regenerator',
+    'Реставратор': 'Restorer',
+    'Выравниватель': 'Tenglashtiruvchi',
+    'Окислитель': 'Oksidant',
+    'Шампунь': 'Shampun',
+    'Маска': 'Maska',
+    'Масло': 'Moy',
+    'Бальзам': 'Balzam',
+    'Уход': 'Parvarish',
+    'Шаг': 'Bosqich',
+    'Саше': 'Sashshe',
+    'объёмов': "ob'yom",
+    'рефил': 'refil',
+    'афро': 'afro',
+  }
+};
+
+function getProductName(p) {
+  const lang = window.LANG;
+  if (lang === 'ru' || !TERM_SUBS[lang]) return p.name;
+  let name = p.name;
+  for (const [ru, local] of Object.entries(TERM_SUBS[lang])) {
+    name = name.replaceAll(ru, local);
+  }
+  return name;
+}
+
+/* ════════════════════════════════════════
    CATALOG — SECTIONS
 ════════════════════════════════════════ */
 function renderSections() {
@@ -762,7 +838,7 @@ function renderSections() {
 
   list.innerHTML = CATALOG_DATA.sections.map(s => {
     const icon = SECTION_ICONS[s.id] || '•';
-    const desc = s.description.split(' - ')[1] || s.description;
+    const desc = getSectionDesc(s);
     const photo = SECTION_PHOTOS[s.id];
     const iconHtml = photo
       ? `<img src="${photo}" alt="${s.name}" loading="lazy">`
@@ -788,7 +864,7 @@ function openSection(id) {
   document.getElementById('productView').style.display    = 'block';
 
   const icon = SECTION_ICONS[id] || '•';
-  const desc = currentSection.description.split(' - ')[1] || currentSection.description;
+  const desc = getSectionDesc(currentSection);
   const bannerPhoto = SECTION_PHOTOS[id];
   document.getElementById('sectionBanner').innerHTML = `
     <div style="display:flex;align-items:center;gap:16px;">
@@ -797,7 +873,7 @@ function openSection(id) {
         <div style="font-size:.7rem;color:var(--gold);letter-spacing:3px;margin-bottom:4px;">${t('section_label')}</div>
         <div class="banner-name">${currentSection.name}</div>
         <div class="banner-desc">${desc}</div>
-        <div style="font-size:.7rem;color:var(--muted);margin-top:6px;">${currentSection.product_count} ${window.LANG==='uz'?'ta mahsulot':window.LANG==='pt'?'posições':'позиций'}</div>
+        <div style="font-size:.7rem;color:var(--muted);margin-top:6px;">${currentSection.product_count} ${t('positions_word')}</div>
       </div>
     </div>
   `;
@@ -819,7 +895,7 @@ function productCardHTML(p) {
   return `
     <div class="product-card" onclick="openDetail(${p.number})">
       <div class="prod-art">${t('article_prefix')} ${p.number}</div>
-      <div class="prod-name">${p.name}</div>
+      <div class="prod-name">${getProductName(p)}</div>
       <div class="prod-price">${fmt(p.price_sum)} ${t('sum_currency')}</div>
       <div class="prod-price-usd">${fmtUSD(p.price_sum)}</div>
       <button class="prod-add" onclick="event.stopPropagation();addToCart(${p.number})">${t('add_to_cart')}</button>
@@ -841,7 +917,7 @@ function openDetail(num) {
       <img src="${sectionPhoto}" alt="${product.name}" style="max-width:100%;max-height:200px;object-fit:contain;">
     </div>` : ''}
     <div class="detail-art">${t('article_prefix')} ${product.number}</div>
-    <div class="detail-name">${product.name}</div>
+    <div class="detail-name">${getProductName(product)}</div>
     <div>
       <span class="detail-section">${icon} ${section.name}</span>
     </div>
@@ -932,7 +1008,7 @@ function addToCart(num) {
   if (existing) existing.qty++;
   else cart.push({ num, name: product.name, price: product.price_sum, qty: 1 });
   saveCart();
-  showToast(`✓ ${product.name.slice(0, 30)}...`);
+  showToast(`✓ ${getProductName(product).slice(0, 30)}...`);
 }
 
 function changeQty(num, delta) {
@@ -970,11 +1046,15 @@ function renderCart() {
   const total     = subtotal - discountAmt;
   headerSub.textContent = `${totalQty} ${t('pcs')}`;
 
-  const itemsHTML = cart.map(item => `
+  const itemsHTML = cart.map(item => {
+    const sec = CATALOG_DATA.sections.find(s => s.products.some(p => p.number === item.num));
+    const prod = sec?.products.find(p => p.number === item.num);
+    const displayName = prod ? getProductName(prod) : item.name;
+    return `
     <div class="cart-item">
       <div class="cart-item-info">
         <div class="cart-item-art">${t('article_prefix')} ${item.num}</div>
-        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-name">${displayName}</div>
         <div class="cart-item-price">${fmt(item.price * item.qty)} ${t('sum_currency')}</div>
       </div>
       <div class="cart-item-controls">
@@ -983,7 +1063,8 @@ function renderCart() {
         <button class="qty-btn" onclick="changeQty(${item.num},+1)">+</button>
         <button class="cart-remove" onclick="changeQty(${item.num},-${item.qty})">✕</button>
       </div>
-    </div>`).join('');
+    </div>`;
+  }).join('');
 
   const nextTier = DISCOUNT_TIERS.find(t2 => t2.pct > tier.pct);
   const tierName = t(tier.key);

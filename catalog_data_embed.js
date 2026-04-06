@@ -5,6 +5,8 @@ const CATALOG_DATA = {
       "id": "SPECIALE",
       "name": "SPECIALE",
       "description": "Preparação - Линия подготовки и питания волос",
+      "description_pt": "Preparação e nutrição capilar",
+      "description_uz": "Sochlarni tayyorlash va oziqlanish liniyasi",
       "product_count": 10,
       "products": [
         {
@@ -101,6 +103,8 @@ const CATALOG_DATA = {
       "id": "THEION",
       "name": "THEION EVOLUTION",
       "description": "Proteção - Защита для блонд-волос",
+      "description_pt": "Proteção especializada para cabelos loiros e descoloridos",
+      "description_uz": "Blond va oqartirilgan sochlarni himoya qilish liniyasi",
       "product_count": 8,
       "products": [
         {
@@ -181,6 +185,8 @@ const CATALOG_DATA = {
       "id": "COLORE",
       "name": "COLORE",
       "description": "Transformação - Профессиональное окрашивание",
+      "description_pt": "Coloração profissional e cuidado para cabelos coloridos",
+      "description_uz": "Professional soch bo'yash va bo'yalgan sochlarni parvarishi",
       "product_count": 55,
       "products": [
         {
@@ -645,6 +651,8 @@ const CATALOG_DATA = {
       "id": "CREAM BLOND",
       "name": "CREAM BLOND",
       "description": "Descoloração - Осветляющий крем (безопаснее в 15 раз)",
+      "description_pt": "Creme descolorante — 15x mais seguro que o convencional",
+      "description_uz": "Oqartiruvchi krem — oddiydan 15 marta xavfsizroq",
       "product_count": 2,
       "products": [
         {
@@ -677,6 +685,8 @@ const CATALOG_DATA = {
       "id": "BAOBÁ REDUCE",
       "name": "BAOBÁ REDUCE",
       "description": "K-Drive Technology - Разглаживание и сокращение объёма",
+      "description_pt": "Alisamento capilar e redução de volume com K-Drive Technology",
+      "description_uz": "K-Drive texnologiyasi bilan sochni tekislash va hajmni kamaytirish",
       "product_count": 9,
       "products": [
         {
@@ -773,6 +783,8 @@ const CATALOG_DATA = {
       "id": "DNAVANZE",
       "name": "DNAVANZE",
       "description": "Reconstrução - Регенерация и реставрация волос",
+      "description_pt": "Reconstrução e regeneração capilar com Mimetecnol Technology",
+      "description_uz": "Mimetecnol texnologiyasi bilan sochlarni regeneratsiya va tiklash",
       "product_count": 6,
       "products": [
         {
@@ -841,6 +853,8 @@ const CATALOG_DATA = {
       "id": "BIODETOX",
       "name": "BIODETOX",
       "description": "Limpeza Profunda - Глубокая детоксикация углеродом",
+      "description_pt": "Limpeza profunda e desintoxicação com carvão ativado",
+      "description_uz": "Faollashtirilgan ko'mir bilan chuqur tozalash va detoksifikatsiya",
       "product_count": 10,
       "products": [
         {
@@ -941,6 +955,8 @@ const CATALOG_DATA = {
       "id": "MIO RICCI",
       "name": "MIO RICCI",
       "description": "Cachos - Уход за кудрями без сульфатов",
+      "description_pt": "Cuidado para cachos e cabelos crespos sem sulfatos",
+      "description_uz": "Sulfatsiz jingalak va to'lqinli sochlarni parvarishi",
       "product_count": 8,
       "products": [
         {
@@ -1021,6 +1037,8 @@ const CATALOG_DATA = {
       "id": "NATURALE",
       "name": "NATURALE",
       "description": "Máscaras Ultra Hidratantes - Monoi Tahiti и Ojon",
+      "description_pt": "Máscaras ultra hidratantes com Monoi Tahiti e Óleo de Ojon",
+      "description_uz": "Monoi Tahiti va Ojon yog'i bilan ultra namlashtiruvchi maskalar",
       "product_count": 4,
       "products": [
         {
@@ -1073,6 +1091,8 @@ const CATALOG_DATA = {
       "id": "LUXURY",
       "name": "GLAMOROUS LUXURY",
       "description": "Линия премиум-стайлинга и финишеров",
+      "description_pt": "Linha premium de styling e finalizadores com ouro e caviar",
+      "description_uz": "Oltin va ikra bilan premium stayling va yakunlovchi liniyasi",
       "product_count": 7,
       "products": [
         {
@@ -1145,6 +1165,8 @@ const CATALOG_DATA = {
       "id": "PREMIUM VIOLET",
       "name": "PREMIUM VIOLET",
       "description": "Нейтрализация желтизны для блондинок",
+      "description_pt": "Neutralização do amarelamento para loiras e descoloridas",
+      "description_uz": "Blond va oqartirilgan sochlar uchun sariqlikni neytralizatsiya",
       "product_count": 5,
       "products": [
         {
@@ -1201,6 +1223,8 @@ const CATALOG_DATA = {
       "id": "EXTRA",
       "name": "ДОПОЛНИТЕЛЬНЫЕ ПРОДУКТЫ",
       "description": "Специализированные линии и аксессуары",
+      "description_pt": "Linhas especializadas, acessórios e produtos adicionais",
+      "description_uz": "Ixtisoslashtirilgan liniyalar, aksessuarlar va qo'shimcha mahsulotlar",
       "product_count": 40,
       "products": [
         {
