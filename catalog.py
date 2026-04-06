@@ -8,7 +8,7 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from keyboards.main_kb import sections_kb, products_kb, product_card_kb
 from data.catalog_loader import get_sections, get_section, get_product, search_products, format_price
 from utils.database import get_section_reviews
-from utils.i18n import t, get_user_lang, all_variants
+from utils.i18n import t, get_user_lang, all_variants, translate_product_name
 
 IMAGES_DIR = os.path.join(os.path.dirname(__file__), "..", "data", "section_images")
 
@@ -252,11 +252,12 @@ async def cb_product(call: CallbackQuery):
         await call.answer("Товар не найден", show_alert=True)
         return
 
+    lang = await get_user_lang(call.from_user.id)
     icon = SECTION_ICONS.get(section["id"], "•")
     price_str = format_price(product["price_sum"])
     eur_str = f"{product['price_eur']:.2f} €"
     usd_str = f"≈ ${product['price_sum'] / 12700:.1f}"
-    name = product['name']
+    name = translate_product_name(product['name'], lang)
 
     text = (
         f"🏷 *Арт. {product['number']}*\n"
@@ -301,6 +302,7 @@ async def cb_search_start(call: CallbackQuery, state: FSMContext):
 @router.message(SearchState.waiting_query)
 async def on_search_query(message: Message, state: FSMContext):
     await state.clear()
+    lang = await get_user_lang(message.from_user.id)
     results = search_products(message.text.strip())
 
     if not results:
@@ -316,7 +318,7 @@ async def on_search_query(message: Message, state: FSMContext):
     for p, sec in results[:15]:
         icon = SECTION_ICONS.get(sec["id"], "•")
         rows.append([InlineKeyboardButton(
-            text=f"{icon} Арт.{p['number']} — {p['name'][:38]}",
+            text=f"{icon} Арт.{p['number']} — {translate_product_name(p['name'], lang)[:38]}",
             callback_data=f"product:{p['number']}"
         )])
     rows.append([InlineKeyboardButton(text="⬅️ К линейкам", callback_data="catalog:sections")])

@@ -3,7 +3,7 @@ from aiogram.types import (
     InlineKeyboardMarkup, InlineKeyboardButton, WebAppInfo
 )
 from config import WEBAPP_URL
-from utils.i18n import t
+from utils.i18n import t, translate_product_name
 
 # ── Главное меню ────────────────────────────────────────────────
 def main_menu_kb(lang: str = "ru") -> ReplyKeyboardMarkup:
@@ -78,7 +78,8 @@ def products_kb(products: list, section_id: str, page: int = 0, per_page: int = 
     rows = []
     for p in chunk:
         price = f"{p['price_sum']:,}".replace(",", " ") if p.get('price_sum') else ""
-        name = p['name'][:32] + "…" if len(p['name']) > 32 else p['name']
+        name_tr = translate_product_name(p['name'], lang)
+        name = name_tr[:32] + "…" if len(name_tr) > 32 else name_tr
         label = f"{t('art_short', lang)}{p['number']} · {name}"
         if price:
             label += f" — {price} {t('currency_uz', lang)}"
