@@ -15,7 +15,8 @@ const CATALOG_DATA = {
           "price_eur_base": 4.42,
           "cost_sum": 99292,
           "price_sum": 248230,
-          "price_eur": 17.55
+          "price_eur": 17.55,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/SPECIALE/speciale15.jpg"
         },
         {
           "number": 69,
@@ -23,7 +24,8 @@ const CATALOG_DATA = {
           "price_eur_base": 5.29,
           "cost_sum": 114893,
           "price_sum": 287232,
-          "price_eur": 20.31
+          "price_eur": 20.31,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/SPECIALE/speciale16.jpg"
         },
         {
           "number": 70,
@@ -31,7 +33,8 @@ const CATALOG_DATA = {
           "price_eur_base": 4.42,
           "cost_sum": 99292,
           "price_sum": 248230,
-          "price_eur": 17.55
+          "price_eur": 17.55,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/SPECIALE/speciale13.jpg"
         },
         {
           "number": 71,
@@ -39,7 +42,8 @@ const CATALOG_DATA = {
           "price_eur_base": 15.17,
           "cost_sum": 332654,
           "price_sum": 831634,
-          "price_eur": 58.81
+          "price_eur": 58.81,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/SPECIALE/speciale10.jpg"
         },
         {
           "number": 72,
@@ -47,7 +51,8 @@ const CATALOG_DATA = {
           "price_eur_base": 19.22,
           "cost_sum": 402642,
           "price_sum": 1006605,
-          "price_eur": 71.18
+          "price_eur": 71.18,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/SPECIALE/speciale28.jpg"
         },
         {
           "number": 73,
@@ -55,7 +60,8 @@ const CATALOG_DATA = {
           "price_eur_base": 14.85,
           "cost_sum": 297920,
           "price_sum": 744801,
-          "price_eur": 52.67
+          "price_eur": 52.67,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/SPECIALE/speciale23.jpg"
         },
         {
           "number": 177,
@@ -113,7 +119,8 @@ const CATALOG_DATA = {
           "price_eur_base": 4.42,
           "cost_sum": 99292,
           "price_sum": 248230,
-          "price_eur": 17.55
+          "price_eur": 17.55,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/THEION/theion7.png"
         },
         {
           "number": 75,
@@ -121,7 +128,8 @@ const CATALOG_DATA = {
           "price_eur_base": 5.29,
           "cost_sum": 114893,
           "price_sum": 287232,
-          "price_eur": 20.31
+          "price_eur": 20.31,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/THEION/theion2.jpg"
         },
         {
           "number": 76,
@@ -129,7 +137,8 @@ const CATALOG_DATA = {
           "price_eur_base": 4.42,
           "cost_sum": 99292,
           "price_sum": 248230,
-          "price_eur": 17.55
+          "price_eur": 17.55,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/THEION/theion13.jpg"
         },
         {
           "number": 77,
@@ -137,7 +146,8 @@ const CATALOG_DATA = {
           "price_eur_base": 16.94,
           "cost_sum": 335398,
           "price_sum": 838496,
-          "price_eur": 59.3
+          "price_eur": 59.3,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/THEION/theion5.jpg"
         },
         {
           "number": 78,
@@ -145,7 +155,8 @@ const CATALOG_DATA = {
           "price_eur_base": 15.45,
           "cost_sum": 308680,
           "price_sum": 771699,
-          "price_eur": 54.57
+          "price_eur": 54.57,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/THEION/theion3.jpg"
         },
         {
           "number": 79,
@@ -153,7 +164,8 @@ const CATALOG_DATA = {
           "price_eur_base": 16.69,
           "cost_sum": 330915,
           "price_sum": 827288,
-          "price_eur": 58.5
+          "price_eur": 58.5,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/THEION/theion4.jpg"
         },
         {
           "number": 182,
@@ -195,7 +207,8 @@ const CATALOG_DATA = {
           "price_eur_base": 5.41,
           "cost_sum": 152366,
           "price_sum": 380915,
-          "price_eur": 26.94
+          "price_eur": 26.94,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/colore18.png"
         },
         {
           "number": 86,
@@ -203,7 +216,8 @@ const CATALOG_DATA = {
           "price_eur_base": 5.41,
           "cost_sum": 152366,
           "price_sum": 380915,
-          "price_eur": 26.94
+          "price_eur": 26.94,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/colore19.png"
         },
         {
           "number": 87,
@@ -211,7 +225,8 @@ const CATALOG_DATA = {
           "price_eur_base": 5.41,
           "cost_sum": 152366,
           "price_sum": 380915,
-          "price_eur": 26.94
+          "price_eur": 26.94,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/colore20.png"
         },
         {
           "number": 88,
@@ -219,7 +234,8 @@ const CATALOG_DATA = {
           "price_eur_base": 5.41,
           "cost_sum": 152366,
           "price_sum": 380915,
-          "price_eur": 26.94
+          "price_eur": 26.94,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/colore21.png"
         },
         {
           "number": 91,
@@ -227,7 +243,8 @@ const CATALOG_DATA = {
           "price_eur_base": 11.89,
           "cost_sum": 244842,
           "price_sum": 612105,
-          "price_eur": 43.29
+          "price_eur": 43.29,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/SCOLORE-1.jpg"
         },
         {
           "number": 93,
@@ -235,7 +252,8 @@ const CATALOG_DATA = {
           "price_eur_base": 11.89,
           "cost_sum": 244842,
           "price_sum": 612105,
-          "price_eur": 43.29
+          "price_eur": 43.29,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/SCOLORE 6-1 (1).jpg"
         },
         {
           "number": 94,
@@ -243,7 +261,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/tonalizantetom (1).png"
         },
         {
           "number": 95,
@@ -251,7 +270,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/tonalizantetom (2).png"
         },
         {
           "number": 96,
@@ -259,7 +279,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/tonalizantetom (3).png"
         },
         {
           "number": 97,
@@ -267,7 +288,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/tonalizantetom (4).png"
         },
         {
           "number": 98,
@@ -275,7 +297,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/tonalizantetom (5).png"
         },
         {
           "number": 99,
@@ -283,7 +306,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/tonalizantetom (6).png"
         },
         {
           "number": 100,
@@ -291,7 +315,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/tonalizantetom (7).png"
         },
         {
           "number": 101,
@@ -307,7 +332,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (1).png"
         },
         {
           "number": 103,
@@ -315,7 +341,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (2).png"
         },
         {
           "number": 104,
@@ -323,7 +350,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (3).png"
         },
         {
           "number": 105,
@@ -331,7 +359,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (4).png"
         },
         {
           "number": 106,
@@ -339,7 +368,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (5).png"
         },
         {
           "number": 107,
@@ -347,7 +377,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (6).png"
         },
         {
           "number": 108,
@@ -355,7 +386,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (7).png"
         },
         {
           "number": 109,
@@ -363,7 +395,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (8).png"
         },
         {
           "number": 110,
@@ -371,7 +404,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (9).png"
         },
         {
           "number": 111,
@@ -379,7 +413,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (10).png"
         },
         {
           "number": 112,
@@ -387,7 +422,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (11).png"
         },
         {
           "number": 113,
@@ -395,7 +431,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (12).png"
         },
         {
           "number": 114,
@@ -403,7 +440,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (13).png"
         },
         {
           "number": 115,
@@ -411,7 +449,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (14).png"
         },
         {
           "number": 116,
@@ -419,7 +458,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (15).png"
         },
         {
           "number": 117,
@@ -427,7 +467,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (16).png"
         },
         {
           "number": 118,
@@ -435,7 +476,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (17).png"
         },
         {
           "number": 119,
@@ -443,7 +485,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (18).png"
         },
         {
           "number": 120,
@@ -451,7 +494,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (19).png"
         },
         {
           "number": 121,
@@ -459,7 +503,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (20).png"
         },
         {
           "number": 122,
@@ -467,7 +512,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (21).png"
         },
         {
           "number": 123,
@@ -475,7 +521,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (22).png"
         },
         {
           "number": 124,
@@ -483,7 +530,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (23).png"
         },
         {
           "number": 125,
@@ -491,7 +539,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (24).png"
         },
         {
           "number": 126,
@@ -499,7 +548,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (25).png"
         },
         {
           "number": 127,
@@ -507,7 +557,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (26).png"
         },
         {
           "number": 128,
@@ -515,7 +566,8 @@ const CATALOG_DATA = {
           "price_eur_base": 3.94,
           "cost_sum": 74869,
           "price_sum": 187173,
-          "price_eur": 13.24
+          "price_eur": 13.24,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (27).png"
         },
         {
           "number": 129,
@@ -523,7 +575,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (28).png"
         },
         {
           "number": 130,
@@ -531,7 +584,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (29).png"
         },
         {
           "number": 131,
@@ -539,7 +593,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (30).png"
         },
         {
           "number": 132,
@@ -547,7 +602,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (31).png"
         },
         {
           "number": 133,
@@ -555,7 +611,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (32).png"
         },
         {
           "number": 134,
@@ -563,7 +620,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (33).png"
         },
         {
           "number": 135,
@@ -571,7 +629,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (34).png"
         },
         {
           "number": 136,
@@ -579,7 +638,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (35).png"
         },
         {
           "number": 137,
@@ -587,7 +647,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (36).png"
         },
         {
           "number": 138,
@@ -595,7 +656,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (37).png"
         },
         {
           "number": 139,
@@ -603,7 +665,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (38).png"
         },
         {
           "number": 140,
@@ -611,7 +674,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (39).png"
         },
         {
           "number": 141,
@@ -619,7 +683,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (40).png"
         },
         {
           "number": 142,
@@ -627,7 +692,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (41).png"
         }
       ],
       "videos": [
@@ -661,7 +727,8 @@ const CATALOG_DATA = {
           "price_eur_base": 14.5,
           "cost_sum": 286372,
           "price_sum": 715931,
-          "price_eur": 50.63
+          "price_eur": 50.63,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/CREAM_BLOND/creamblonde31.jpg"
         },
         {
           "number": 90,
@@ -669,7 +736,8 @@ const CATALOG_DATA = {
           "price_eur_base": 22.93,
           "cost_sum": 461262,
           "price_sum": 1153155,
-          "price_eur": 81.55
+          "price_eur": 81.55,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/CREAM_BLOND/creamblonde34.jpg"
         }
       ],
       "videos": [
@@ -695,7 +763,8 @@ const CATALOG_DATA = {
           "price_eur_base": 3.71,
           "cost_sum": 86560,
           "price_sum": 216401,
-          "price_eur": 15.3
+          "price_eur": 15.3,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/BAOBA_REDUCE/baoba1.png"
         },
         {
           "number": 2,
@@ -703,7 +772,8 @@ const CATALOG_DATA = {
           "price_eur_base": 3.71,
           "cost_sum": 86560,
           "price_sum": 216401,
-          "price_eur": 15.3
+          "price_eur": 15.3,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/BAOBA_REDUCE/baoba2.png"
         },
         {
           "number": 3,
@@ -711,7 +781,8 @@ const CATALOG_DATA = {
           "price_eur_base": 3.71,
           "cost_sum": 86560,
           "price_sum": 216401,
-          "price_eur": 15.3
+          "price_eur": 15.3,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/BAOBA_REDUCE/baoba3.png"
         },
         {
           "number": 4,
@@ -719,7 +790,8 @@ const CATALOG_DATA = {
           "price_eur_base": 4.43,
           "cost_sum": 99471,
           "price_sum": 248679,
-          "price_eur": 17.59
+          "price_eur": 17.59,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/BAOBA_REDUCE/baoba4.png"
         },
         {
           "number": 5,
@@ -727,7 +799,8 @@ const CATALOG_DATA = {
           "price_eur_base": 9.44,
           "cost_sum": 229904,
           "price_sum": 574759,
-          "price_eur": 40.64
+          "price_eur": 40.64,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/BAOBA_REDUCE/baoba5.png"
         },
         {
           "number": 6,
@@ -735,7 +808,8 @@ const CATALOG_DATA = {
           "price_eur_base": 13.12,
           "cost_sum": 295893,
           "price_sum": 739733,
-          "price_eur": 52.31
+          "price_eur": 52.31,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/BAOBA_REDUCE/baoba6.png"
         },
         {
           "number": 7,
@@ -743,7 +817,8 @@ const CATALOG_DATA = {
           "price_eur_base": 19.22,
           "cost_sum": 405278,
           "price_sum": 1013195,
-          "price_eur": 71.65
+          "price_eur": 71.65,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/BAOBA_REDUCE/baoba7.png"
         },
         {
           "number": 8,
@@ -751,7 +826,8 @@ const CATALOG_DATA = {
           "price_eur_base": 34.07,
           "cost_sum": 671568,
           "price_sum": 1678919,
-          "price_eur": 118.73
+          "price_eur": 118.73,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/BAOBA_REDUCE/baoba8.png"
         },
         {
           "number": 9,
@@ -759,7 +835,8 @@ const CATALOG_DATA = {
           "price_eur_base": 34.07,
           "cost_sum": 671568,
           "price_sum": 1678919,
-          "price_eur": 118.73
+          "price_eur": 118.73,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/BAOBA_REDUCE/baoba9.png"
         }
       ],
       "videos": [
@@ -793,7 +870,8 @@ const CATALOG_DATA = {
           "price_eur_base": 13.58,
           "cost_sum": 304142,
           "price_sum": 760355,
-          "price_eur": 53.77
+          "price_eur": 53.77,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/DNAVANZE/dna30.jpg"
         },
         {
           "number": 24,
@@ -801,7 +879,8 @@ const CATALOG_DATA = {
           "price_eur_base": 17.03,
           "cost_sum": 366007,
           "price_sum": 915018,
-          "price_eur": 64.71
+          "price_eur": 64.71,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/DNAVANZE/dna28.jpg"
         },
         {
           "number": 25,
@@ -809,7 +888,8 @@ const CATALOG_DATA = {
           "price_eur_base": 18.88,
           "cost_sum": 370186,
           "price_sum": 925466,
-          "price_eur": 65.45
+          "price_eur": 65.45,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/DNAVANZE/dna29.jpg"
         },
         {
           "number": 26,
@@ -817,7 +897,8 @@ const CATALOG_DATA = {
           "price_eur_base": 4.42,
           "cost_sum": 99292,
           "price_sum": 248230,
-          "price_eur": 17.55
+          "price_eur": 17.55,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/DNAVANZE/dna6.jpg"
         },
         {
           "number": 27,
@@ -825,7 +906,8 @@ const CATALOG_DATA = {
           "price_eur_base": 5.29,
           "cost_sum": 114893,
           "price_sum": 287232,
-          "price_eur": 20.31
+          "price_eur": 20.31,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/DNAVANZE/dna4.jpg"
         },
         {
           "number": 28,
@@ -833,7 +915,8 @@ const CATALOG_DATA = {
           "price_eur_base": 4.42,
           "cost_sum": 99292,
           "price_sum": 248230,
-          "price_eur": 17.55
+          "price_eur": 17.55,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/DNAVANZE/dna34.jpg"
         }
       ],
       "videos": [
@@ -863,7 +946,8 @@ const CATALOG_DATA = {
           "price_eur_base": 4.42,
           "cost_sum": 99292,
           "price_sum": 248230,
-          "price_eur": 17.55
+          "price_eur": 17.55,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/BIODETOX/biodetox1.jpg"
         },
         {
           "number": 11,
@@ -895,7 +979,8 @@ const CATALOG_DATA = {
           "price_eur_base": 10.13,
           "cost_sum": 242277,
           "price_sum": 605691,
-          "price_eur": 42.83
+          "price_eur": 42.83,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/BIODETOX/biodetox8.jpg"
         },
         {
           "number": 15,
@@ -911,7 +996,8 @@ const CATALOG_DATA = {
           "price_eur_base": 14.27,
           "cost_sum": 287520,
           "price_sum": 718800,
-          "price_eur": 50.83
+          "price_eur": 50.83,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/BIODETOX/biodetox9.jpg"
         },
         {
           "number": 17,
@@ -965,7 +1051,8 @@ const CATALOG_DATA = {
           "price_eur_base": 4.42,
           "cost_sum": 99292,
           "price_sum": 248230,
-          "price_eur": 17.55
+          "price_eur": 17.55,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/MIO_RICCI/mioricci12.jpg"
         },
         {
           "number": 40,
@@ -973,7 +1060,8 @@ const CATALOG_DATA = {
           "price_eur_base": 8.44,
           "cost_sum": 171379,
           "price_sum": 428447,
-          "price_eur": 30.3
+          "price_eur": 30.3,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/MIO_RICCI/mioricci3.jpg"
         },
         {
           "number": 41,
@@ -981,7 +1069,8 @@ const CATALOG_DATA = {
           "price_eur_base": 9.36,
           "cost_sum": 199474,
           "price_sum": 498685,
-          "price_eur": 35.27
+          "price_eur": 35.27,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/MIO_RICCI/mioricci10.jpg"
         },
         {
           "number": 42,
@@ -989,7 +1078,8 @@ const CATALOG_DATA = {
           "price_eur_base": 10.18,
           "cost_sum": 214178,
           "price_sum": 535446,
-          "price_eur": 37.86
+          "price_eur": 37.86,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/MIO_RICCI/mioricci9.jpg"
         },
         {
           "number": 43,
@@ -1047,7 +1137,8 @@ const CATALOG_DATA = {
           "price_eur_base": 5.62,
           "cost_sum": 132408,
           "price_sum": 331021,
-          "price_eur": 23.41
+          "price_eur": 23.41,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/NATURALE/naturale1.png"
         },
         {
           "number": 48,
@@ -1055,7 +1146,8 @@ const CATALOG_DATA = {
           "price_eur_base": 5.62,
           "cost_sum": 132408,
           "price_sum": 331021,
-          "price_eur": 23.41
+          "price_eur": 23.41,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/NATURALE/naturale2.png"
         },
         {
           "number": 49,
@@ -1063,7 +1155,8 @@ const CATALOG_DATA = {
           "price_eur_base": 9.32,
           "cost_sum": 227752,
           "price_sum": 569379,
-          "price_eur": 40.26
+          "price_eur": 40.26,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/NATURALE/naturale3.png"
         },
         {
           "number": 50,
