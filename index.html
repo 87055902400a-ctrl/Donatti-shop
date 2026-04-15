@@ -1,292 +1,1460 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DONATTI Консультант</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #1a1a1a;
-            color: #fff;
-            padding: 20px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        .header {
-            background: linear-gradient(135deg, #c9a236, #f4d799);
-            padding: 30px;
-            border-radius: 15px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .header h1 {
-            color: #000;
-            margin: 0;
-        }
-        .buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        button {
-            background: #c9a236;
-            color: #000;
-            border: none;
-            padding: 15px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        button:hover {
-            background: #f4d799;
-        }
-        .chat {
-            background: rgba(255,255,255,0.05);
-            padding: 20px;
-            border-radius: 10px;
-            min-height: 400px;
-            margin-bottom: 20px;
-        }
-        .msg {
-            background: rgba(201,162,54,0.15);
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            border-left: 4px solid #c9a236;
-        }
-        .product {
-            background: rgba(201,162,54,0.2);
-            padding: 12px;
-            border-radius: 8px;
-            margin: 10px 0;
-        }
-        input {
-            width: calc(100% - 120px);
-            padding: 15px;
-            background: rgba(255,255,255,0.1);
-            border: 2px solid #c9a236;
-            color: #fff;
-            border-radius: 25px;
-            font-size: 16px;
-        }
-        .send {
-            width: 100px;
-            padding: 15px;
-            margin-left: 10px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>DONATTI Professional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+:root {
+  --bg:       #f2f0eb;
+  --card:     #ffffff;
+  --card2:    #f7f5f0;
+  --gold:     #c9a236;
+  --gold2:    #a07820;
+  --cream:    #3e2a18;
+  --text:     #1a1a1a;
+  --muted:    #888;
+  --dim:      #bbb;
+  --border:   rgba(201,162,54,.25);
+  --red:      #e74c6d;
+  --green:    #25d366;
+  --radius:   14px;
+  --nav-h:    68px;
+  --safe-bottom: max(env(safe-area-inset-bottom, 0px), 20px);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;background:var(--bg)}
+body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-direction:column}
+
+/* ── SCREENS ── */
+#app{flex:1;overflow:hidden;position:relative}
+.screen{
+  position:absolute;inset:0;
+  overflow-y:auto;overflow-x:hidden;
+  padding-bottom:calc(var(--nav-h) + var(--safe-bottom) + 16px);
+  display:none;
+  -webkit-overflow-scrolling:touch;
+}
+.screen.active{display:block}
+
+/* ── SCROLLBAR ── */
+.screen::-webkit-scrollbar{width:3px}
+.screen::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+/* ── BOTTOM NAV ── */
+.nav{
+  position:fixed;bottom:0;left:0;right:0;
+  height:calc(var(--nav-h) + var(--safe-bottom));
+  background:rgba(255,255,255,.97);
+  border-top:1px solid var(--border);
+  display:flex;
+  align-items:flex-start;
+  padding-top:8px;
+  z-index:100;
+  backdrop-filter:blur(20px);
+  padding-bottom:var(--safe-bottom);
+}
+.nav-btn{
+  flex:1;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:4px;
+  background:none;border:none;color:var(--muted);
+  font-size:.62rem;font-family:'Inter',sans-serif;
+  letter-spacing:.5px;cursor:pointer;
+  transition:color .2s;padding:0 4px;
+  position:relative;
+}
+.nav-btn .icon{font-size:1.35rem;transition:transform .2s}
+.nav-btn.active{color:var(--gold)}
+.nav-btn.active .icon{transform:scale(1.15)}
+.cart-dot{
+  position:absolute;top:8px;right:calc(50% - 20px);
+  width:18px;height:18px;background:var(--red);
+  border-radius:50%;font-size:.6rem;font-weight:700;
+  color:#fff;display:none;align-items:center;justify-content:center;
+  border:2px solid var(--bg);
+}
+.cart-dot.show{display:flex}
+
+/* ── LANG BUTTON ── */
+.lang-btn{
+  background:rgba(201,162,54,.12);
+  border:1px solid var(--border);
+  color:var(--gold);border-radius:6px;
+  padding:4px 11px;font-size:.65rem;font-weight:700;
+  cursor:pointer;letter-spacing:.8px;
+  font-family:'Inter',sans-serif;
+  transition:background .2s;
+  line-height:1.6;
+}
+.lang-btn:active{background:rgba(201,162,54,.25);border-color:var(--gold)}
+.page-header .lang-btn{
+  position:absolute;right:16px;top:50%;transform:translateY(-50%);
+}
+.home-hero-top{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:10px 16px 4px;
+}
+
+/* ── HEADER ── */
+.page-header{
+  padding:20px 18px 14px;
+  background:rgba(242,240,235,.97);
+  position:sticky;top:0;z-index:10;
+  backdrop-filter:blur(10px);
+}
+.page-title{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;font-weight:700;
+  color:var(--cream);letter-spacing:2px;
+}
+.page-sub{font-size:.75rem;color:var(--muted);margin-top:2px}
+
+/* ── HOME SCREEN ── */
+.home-hero{
+  background:linear-gradient(160deg,#3e2a18,#7a5030);
+  padding:36px 20px 28px;
+  text-align:center;
+  border-bottom:1px solid var(--border);
+}
+.home-logo{
+  font-family:'Playfair Display',serif;
+  font-size:2.8rem;font-weight:800;letter-spacing:10px;
+  background:linear-gradient(135deg,#9a7a26,var(--gold2),#9a7a26);
+  background-size:200%;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:shimmer 4s ease infinite;
+}
+@keyframes shimmer{0%,100%{background-position:0%}50%{background-position:200%}}
+.home-sub{
+  font-size:.7rem;color:rgba(201,162,54,.5);
+  letter-spacing:5px;margin-top:4px;
+}
+.home-divider{
+  width:50px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  margin:16px auto;
+}
+.home-desc{font-size:.82rem;color:var(--muted);line-height:1.7}
+
+.home-stats{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:10px;padding:16px;
+}
+.stat-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:14px 8px;text-align:center;
+}
+.stat-num{
+  font-family:'Playfair Display',serif;
+  font-size:1.5rem;color:var(--gold);font-weight:700;
+}
+.stat-label{font-size:.65rem;color:var(--muted);margin-top:4px;letter-spacing:.5px}
+
+.home-actions{padding:0 16px 16px;display:flex;flex-direction:column;gap:10px}
+.home-btn{
+  display:flex;align-items:center;gap:14px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:16px;
+  cursor:pointer;transition:all .25s;
+  text-decoration:none;
+}
+.home-btn:active{transform:scale(.98);background:var(--card2)}
+.home-btn .btn-icon{font-size:1.6rem;flex-shrink:0}
+.home-btn .btn-text{flex:1}
+.home-btn .btn-title{font-size:.9rem;font-weight:600;color:var(--text)}
+.home-btn .btn-sub{font-size:.72rem;color:var(--muted);margin-top:2px}
+.home-btn .btn-arrow{color:var(--dim);font-size:1rem}
+.home-btn.gold{border-color:rgba(201,162,54,.4);background:rgba(201,162,54,.06)}
+.home-btn.manager-btn{border-color:rgba(37,211,102,.25);background:rgba(37,211,102,.05);text-decoration:none;display:flex}
+.home-btn.manager-btn .btn-icon{color:#25d366}
+.home-btn.manager-btn .btn-title{color:#25d366}
+
+/* ── SECTION LIST ── */
+.section-list{padding:12px}
+.section-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);margin-bottom:10px;
+  overflow:hidden;transition:all .25s;cursor:pointer;
+  display:flex;align-items:center;gap:14px;
+  padding:16px;
+}
+.section-card:active{transform:scale(.98);background:var(--card2)}
+.section-icon{
+  width:64px;height:64px;border-radius:12px;
+  background:rgba(201,162,54,.1);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;flex-shrink:0;
+  overflow:hidden;
+}
+.section-icon img{width:100%;height:100%;object-fit:cover;border-radius:12px}
+.section-info{flex:1;min-width:0}
+.section-name{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;font-weight:700;color:#1a1a1a;letter-spacing:1px;
+}
+.section-desc{font-size:.72rem;color:#666;margin-top:2px}
+.section-count{
+  font-size:.68rem;color:var(--gold);
+  background:rgba(201,162,54,.1);border:1px solid var(--border);
+  padding:3px 8px;border-radius:10px;white-space:nowrap;
+}
+
+/* ── PRODUCT LIST ── */
+.product-back{
+  display:flex;align-items:center;gap:8px;
+  padding:14px 16px 0;color:var(--gold);
+  font-size:.82rem;cursor:pointer;background:none;border:none;
+}
+.product-back:active{opacity:.7}
+.section-banner{
+  margin:12px 12px 0;
+  background:#ffffff;
+  border:1px solid var(--border);border-radius:var(--radius);
+  overflow:hidden;
+  padding:0;
+}
+.banner-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.6rem;font-weight:800;color:#3e2a18;letter-spacing:3px;
+}
+.banner-desc{font-size:.75rem;color:var(--muted);margin-top:4px;font-style:italic}
+
+.product-grid{
+  padding:12px;
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+}
+.product-card{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:14px;
+  cursor:pointer;transition:all .25s;
+  display:flex;flex-direction:column;gap:8px;
+  position:relative;overflow:hidden;
+}
+.product-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--gold),transparent);
+  opacity:0;transition:opacity .25s;
+}
+.product-card:active{transform:scale(.97);background:var(--card2)}
+.product-card:active::before{opacity:1}
+.prod-art{
+  font-size:.62rem;color:var(--gold);font-weight:700;
+  letter-spacing:1px;
+}
+.prod-name{
+  font-size:.78rem;color:#1a1a1a;line-height:1.4;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+  flex:1;
+}
+.prod-price{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;font-weight:700;color:var(--gold2);
+}
+.prod-price-usd{font-size:.65rem;color:var(--dim);margin-top:1px}
+.prod-add{
+  margin-top:4px;background:linear-gradient(135deg,#9a7a26,var(--gold));
+  color:#000;border:none;border-radius:8px;
+  padding:8px;font-size:.72rem;font-weight:700;
+  cursor:pointer;font-family:'Inter',sans-serif;
+  letter-spacing:.5px;transition:all .2s;
+}
+.prod-add:active{transform:scale(.95)}
+
+/* ── SEARCH ── */
+.search-wrap{padding:12px 12px 0}
+.search-input{
+  width:100%;background:var(--card);
+  border:1px solid var(--border);border-radius:30px;
+  padding:11px 18px;color:var(--text);
+  font-family:'Inter',sans-serif;font-size:.85rem;outline:none;
+}
+.search-input::placeholder{color:var(--dim)}
+.search-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,162,54,.1)}
+
+/* ── CONSULTANT SCREEN ── */
+#screen-consultant.active{
+  display:flex;flex-direction:column;
+  overflow:hidden;
+  padding-bottom:calc(var(--nav-h) + var(--safe-bottom));
+}
+.chat-messages{
+  flex:1;overflow-y:auto;padding:16px;
+  display:flex;flex-direction:column;gap:12px;
+  min-height:0;
+}
+.chat-messages::-webkit-scrollbar{width:3px}
+.chat-messages::-webkit-scrollbar-thumb{background:var(--border)}
+
+.msg{max-width:85%;display:flex;flex-direction:column;gap:4px}
+.msg.user{align-self:flex-end;align-items:flex-end}
+.msg.bot{align-self:flex-start;align-items:flex-start}
+.msg-bubble{
+  padding:11px 14px;border-radius:16px;
+  font-size:.83rem;line-height:1.55;
+}
+.msg.user .msg-bubble{
+  background:linear-gradient(135deg,#9a7a26,var(--gold));
+  color:#000;border-bottom-right-radius:4px;
+}
+.msg.bot .msg-bubble{
+  background:var(--card2);border:1px solid var(--border);
+  color:var(--text);border-bottom-left-radius:4px;
+}
+.msg-time{font-size:.6rem;color:var(--dim)}
+
+.chat-input-wrap{
+  flex-shrink:0;
+  background:rgba(255,255,255,.97);
+  border-top:1px solid var(--border);
+  padding:10px 12px;
+  display:flex;gap:8px;align-items:flex-end;
+  backdrop-filter:blur(10px);
+  padding-bottom:calc(10px + env(safe-area-inset-bottom));
+}
+.chat-input{
+  flex:1;background:var(--card);
+  border:1px solid var(--border);border-radius:20px;
+  padding:10px 16px;color:var(--text);
+  font-family:'Inter',sans-serif;font-size:.85rem;
+  resize:none;outline:none;max-height:100px;
+  line-height:1.4;
+}
+.chat-input:focus{border-color:var(--gold)}
+.chat-send{
+  width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg,#9a7a26,var(--gold));
+  border:none;color:#000;font-size:1.1rem;
+  cursor:pointer;display:flex;align-items:center;
+  justify-content:center;flex-shrink:0;transition:all .2s;
+}
+.chat-send:active{transform:scale(.9)}
+
+.quick-topics{
+  padding:0 12px 12px;
+  display:flex;flex-wrap:wrap;gap:7px;
+}
+.quick-btn{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:20px;padding:7px 13px;
+  font-size:.72rem;color:var(--muted);
+  cursor:pointer;transition:all .2s;
+  font-family:'Inter',sans-serif;
+}
+.quick-btn:active{background:rgba(201,162,54,.1);border-color:var(--gold);color:var(--gold)}
+
+.msg-btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.msg-btn{
+  background:rgba(201,162,54,.12);border:1px solid rgba(201,162,54,.4);
+  border-radius:16px;padding:6px 12px;
+  font-size:.7rem;color:var(--gold);
+  cursor:pointer;transition:all .2s;
+  font-family:'Inter',sans-serif;
+}
+.msg-btn:active{background:rgba(201,162,54,.25)}
+
+.typing{display:flex;gap:4px;padding:8px 12px;align-items:center}
+.typing span{
+  width:7px;height:7px;background:var(--muted);border-radius:50%;
+  animation:bounce .8s ease infinite;
+}
+.typing span:nth-child(2){animation-delay:.15s}
+.typing span:nth-child(3){animation-delay:.3s}
+@keyframes bounce{0%,80%,100%{transform:scale(1)}40%{transform:scale(1.4)}}
+
+/* ── CART SCREEN ── */
+.cart-empty{
+  text-align:center;padding:60px 20px;
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+}
+.cart-empty-icon{font-size:3.5rem;opacity:.3}
+.cart-empty h3{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--muted)}
+.cart-empty p{font-size:.8rem;color:var(--dim)}
+.go-catalog-btn{
+  margin-top:8px;background:linear-gradient(135deg,#9a7a26,var(--gold));
+  color:#000;border:none;border-radius:30px;
+  padding:12px 28px;font-size:.85rem;font-weight:700;
+  cursor:pointer;font-family:'Inter',sans-serif;
+}
+
+.cart-items{padding:12px;display:flex;flex-direction:column;gap:8px}
+.cart-item{
+  background:var(--card);border:1px solid var(--border);
+  border-radius:var(--radius);padding:14px;
+  display:flex;gap:12px;align-items:center;
+}
+.cart-item-info{flex:1;min-width:0}
+.cart-item-art{font-size:.65rem;color:var(--gold);font-weight:700;letter-spacing:1px}
+.cart-item-name{font-size:.8rem;color:var(--text);margin-top:2px;line-height:1.4}
+.cart-item-price{
+  font-family:'Playfair Display',serif;
+  font-size:.95rem;color:var(--gold2);margin-top:4px;
+}
+.cart-item-controls{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.qty-btn{
+  width:28px;height:28px;border-radius:8px;
+  background:var(--card2);border:1px solid var(--border);
+  color:var(--gold);font-size:1rem;font-weight:700;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+}
+.qty-btn:active{background:rgba(201,162,54,.15)}
+.qty-val{
+  min-width:28px;text-align:center;
+  font-size:.9rem;font-weight:600;
+}
+.cart-remove{
+  width:28px;height:28px;border-radius:8px;
+  background:rgba(231,76,109,.1);border:1px solid rgba(231,76,109,.2);
+  color:var(--red);cursor:pointer;font-size:.9rem;
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s;
+}
+.cart-remove:active{background:rgba(231,76,109,.2)}
+
+.cart-summary{
+  margin:8px 12px;
+  background:#ffffff;
+  border:1px solid var(--border);border-radius:var(--radius);
+  padding:16px;
+}
+.summary-row{
+  display:flex;justify-content:space-between;
+  padding:7px 0;border-bottom:1px solid rgba(0,0,0,.06);
+  font-size:.83rem;
+}
+.summary-row:last-child{border-bottom:none}
+.summary-row span:first-child{color:#888}
+.summary-row span:last-child{color:#1a1a1a;font-weight:500}
+.summary-total{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;color:var(--gold) !important;
+  font-weight:700;
+}
+.discount-row span{color:var(--green) !important}
+.tier-badge{
+  margin-top:10px;
+  background:rgba(201,162,54,.1);border:1px solid rgba(201,162,54,.25);
+  border-radius:8px;padding:8px 12px;
+  font-size:.75rem;color:var(--gold2);text-align:center;
+}
+.next-tier{
+  margin-top:6px;font-size:.72rem;
+  color:var(--muted);text-align:center;
+}
+.checkout-btn{
+  margin:8px 12px 4px;
+  width:calc(100% - 24px);
+  background:linear-gradient(135deg,#9a7a26,var(--gold));
+  color:#000;border:none;border-radius:14px;
+  padding:16px;font-size:.9rem;font-weight:700;
+  cursor:pointer;font-family:'Inter',sans-serif;
+  letter-spacing:.5px;transition:all .2s;display:block;
+}
+.checkout-btn:active{transform:scale(.98)}
+
+/* ── TOAST ── */
+.toast{
+  position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-80px);
+  background:var(--card2);border:1px solid var(--gold);border-radius:30px;
+  padding:10px 20px;font-size:.8rem;color:var(--text);
+  z-index:999;transition:transform .3s;white-space:nowrap;
+  box-shadow:0 8px 30px rgba(0,0,0,.5);
+}
+.toast.show{transform:translateX(-50%) translateY(0)}
+
+/* ── PRODUCT DETAIL ── */
+.product-detail{padding:16px;display:none}
+.detail-art{font-size:.72rem;color:var(--gold);font-weight:700;letter-spacing:2px;margin-bottom:8px}
+.detail-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.4rem;color:var(--cream);line-height:1.3;margin-bottom:12px;
+}
+.detail-section{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(201,162,54,.08);border:1px solid var(--border);
+  border-radius:20px;padding:5px 12px;
+  font-size:.72rem;color:var(--muted);margin-bottom:16px;
+}
+.detail-price{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;font-weight:700;color:var(--gold2);
+}
+.detail-price-usd{font-size:.8rem;color:var(--muted);margin-top:4px}
+.detail-divider{height:1px;background:var(--border);margin:16px 0}
+.detail-add{
+  width:100%;
+  background:linear-gradient(135deg,#9a7a26,var(--gold));
+  color:#000;border:none;border-radius:var(--radius);
+  padding:16px;font-size:.9rem;font-weight:700;
+  cursor:pointer;font-family:'Inter',sans-serif;
+  letter-spacing:.5px;margin-top:8px;
+}
+
+/* ── Бейдж пользователя ── */
+.user-badge{
+  font-size:.75rem;color:rgba(255,255,255,.8);
+  font-weight:500;letter-spacing:.3px;
+  max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+
+/* ── Отзывы ── */
+.reviews-block{padding:16px;margin-top:4px;border-top:1px solid var(--border)}
+.reviews-title{font-size:.85rem;font-weight:700;color:var(--cream);text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px}
+.review-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;margin-bottom:10px}
+.review-header{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.review-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#9a7a26,#c8a84b);color:#fff;font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.review-meta{flex:1}
+.review-name{font-size:.8rem;font-weight:600;color:var(--text)}
+.review-date{font-size:.7rem;color:var(--muted);margin-top:1px}
+.review-stars{color:#f5a623;font-size:.85rem;letter-spacing:1px}
+.review-text{font-size:.82rem;color:var(--text);line-height:1.5;margin-top:4px}
+.reviews-empty{font-size:.82rem;color:var(--muted);text-align:center;padding:16px 0}
+.review-write-btn{width:100%;padding:11px;border-radius:var(--radius);background:transparent;border:1px solid var(--gold);color:var(--gold);font-size:.85rem;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;margin-top:6px;transition:background .2s}
+.review-form{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:14px;margin-top:10px}
+.review-stars-input{display:flex;gap:6px;margin:10px 0}
+.star-btn{font-size:1.4rem;cursor:pointer;background:none;border:none;padding:2px;line-height:1;transition:transform .15s}
+.review-name-input,.review-textarea{width:100%;box-sizing:border-box;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px;font-size:.85rem;color:var(--text);font-family:'Inter',sans-serif;outline:none;margin-bottom:8px}
+.review-textarea{resize:none;height:72px}
+.review-form-btns{display:flex;gap:8px}
+.review-submit-btn{flex:1;padding:10px;border-radius:8px;background:linear-gradient(135deg,#9a7a26,var(--gold));color:#000;border:none;font-size:.85rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif}
+.review-cancel-btn{padding:10px 16px;border-radius:8px;background:transparent;border:1px solid var(--border);color:var(--muted);font-size:.85rem;cursor:pointer;font-family:'Inter',sans-serif}
+</style>
 </head>
 <body>
-    <div class="header">
-        <h1>DONATTI Консультант</h1>
-        <p>Профессиональный уход за волосами</p>
-    </div>
-    
-    <div class="buttons">
-        <button onclick="show(1)">Сухость/ломкость</button>
-        <button onclick="show(2)">Выпадение волос</button>
-        <button onclick="show(3)">Перхоть</button>
-        <button onclick="show(4)">Жирная кожа</button>
-        <button onclick="show(5)">После окрашивания</button>
-        <button onclick="show(6)">Кудрявые волосы</button>
-        <button onclick="show(7)">Псориаз</button>
-        <button onclick="show(8)">Зуд/воспаление</button>
-    </div>
-    
-    <div class="chat" id="chat"></div>
-    
-    <div>
-        <input type="text" id="input" placeholder="Или напишите свой вопрос..." onkeypress="if(event.key=='Enter')send()">
-        <button class="send" onclick="send()">Отправить</button>
+
+<div id="app">
+
+  <!-- ═══ HOME ═══ -->
+  <div class="screen" id="screen-home">
+    <div class="home-hero">
+      <div class="home-hero-top">
+        <div id="userBadge" class="user-badge"></div>
+        <button class="lang-btn" onclick="toggleLang()">UZ</button>
+      </div>
+      <div class="home-logo">DONATTI</div>
+      <div class="home-sub">P R O F E S S I O N A L</div>
+      <div class="home-divider"></div>
+      <div class="home-desc" data-i18n-html="home_desc">Профессиональная косметика из Бразилии<br>Официальный дистрибьютор в Узбекистане</div>
     </div>
 
-    <script>
-        const responses = {
-            1: `<div class="msg">
-                <h3 style="color:#c9a236">📋 Сухие и ломкие волосы</h3>
-                <p><strong>Проблема:</strong> Трихоптилоз — расщепление волосяного стержня</p>
-                <p><strong>Причины:</strong> Жёсткая вода, UV-излучение, низкая влажность</p>
-                <div class="product">
-                    <h4 style="color:#c9a236">✨ РЕШЕНИЕ DONATTI:</h4>
-                    <p><strong>Этап 1 (2 недели):</strong><br>
-                    🧴 NATURALE Shampoo — 3 раза/неделю</p>
-                    <p><strong>Этап 2 (4-6 недель):</strong><br>
-                    🥥 BAOBÁ REDUCE маска — 2 раза/неделю, 20 минут</p>
-                    <p><strong>Этап 3 (постоянно):</strong><br>
-                    ✨ Oil Miracle — ежедневно на кончики</p>
-                </div>
-                <p style="color:#64ff64"><strong>РЕЗУЛЬТАТ:</strong> Улучшение через 3-4 недели</p>
-            </div>`,
-            
-            2: `<div class="msg">
-                <h3 style="color:#c9a236">📋 Выпадение волос</h3>
-                <p><strong>Проблема:</strong> Диффузная алопеция</p>
-                <p><strong>Факторы:</strong> Дефицит витамина D, стресс, дефицит железа</p>
-                <div class="product">
-                    <h4 style="color:#c9a236">⚕️ КОМПЛЕКС BIODETOX:</h4>
-                    <p>🧴 <strong>Shampoo Antiqueda BIODETOX</strong><br>
-                    Ежедневно, массаж 3 минуты</p>
-                    <p>💧 <strong>Tônico Antiqueda</strong><br>
-                    2 раза/день на кожу головы</p>
-                    <p>💉 <strong>Ampola Antiqueda</strong><br>
-                    2-3 раза/неделю, курс 8-12 недель</p>
-                </div>
-                <p><strong>ДОПОЛНИТЕЛЬНО:</strong><br>
-                • Витамин D3: 5000 МЕ<br>
-                • Биотин: 5000 мкг/день<br>
-                • Омега-3: 1000 мг</p>
-                <p style="color:#64ff64"><strong>РЕЗУЛЬТАТ:</strong> Стабилизация через 1-2 месяца</p>
-            </div>`,
-            
-            3: `<div class="msg">
-                <h3 style="color:#c9a236">📋 Перхоть</h3>
-                <p><strong>Проблема:</strong> Себорейный дерматит</p>
-                <p><strong>Причина:</strong> Грибок Malassezia + дисфункция сальных желёз</p>
-                <div class="product">
-                    <h4 style="color:#c9a236">⚕️ ANTI-FUNGAL ПРОТОКОЛ:</h4>
-                    <p>🧴 <strong>Shampoo Anticaspa BIODETOX</strong><br>
-                    3 раза/неделю, оставить на 3-5 минут</p>
-                    <p>💧 <strong>Tônico Anticaspa</strong><br>
-                    Ежедневно на кожу головы</p>
-                </div>
-                <p><strong>РЕЖИМ:</strong><br>
-                • Острая фаза (4 недели): 3 раза/неделю<br>
-                • Поддержка: 1 раз/неделю</p>
-                <p style="color:#64ff64"><strong>РЕЗУЛЬТАТ:</strong> Улучшение через 7-10 дней</p>
-            </div>`,
-            
-            4: `<div class="msg">
-                <h3 style="color:#c9a236">📋 Жирная кожа головы</h3>
-                <p><strong>Проблема:</strong> Гиперсеборея — избыточная продукция кожного сала</p>
-                <div class="product">
-                    <h4 style="color:#c9a236">⚕️ SEBUM-CONTROL:</h4>
-                    <p>🧴 <strong>Shampoo для жирных волос</strong><br>
-                    Ежедневно или через день</p>
-                    <p>💧 <strong>Tônico сужающий поры</strong><br>
-                    После каждого мытья</p>
-                    <p>🥥 <strong>BAOBÁ REDUCE</strong><br>
-                    1 раз/неделю — детокс кожи головы</p>
-                </div>
-                <p><strong>РЕКОМЕНДАЦИИ:</strong><br>
-                • Мыть только кожу головы (не длину)<br>
-                • Холодное ополаскивание<br>
-                • Питание: ↓Жирное, ↑Цинк, Омега-3</p>
-                <p style="color:#64ff64"><strong>РЕЗУЛЬТАТ:</strong> Нормализация за 3-4 недели</p>
-            </div>`,
-            
-            5: `<div class="msg">
-                <h3 style="color:#c9a236">📋 После окрашивания</h3>
-                <p><strong>Повреждение:</strong> Аммиак/пероксид разрушают структуру</p>
-                <div class="product">
-                    <h4 style="color:#c9a236">⚕️ POST-COLOR ПРОТОКОЛ:</h4>
-                    <p>🧴 <strong>COLOR PROTECTION Shampoo</strong><br>
-                    Первое мытьё через 48 часов, без сульфатов</p>
-                    <p>🥥 <strong>BAOBÁ REDUCE</strong><br>
-                    2 раза/неделю, 30 минут</p>
-                    <p>✨ <strong>Oil Miracle</strong><br>
-                    Ежедневно — UV-защита цвета</p>
-                </div>
-                <p style="color:#ff6464"><strong>⚠️ ЗАПРЕТ 2 НЕДЕЛИ:</strong><br>
-                • Хлор (бассейны)<br>
-                • Морская вода<br>
-                • Горячая укладка >180°C</p>
-            </div>`,
-            
-            6: `<div class="msg">
-                <h3 style="color:#c9a236">📋 Кудрявые волосы</h3>
-                <p><strong>Особенности:</strong> Повышенная пористость, склонность к сухости</p>
-                <div class="product">
-                    <h4 style="color:#c9a236">⚕️ CURLY HAIR МЕТОД:</h4>
-                    <p>🧴 <strong>NATURALE Shampoo</strong><br>
-                    1-2 раза/неделю, обжимающие движения</p>
-                    <p>🥥 <strong>BAOBÁ REDUCE</strong><br>
-                    Как несмываемый кондиционер</p>
-                    <p>✨ <strong>Oil Miracle</strong><br>
-                    На влажные волосы для "мокрого" эффекта</p>
-                </div>
-                <p><strong>МЕТОД:</strong><br>
-                ❌ НЕТ: расчёсыванию в сухом виде<br>
-                ✅ ДА: пальцевое расчёсывание в душе</p>
-            </div>`,
-            
-            7: `<div class="msg">
-                <h3 style="color:#c9a236">📋 Псориаз</h3>
-                <p><strong>Диагноз:</strong> Psoriasis capitis — аутоиммунное заболевание</p>
-                <p style="color:#ff6464"><strong>⚠️ ВАЖНО:</strong> Псориаз требует лечения у дерматолога!<br>
-                DONATTI — только вспомогательный уход.</p>
-                <div class="product">
-                    <h4 style="color:#c9a236">⚕️ ПОДДЕРЖИВАЮЩИЙ УХОД:</h4>
-                    <p>🧴 <strong>NATURALE Shampoo</strong><br>
-                    2-3 раза/неделю, без травматизации</p>
-                    <p>🥥 <strong>BAOBÁ REDUCE</strong><br>
-                    Увлажнение, размягчение чешуек</p>
-                    <p>✨ <strong>Oil Miracle</strong><br>
-                    Уменьшение зуда</p>
-                </div>
-            </div>`,
-            
-            8: `<div class="msg">
-                <h3 style="color:#c9a236">📋 Зуд/воспаление</h3>
-                <p><strong>Возможно:</strong> Фолликулит (воспаление фолликулов)</p>
-                <p style="color:#ff6464"><strong>⚠️ К ВРАЧУ если:</strong><br>
-                • Температура<br>
-                • Гнойное отделяемое<br>
-                • Распространение процесса</p>
-                <div class="product">
-                    <h4 style="color:#c9a236">⚕️ АНТИСЕПТИЧЕСКИЙ УХОД:</h4>
-                    <p>🧴 <strong>Shampoo Anticaspa BIODETOX</strong><br>
-                    Ежедневно до стихания, оставить на 5 минут</p>
-                    <p>💧 <strong>Tônico BIODETOX</strong><br>
-                    2 раза/день на поражённые зоны</p>
-                    <p><strong>⛔ НЕ ПРИМЕНЯТЬ:</strong> Oil Miracle (масло усугубит!)</p>
-                </div>
-            </div>`
-        };
-        
-        function show(id) {
-            document.getElementById('chat').innerHTML = responses[id];
-        }
-        
-        function send() {
-            const input = document.getElementById('input');
-            const msg = input.value.trim().toLowerCase();
-            input.value = '';
-            
-            if (!msg) return;
-            
-            if (msg.includes('сух') || msg.includes('ломк')) show(1);
-            else if (msg.includes('выпад')) show(2);
-            else if (msg.includes('перхот')) show(3);
-            else if (msg.includes('жирн')) show(4);
-            else if (msg.includes('окраш')) show(5);
-            else if (msg.includes('кудряв')) show(6);
-            else if (msg.includes('псориаз')) show(7);
-            else if (msg.includes('зуд')) show(8);
-            else {
-                document.getElementById('chat').innerHTML = `
-                    <div class="msg">
-                        <h3 style="color:#c9a236">📋 Для диагностики нужна информация:</h3>
-                        <p>1. <strong>Проблема:</strong> что беспокоит?</p>
-                        <p>2. <strong>Давность:</strong> как давно?</p>
-                        <p>3. <strong>Симптомы:</strong> зуд / перхоть / выпадение / ломкость?</p>
-                        <p>4. <strong>Уход:</strong> как часто моете / окрашивание?</p>
-                        <hr style="border:1px solid #c9a236;margin:15px 0;">
-                        <p style="color:#c9a236"><strong>Или выберите готовую проблему из кнопок выше ⬆️</strong></p>
-                    </div>
-                `;
-            }
-        }
-        
-        // Показать приветствие
-        document.getElementById('chat').innerHTML = `
-            <div class="msg">
-                <h3 style="color:#c9a236">Консультация DONATTI</h3>
-                <p>Выберите проблему из кнопок выше или опишите своими словами ⬆️</p>
-            </div>
-        `;
-    </script>
+    <div class="home-stats">
+      <div class="stat-card">
+        <div class="stat-num">165</div>
+        <div class="stat-label" data-i18n="stat_products">ТОВАРОВ</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">12</div>
+        <div class="stat-label" data-i18n="stat_lines">ЛИНЕЕК</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">−15%</div>
+        <div class="stat-label" data-i18n="stat_opt">ОПТ</div>
+      </div>
+    </div>
+
+    <div class="home-actions">
+      <div class="home-btn gold" onclick="goTo('catalog')">
+        <span class="btn-icon">📦</span>
+        <div class="btn-text">
+          <div class="btn-title" data-i18n="btn_catalog_title">Каталог продукции</div>
+          <div class="btn-sub" data-i18n="btn_catalog_sub">165 позиций · 12 линеек</div>
+        </div>
+        <span class="btn-arrow">›</span>
+      </div>
+      <div class="home-btn" onclick="goTo('consultant')">
+        <span class="btn-icon">🧴</span>
+        <div class="btn-text">
+          <div class="btn-title" data-i18n="btn_consultant_title">AI Консультант</div>
+          <div class="btn-sub" data-i18n="btn_consultant_sub">Подбор по типу волос и проблеме</div>
+        </div>
+        <span class="btn-arrow">›</span>
+      </div>
+      <div class="home-btn" onclick="goTo('cart')">
+        <span class="btn-icon">🛒</span>
+        <div class="btn-text">
+          <div class="btn-title" data-i18n="btn_cart_title">Моя корзина</div>
+          <div id="home-cart-sub" class="btn-sub" data-i18n="cart_empty_text">Корзина пуста</div>
+        </div>
+        <span class="btn-arrow">›</span>
+      </div>
+      <a class="home-btn manager-btn" href="https://t.me/donatti_manager" target="_blank">
+        <span class="btn-icon">💬</span>
+        <div class="btn-text">
+          <div class="btn-title">Написать менеджеру</div>
+          <div class="btn-sub">Вопросы, оптовые заказы</div>
+        </div>
+        <span class="btn-arrow">›</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ═══ CATALOG ═══ -->
+  <div class="screen active" id="screen-catalog">
+    <div class="page-header">
+      <div class="page-title" data-i18n="catalog_title">Каталог</div>
+      <div class="page-sub" data-i18n="catalog_sub">12 линеек · 165 позиций</div>
+      <button class="lang-btn" onclick="toggleLang()">UZ</button>
+    </div>
+    <div class="search-wrap">
+      <input class="search-input" type="text" id="searchInput"
+             data-i18n-ph="search_placeholder"
+             placeholder="🔍 Поиск товара..." oninput="onSearch(this.value)">
+    </div>
+    <div id="sectionList" class="section-list"></div>
+    <div id="productView" style="display:none">
+      <button class="product-back" onclick="showSections()" data-i18n="back_to_sections">‹ Назад к линейкам</button>
+      <div class="section-banner" id="sectionBanner"></div>
+      <div class="product-grid" id="productGrid"></div>
+      <div id="reviewsBlock"></div>
+    </div>
+    <div id="searchResults" style="display:none">
+      <div class="product-grid" id="searchGrid"></div>
+    </div>
+    <div id="detailView" class="product-detail">
+      <button class="product-back" id="detailBack" onclick="closeDetail()" data-i18n="back">‹ Назад</button>
+      <div id="detailContent"></div>
+    </div>
+  </div>
+
+  <!-- ═══ CONSULTANT ═══ -->
+  <div class="screen" id="screen-consultant">
+    <div class="page-header">
+      <div class="page-title" data-i18n="consultant_title">AI Консультант</div>
+      <div class="page-sub" data-i18n="consultant_sub">Эксперт по уходу за волосами</div>
+      <button class="lang-btn" onclick="toggleLang()">UZ</button>
+    </div>
+    <div class="quick-topics" id="quickTopics"></div>
+    <div class="chat-messages" id="chatMessages"></div>
+    <div class="chat-input-wrap">
+      <textarea class="chat-input" id="chatInput"
+        rows="1" placeholder="Задайте вопрос о волосах..."
+        data-i18n-ph="chat_placeholder"
+        oninput="autoResize(this)"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendMessage()}">
+      </textarea>
+      <button class="chat-send" onclick="sendMessage()">➤</button>
+    </div>
+  </div>
+
+  <!-- ═══ CART ═══ -->
+  <div class="screen" id="screen-cart">
+    <div class="page-header">
+      <div class="page-title" data-i18n="cart_title">Корзина</div>
+      <div class="page-sub" id="cart-header-sub" data-i18n="cart_empty_status">Пусто</div>
+      <button class="lang-btn" onclick="toggleLang()">UZ</button>
+    </div>
+    <div id="cartContent"></div>
+  </div>
+
+</div>
+
+<!-- ── BOTTOM NAV ── -->
+<nav class="nav">
+  <button class="nav-btn" id="nav-home" onclick="goTo('home')">
+    <span class="icon">🏠</span>
+    <span data-i18n="nav_home">Главная</span>
+  </button>
+  <button class="nav-btn active" id="nav-catalog" onclick="goTo('catalog')">
+    <span class="icon">📦</span>
+    <span data-i18n="nav_catalog">Каталог</span>
+  </button>
+  <button class="nav-btn" id="nav-consultant" onclick="goTo('consultant')">
+    <span class="icon">🧴</span>
+    <span data-i18n="nav_consultant">Консультант</span>
+  </button>
+  <button class="nav-btn" id="nav-cart" onclick="goTo('cart')">
+    <span class="icon">🛒</span>
+    <div class="cart-dot" id="cartDot"></div>
+    <span data-i18n="nav_cart">Корзина</span>
+  </button>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<script src="translations.js"></script>
+<script src="catalog_data_embed.js"></script>
+<script src="hair_problems_database.js"></script>
+<script src="consultant.js"></script>
+<script>
+/* ════════════════════════════════════════
+   TELEGRAM WEB APP INIT
+════════════════════════════════════════ */
+const tg = window.Telegram?.WebApp;
+if (tg) {
+  tg.ready();
+  tg.expand();
+  tg.setHeaderColor('#3e2a18');
+  tg.setBackgroundColor('#f2f0eb');
+}
+
+window.TG_USER = tg?.initDataUnsafe?.user || null;
+
+/* ════════════════════════════════════════
+   STATE
+════════════════════════════════════════ */
+let cart      = JSON.parse(localStorage.getItem('donatti_cart') || '[]');
+let currentSection = null;
+let currentScreen  = 'home';
+let chatHistory    = [];
+
+const DISCOUNT_TIERS = [
+  { min: 100, pct: 0.15, key: 'tier_big'    },
+  { min: 50,  pct: 0.10, key: 'tier_med'    },
+  { min: 10,  pct: 0.05, key: 'tier_small'  },
+  { min: 0,   pct: 0,    key: 'tier_retail' },
+];
+
+const SECTION_PHOTOS = {
+  'SPECIALE':       'https://87055902400a-ctrl.github.io/Donatti-shop/SPECIALE.jpeg',
+  'THEION':         'https://87055902400a-ctrl.github.io/Donatti-shop/THEION.jpeg',
+  'COLORE':         'https://87055902400a-ctrl.github.io/Donatti-shop/COLORE.jpeg',
+  'CREAM BLOND':    'https://87055902400a-ctrl.github.io/Donatti-shop/CREAM_BLOND.jpeg',
+  'BAOBÁ REDUCE':   'https://87055902400a-ctrl.github.io/Donatti-shop/BAOBA_REDUCE.jpeg',
+  'DNAVANZE':       'https://87055902400a-ctrl.github.io/Donatti-shop/DNAVANZE.jpeg',
+  'BIODETOX':       'https://87055902400a-ctrl.github.io/Donatti-shop/BIODETOX.jpeg',
+  'MIO RICCI':      'https://87055902400a-ctrl.github.io/Donatti-shop/MIO_RICCI.jpeg',
+  'NATURALE':       'https://87055902400a-ctrl.github.io/Donatti-shop/NATURALE.jpeg',
+  'LUXURY':         'https://87055902400a-ctrl.github.io/Donatti-shop/LUXURY.jpeg',
+  'PREMIUM VIOLET': 'https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg',
+};
+const SECTION_ICONS = {
+  'SPECIALE':'✨','THEION':'⚗️','COLORE':'🎨','CREAM BLOND':'💛',
+  'BAOBÁ':'🌿','BAOBÁ REDUCE':'🌿','DNAVANZE':'🧬','BIODETOX':'🍃',
+  'MIO RICCI':'🌀','NATURALE':'🌸','LUXURY':'👑','PREMIUM VIOLET':'💜','EXTRA':'⭐',
+};
+
+/* ════════════════════════════════════════
+   NAVIGATION
+════════════════════════════════════════ */
+function goTo(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('screen-'+name).classList.add('active');
+  document.getElementById('nav-'+name).classList.add('active');
+  currentScreen = name;
+  if (name === 'catalog') renderSections();
+  if (name === 'cart')     renderCart();
+  if (name === 'home')     updateHomeCart();
+}
+
+/* ════════════════════════════════════════
+   FORMAT
+════════════════════════════════════════ */
+function fmt(n) {
+  return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+}
+function fmtUSD(sum) {
+  return '≈ $' + (sum / 12700).toFixed(1);
+}
+
+/* ════════════════════════════════════════
+   CATALOG TRANSLATION HELPERS
+════════════════════════════════════════ */
+function getSectionDesc(s) {
+  if (window.LANG === 'pt' && s.description_pt) return s.description_pt;
+  if (window.LANG === 'uz' && s.description_uz) return s.description_uz;
+  return s.description.split(' - ')[1] || s.description;
+}
+
+const TERM_SUBS = {
+  pt: {
+    // ── Compound color names (longest first to avoid partial match) ──
+    'Супер серебро (Natural Blond)':          'Super Prata (Natural Louro)',
+    'Платиновый (интенсивный серый)':         'Platinado (Cinza Intenso)',
+    'Ультра светлый (интенсивный серый)':     'Ultra Claro (Cinza Intenso)',
+    'Супер-осветлитель ультра светлый жемчуж':'Superclareador Ultra Claro Perolado',
+    'Тёмно-русый интенсивный переливчатый':   'Louro Escuro Intenso Iridescente',
+    'Тёмно-русый интенсивный красный':        'Louro Escuro Intenso Vermelho',
+    'Специальный марсала красноватый':        'Especial Marsala Avermelhado',
+    'Средне-русый интенсивный красный':       'Louro Médio Intenso Vermelho',
+    'Средне-русый бежево-золотистый':         'Louro Médio Bege Dourado',
+    'Очень светлый бежево-золотистый':        'Louro Muito Claro Bege Dourado',
+    'Очень светлый золотистый блонд':         'Louro Muito Claro Dourado',
+    'Очень светлый перламутровый':            'Louro Muito Claro Perolado',
+    'Пепельный платиновый блонд':             'Louro Platinado Cinza',
+    'Тёмно-русый золотисто-медный':           'Louro Escuro Dourado Cobre',
+    'Тёмно-русый медно-пепельный':            'Louro Escuro Cobre Cinza',
+    'Светло-каштановый пепельный':            'Castanho Claro Cinza',
+    'Светло-каштановый золотистый':           'Castanho Claro Dourado',
+    'Средне-каштановый шоколадный':           'Castanho Médio Chocolate',
+    'Супер-усилитель осветления':             'Super Amplificador de Clareamento',
+    'Платиновый блонд':                       'Louro Platinado',
+    'Ледяной серый блонд':                    'Louro Cinza Gelo',
+    'Ледяной серый':                          'Cinza Gelo',
+    'Иссиня-чёрный':                          'Preto Azulado',
+    'Тёмно-каштановый':                       'Castanho Escuro',
+    'Средне-каштановый':                      'Castanho Médio',
+    'Светло-каштановый':                      'Castanho Claro',
+    'Тёмно-русый пепельный':                  'Louro Escuro Cinza',
+    'Тёмно-русый золотистый':                 'Louro Escuro Dourado',
+    'Тёмно-русый шоколадный':                 'Louro Escuro Chocolate',
+    'Тёмно-русый':                            'Louro Escuro',
+    'Средне-русый пепельный':                 'Louro Médio Cinza',
+    'Средне-русый матовый':                   'Louro Médio Matte',
+    'Средне-русый золотистый':                'Louro Médio Dourado',
+    'Средне-русый медный':                    'Louro Médio Cobre',
+    'Средне-русый шоколадный':                'Louro Médio Chocolate',
+    'Средне-русый жемчужный':                 'Louro Médio Perolado',
+    'Средне-русый':                           'Louro Médio',
+    'Светло-русый пепельный':                 'Louro Claro Cinza',
+    'Светло-русый жемчужный':                 'Louro Claro Perolado',
+    'Специальный марсала':                    'Especial Marsala',
+    'Очень светло-русый медный':              'Louro Muito Claro Cobre',
+    'Очень светло-русый':                     'Louro Muito Claro',
+    'Светло-русый':                           'Louro Claro',
+    // ── Product types / processes ──
+    'Несмываемый уход':           'Leave In',
+    'Осветляющий порошок':        'Pó Descolorante',
+    'Осветляющий крем':           'Creme Descolorante',
+    'Восполнитель углерода':      'Repositor de Carbono',
+    'Восстанавливающий комплекс': 'Complexo Restaurador',
+    'Подкисляющий бальзам':       'Bálsamo Acidificante',
+    'Реконструктор':              'Reconstrutor',
+    'без сульфатов':              'Sulfato Free',
+    'Профессиональная':           'Professionale',
+    'Профессиональный':           'Professionale',
+    'Кондиционер':                'Condicionador',
+    'Текстуризатор':              'Texturizador',
+    'Разглаживатель':             'Redutor',
+    'Стабилизатор':               'Estabilizador',
+    'Регенератор':                'Regenerador',
+    'Реставратор':                'Restaurador',
+    'Выравниватель':              'Realinhador',
+    'Окислитель':                 'Oxidante',
+    'Шампунь':                    'Shampoo',
+    'Краска':                     'Coloração Permanente',
+    'Тонирование':                'Tonalizante',
+    'Маска':                      'Máscara',
+    'Масло':                      'Óleo',
+    'Бальзам':                    'Bálsamo',
+    'Уход':                       'Manutenzione',
+    'Шаг':                        'Passo',
+    'Саше':                       'Sachê',
+    'Pocket':                     'Pocket',
+    'объёмов':                    'volumes',
+    'рефил':                      'refil',
+    'афро':                       'afro',
+  },
+  uz: {
+    // ── Compound color names ──
+    'Иссиня-чёрный':              "Ko'k-qora",
+    'Тёмно-каштановый':           "To'q kashtan",
+    'Средне-каштановый':          "O'rta kashtan",
+    'Светло-каштановый':          'Och kashtan',
+    'Тёмно-русый':                "To'q sariq",
+    'Средне-русый':               "O'rta sariq",
+    'Светло-русый':               'Och sariq',
+    'Очень светло-русый':         'Juda och sariq',
+    'Платиновый блонд':           'Platinado sariq',
+    'Ледяной серый':              'Muzli kulrang',
+    'Супер-усилитель осветления': 'Super Kuchaytirgich',
+    // ── Product types ──
+    'Несмываемый уход':           'Yuvilmaydigan parvarish',
+    'Осветляющий порошок':        'Oqartiruvchi kukun',
+    'Осветляющий крем':           'Oqartiruvchi krem',
+    'Восполнитель углерода':      "Ko'mir to'ldiruvchi",
+    'Восстанавливающий комплекс': 'Tiklash kompleksi',
+    'Подкисляющий бальзам':       'Kislotali balzam',
+    'Реконструктор':              'Rekonstruktor',
+    'без сульфатов':              'sulfatsiz',
+    'Профессиональная':           'Professional',
+    'Профессиональный':           'Professional',
+    'Кондиционер':                'Konditsioner',
+    'Текстуризатор':              'Teksturizator',
+    'Разглаживатель':             'Kamaytiruvchi',
+    'Стабилизатор':               'Stabilizator',
+    'Регенератор':                'Regenerator',
+    'Реставратор':                'Restorer',
+    'Выравниватель':              'Tenglashtiruvchi',
+    'Окислитель':                 'Oksidant',
+    'Шампунь':                    'Shampun',
+    'Краска':                     "Doimiy bo'yoq",
+    'Тонирование':                'Tonlash',
+    'Маска':                      'Maska',
+    'Масло':                      "Moy",
+    'Бальзам':                    'Balzam',
+    'Уход':                       'Parvarish',
+    'Шаг':                        'Bosqich',
+    'Саше':                       'Sashshe',
+    'объёмов':                    "hajm",
+    'рефил':                      'refil',
+    'афро':                       'afro',
+  }
+};
+
+function getProductName(p) {
+  const lang = window.LANG;
+  if (lang === 'ru' || !TERM_SUBS[lang]) return p.name;
+  let name = p.name;
+  for (const [ru, local] of Object.entries(TERM_SUBS[lang])) {
+    name = name.replaceAll(ru, local);
+  }
+  return name;
+}
+
+/* ════════════════════════════════════════
+   CATALOG — SECTIONS
+════════════════════════════════════════ */
+function renderSections() {
+  const list = document.getElementById('sectionList');
+  document.getElementById('productView').style.display = 'none';
+  document.getElementById('detailView').style.display  = 'none';
+  document.getElementById('searchResults').style.display = 'none';
+  list.style.display = 'block';
+
+  list.innerHTML = CATALOG_DATA.sections.map(s => {
+    const icon = SECTION_ICONS[s.id] || '•';
+    const desc = getSectionDesc(s);
+    const photo = SECTION_PHOTOS[s.id];
+    const iconHtml = photo
+      ? `<img src="${photo}" alt="${s.name}" loading="lazy">`
+      : icon;
+    return `
+      <div class="section-card" onclick="openSection('${s.id}')">
+        <div class="section-icon">${iconHtml}</div>
+        <div class="section-info">
+          <div class="section-name">${s.name}</div>
+          <div class="section-desc">${desc}</div>
+        </div>
+        <span class="section-count">${s.product_count}</span>
+      </div>`;
+  }).join('');
+}
+
+function openSection(id) {
+  currentSection = CATALOG_DATA.sections.find(s => s.id === id);
+  if (!currentSection) return;
+  document.getElementById('sectionList').style.display    = 'none';
+  document.getElementById('searchResults').style.display  = 'none';
+  document.getElementById('detailView').style.display     = 'none';
+  document.getElementById('productView').style.display    = 'block';
+
+  const icon = SECTION_ICONS[id] || '•';
+  const desc = getSectionDesc(currentSection);
+  const bannerPhoto = SECTION_PHOTOS[id];
+  document.getElementById('sectionBanner').innerHTML = bannerPhoto ? `
+    <div style="position:relative;margin:-16px -16px 16px -16px;border-radius:14px 14px 0 0;overflow:hidden;">
+      <img src="${bannerPhoto}" alt="${currentSection.name}" style="width:100%;height:200px;object-fit:cover;display:block;">
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(0,0,0,0.75));">
+        <div style="font-size:.65rem;color:var(--gold);letter-spacing:3px;margin-bottom:2px;">${t('section_label')}</div>
+        <div class="banner-name" style="font-size:1.3rem;">${currentSection.name}</div>
+        <div class="banner-desc" style="font-size:.75rem;opacity:.85;">${desc}</div>
+        <div style="font-size:.65rem;color:rgba(255,255,255,.7);margin-top:4px;">${currentSection.product_count} ${t('positions_word')}</div>
+      </div>
+    </div>
+  ` : `
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
+      <div style="font-size:2.5rem">${icon}</div>
+      <div>
+        <div style="font-size:.7rem;color:var(--gold);letter-spacing:3px;margin-bottom:4px;">${t('section_label')}</div>
+        <div class="banner-name">${currentSection.name}</div>
+        <div class="banner-desc">${desc}</div>
+        <div style="font-size:.7rem;color:var(--muted);margin-top:6px;">${currentSection.product_count} ${t('positions_word')}</div>
+      </div>
+    </div>
+  `;
+
+  document.getElementById('productGrid').innerHTML =
+    currentSection.products.map(p => productCardHTML(p)).join('');
+  document.getElementById('screen-catalog').scrollTop = 0;
+  renderReviewsBlock(id);
+}
+
+function showSections() {
+  document.getElementById('productView').style.display   = 'none';
+  document.getElementById('detailView').style.display    = 'none';
+  document.getElementById('sectionList').style.display   = 'block';
+  currentSection = null;
+}
+
+function productCardHTML(p) {
+  const imgHtml = p.image
+    ? `<div style="text-align:center;margin-bottom:8px;"><img src="${p.image}" alt="${p.name}" loading="lazy" style="max-width:100%;max-height:110px;object-fit:contain;border-radius:8px;background:#fff;"></div>`
+    : '';
+  return `
+    <div class="product-card" onclick="openDetail(${p.number})">
+      ${imgHtml}
+      <div class="prod-art">${t('article_prefix')} ${p.number}</div>
+      <div class="prod-name">${getProductName(p)}</div>
+      <div class="prod-price">${fmt(p.price_sum)} ${t('sum_currency')}</div>
+      <div class="prod-price-usd">${fmtUSD(p.price_sum)}</div>
+      <button class="prod-add" onclick="event.stopPropagation();addToCart(${p.number})">${t('add_to_cart')}</button>
+    </div>`;
+}
+
+/* ════════════════════════════════════════
+   PRODUCT DETAIL
+════════════════════════════════════════ */
+function openDetail(num) {
+  const section = CATALOG_DATA.sections.find(s => s.products.some(p => p.number === num));
+  const product = section?.products.find(p => p.number === num);
+  if (!product) return;
+
+  const icon = SECTION_ICONS[section.id] || '•';
+  const productPhoto = product.image || SECTION_PHOTOS[section.id];
+  document.getElementById('detailContent').innerHTML = `
+    ${productPhoto ? `<div style="text-align:center;background:#fff;border-radius:12px;padding:12px;margin-bottom:14px;border:1px solid var(--border);">
+      <img src="${productPhoto}" alt="${product.name}" style="max-width:100%;max-height:220px;object-fit:contain;">
+    </div>` : ''}
+    <div class="detail-art">${t('article_prefix')} ${product.number}</div>
+    <div class="detail-name">${getProductName(product)}</div>
+    <div>
+      <span class="detail-section">${icon} ${section.name}</span>
+    </div>
+    <div class="detail-divider"></div>
+    <div class="detail-price">${fmt(product.price_sum)} ${t('sum_currency')}</div>
+    <div class="detail-price-usd">${fmtUSD(product.price_sum)} · ${product.price_eur.toFixed(2)} €</div>
+    <div class="detail-divider"></div>
+    <div style="font-size:.75rem;color:var(--muted);line-height:1.7;">
+      🇧🇷 Donatti Professional — Made in Brazil<br>
+      ${t('certificate')}
+    </div>
+    <button class="detail-add" onclick="addToCart(${product.number});closeDetail()">
+      ${t('add_to_cart_detail')}
+    </button>`;
+
+  document.getElementById('detailView').style.display   = 'block';
+  document.getElementById('productView').style.display  = 'none';
+  document.getElementById('sectionList').style.display  = 'none';
+  document.getElementById('screen-catalog').scrollTop   = 0;
+}
+
+function closeDetail() {
+  document.getElementById('detailView').style.display = 'none';
+  if (currentSection) {
+    document.getElementById('productView').style.display = 'block';
+  } else {
+    renderSections();
+  }
+}
+
+/* ════════════════════════════════════════
+   SEARCH
+════════════════════════════════════════ */
+function onSearch(val) {
+  const q = val.trim().toLowerCase();
+  if (!q) {
+    document.getElementById('searchResults').style.display = 'none';
+    document.getElementById('sectionList').style.display   = 'block';
+    document.getElementById('productView').style.display   = 'none';
+    return;
+  }
+  const results = [];
+  CATALOG_DATA.sections.forEach(s => {
+    s.products.forEach(p => {
+      if (p.name.toLowerCase().includes(q) || String(p.number).includes(q))
+        results.push(p);
+    });
+  });
+  document.getElementById('sectionList').style.display   = 'none';
+  document.getElementById('productView').style.display   = 'none';
+  document.getElementById('detailView').style.display    = 'none';
+  document.getElementById('searchResults').style.display = 'block';
+  document.getElementById('searchGrid').innerHTML = results.length
+    ? results.map(p => productCardHTML(p)).join('')
+    : `<div style="padding:40px 16px;text-align:center;color:var(--muted);font-size:.85rem;">${t('nothing_found')}</div>`;
+}
+
+/* ════════════════════════════════════════
+   CART
+════════════════════════════════════════ */
+function saveCart() {
+  localStorage.setItem('donatti_cart', JSON.stringify(cart));
+  updateCartDot();
+  if (currentScreen === 'cart') renderCart();
+  updateHomeCart();
+}
+
+function updateCartDot() {
+  const total = cart.reduce((s, i) => s + i.qty, 0);
+  const dot = document.getElementById('cartDot');
+  dot.textContent = total > 9 ? '9+' : total;
+  dot.classList.toggle('show', total > 0);
+}
+
+function updateHomeCart() {
+  const sub = document.getElementById('home-cart-sub');
+  const total = cart.reduce((s, i) => s + i.qty, 0);
+  sub.textContent = total > 0
+    ? `${total} ${t('pcs')}`
+    : t('cart_empty_text');
+}
+
+function addToCart(num) {
+  const section = CATALOG_DATA.sections.find(s => s.products.some(p => p.number === num));
+  const product = section?.products.find(p => p.number === num);
+  if (!product) return;
+  const existing = cart.find(i => i.num === num);
+  if (existing) existing.qty++;
+  else cart.push({ num, name: product.name, price: product.price_sum, qty: 1 });
+  saveCart();
+  showToast(`✓ ${getProductName(product).slice(0, 30)}...`);
+}
+
+function changeQty(num, delta) {
+  const item = cart.find(i => i.num === num);
+  if (!item) return;
+  item.qty = Math.max(0, item.qty + delta);
+  if (item.qty === 0) cart = cart.filter(i => i.num !== num);
+  saveCart();
+}
+
+function getDiscount(totalQty) {
+  return DISCOUNT_TIERS.find(t => totalQty >= t.min) || DISCOUNT_TIERS[3];
+}
+
+function renderCart() {
+  const content = document.getElementById('cartContent');
+  const headerSub = document.getElementById('cart-header-sub');
+
+  if (cart.length === 0) {
+    headerSub.textContent = t('cart_empty_status');
+    content.innerHTML = `
+      <div class="cart-empty">
+        <div class="cart-empty-icon">🛒</div>
+        <h3>${t('cart_empty_h3')}</h3>
+        <p>${t('cart_empty_p')}</p>
+        <button class="go-catalog-btn" onclick="goTo('catalog')">${t('go_catalog_btn')}</button>
+      </div>`;
+    return;
+  }
+
+  const totalQty  = cart.reduce((s, i) => s + i.qty, 0);
+  const subtotal  = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const tier      = getDiscount(totalQty);
+  const discountAmt = Math.round(subtotal * tier.pct);
+  const total     = subtotal - discountAmt;
+  headerSub.textContent = `${totalQty} ${t('pcs')}`;
+
+  const itemsHTML = cart.map(item => {
+    const sec = CATALOG_DATA.sections.find(s => s.products.some(p => p.number === item.num));
+    const prod = sec?.products.find(p => p.number === item.num);
+    const displayName = prod ? getProductName(prod) : item.name;
+    return `
+    <div class="cart-item">
+      <div class="cart-item-info">
+        <div class="cart-item-art">${t('article_prefix')} ${item.num}</div>
+        <div class="cart-item-name">${displayName}</div>
+        <div class="cart-item-price">${fmt(item.price * item.qty)} ${t('sum_currency')}</div>
+      </div>
+      <div class="cart-item-controls">
+        <button class="qty-btn" onclick="changeQty(${item.num},-1)">−</button>
+        <span class="qty-val">${item.qty}</span>
+        <button class="qty-btn" onclick="changeQty(${item.num},+1)">+</button>
+        <button class="cart-remove" onclick="changeQty(${item.num},-${item.qty})">✕</button>
+      </div>
+    </div>`;
+  }).join('');
+
+  const nextTier = DISCOUNT_TIERS.find(t2 => t2.pct > tier.pct);
+  const tierName = t(tier.key);
+  const moreNeeded = nextTier ? nextTier.min - totalQty : 0;
+  const nextTierHTML = nextTier
+    ? `<div class="next-tier">💡 ${window.LANG==='uz'
+        ? `Yana ${moreNeeded} ta → ${nextTier.pct*100}% chegirma`
+        : window.LANG==='pt'
+        ? `Mais ${moreNeeded} un. → desconto ${nextTier.pct*100}%`
+        : `Ещё ${moreNeeded} шт. → скидка ${nextTier.pct*100}%`}</div>`
+    : `<div class="next-tier">${t('max_discount')}</div>`;
+
+  const discountLabel = window.LANG==='uz'
+    ? `Chegirma ${tier.pct*100}% (${tierName})`
+    : window.LANG==='pt'
+    ? `Desconto ${tier.pct*100}% (${tierName})`
+    : `Скидка ${tier.pct*100}% (${tierName})`;
+
+  content.innerHTML = `
+    <div class="cart-items">${itemsHTML}</div>
+    <div class="cart-summary">
+      <div class="summary-row"><span>${t('qty_label')}</span><span>${totalQty} ${t('pcs')}</span></div>
+      <div class="summary-row"><span>${t('sum_label')}</span><span>${fmt(subtotal)} ${t('sum_currency')}</span></div>
+      ${tier.pct > 0 ? `<div class="summary-row discount-row">
+        <span>${discountLabel}</span>
+        <span>−${fmt(discountAmt)} ${t('sum_currency')}</span></div>` : ''}
+      <div class="summary-row"><span>${t('total_label')}</span>
+        <span class="summary-total">${fmt(total)} ${t('sum_currency')}</span></div>
+      ${tier.pct > 0 ? `<div class="tier-badge">🎉 ${tierName} −${tier.pct*100}%</div>` : ''}
+      ${nextTierHTML}
+    </div>
+    <button class="checkout-btn" onclick="checkout()">${t('checkout_btn')}</button>`;
+}
+
+function checkout() {
+  if (cart.length === 0) return;
+  const totalQty  = cart.reduce((s, i) => s + i.qty, 0);
+  const subtotal  = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const tier      = getDiscount(totalQty);
+  const discountAmt = Math.round(subtotal * tier.pct);
+  const total     = subtotal - discountAmt;
+
+  const orderData = JSON.stringify({ cart, total, discount: discountAmt, tier: tier.name });
+
+  if (tg) {
+    tg.sendData(orderData);
+  } else {
+    // fallback для браузера
+    alert(window.LANG==='uz'
+      ? `Buyurtma ${fmt(total)} so'm uchun menejerga yuborildi!`
+      : window.LANG==='pt'
+      ? `Pedido de ${fmt(total)} UZS enviado ao gerente!`
+      : `Заказ на ${fmt(total)} сум отправлен менеджеру!`);
+  }
+}
+
+/* ════════════════════════════════════════
+   AI CONSULTANT
+════════════════════════════════════════ */
+function getQuickTopics() {
+  return [
+    [t('qt_hairloss'),   t('qt_hairloss_q')  ],
+    [t('qt_dandruff'),   t('qt_dandruff_q')  ],
+    [t('qt_oily'),       t('qt_oily_q')      ],
+    [t('qt_dry'),        t('qt_dry_q')       ],
+    [t('qt_irritation'), t('qt_irritation_q')],
+    [t('qt_curly'),      t('qt_curly_q')     ],
+    [t('qt_bleached'),   t('qt_bleached_q')  ],
+    [t('qt_colored'),    t('qt_colored_q')   ],
+  ];
+}
+
+function renderQuickTopics() {
+  document.getElementById('quickTopics').innerHTML =
+    getQuickTopics().map(([label, query]) =>
+      `<button class="quick-btn" onclick="askTopic(${JSON.stringify(query)})">${label}</button>`
+    ).join('');
+}
+
+function initConsultant() {
+  consultantEngine.reset();
+  renderQuickTopics();
+  addBotMessage(t('cons_greeting'));
+}
+
+function askTopic(query) {
+  addUserMessage(query);
+  processInput(query);
+}
+
+function sendMessage() {
+  const input = document.getElementById('chatInput');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  input.style.height = 'auto';
+  addUserMessage(text);
+  processInput(text);
+}
+
+function autoResize(el) {
+  el.style.height = 'auto';
+  el.style.height = Math.min(el.scrollHeight, 100) + 'px';
+}
+
+function addUserMessage(text) {
+  const el = document.createElement('div');
+  el.className = 'msg user';
+  el.innerHTML = `<div class="msg-bubble">${escHtml(text)}</div>
+    <div class="msg-time">${new Date().toLocaleTimeString(window.LANG==='uz'?'uz-UZ':window.LANG==='pt'?'pt-BR':'ru-RU',{hour:'2-digit',minute:'2-digit'})}</div>`;
+  document.getElementById('chatMessages').appendChild(el);
+  scrollChat();
+  chatHistory.push({ role: 'user', text });
+}
+
+function addBotMessage(text, buttons) {
+  const el = document.createElement('div');
+  el.className = 'msg bot';
+  let html = `<div class="msg-bubble">${formatMd(text)}</div>`;
+  if (buttons && buttons.length) {
+    html += `<div class="msg-btns">`;
+    for (const btn of buttons) {
+      html += btn.section
+        ? `<button class="msg-btn" onclick="goToSectionFromConsultant(${JSON.stringify(btn.section)})">${btn.label}</button>`
+        : `<button class="msg-btn" onclick="restartConsultant()">${btn.label}</button>`;
+    }
+    html += `</div>`;
+  }
+  html += `<div class="msg-time">${new Date().toLocaleTimeString(window.LANG==='uz'?'uz-UZ':window.LANG==='pt'?'pt-BR':'ru-RU',{hour:'2-digit',minute:'2-digit'})}</div>`;
+  el.innerHTML = html;
+  document.getElementById('chatMessages').appendChild(el);
+  scrollChat();
+}
+
+function showTyping() {
+  const el = document.createElement('div');
+  el.className = 'msg bot';
+  el.id = 'typing';
+  el.innerHTML = `<div class="msg-bubble"><div class="typing">
+    <span></span><span></span><span></span></div></div>`;
+  document.getElementById('chatMessages').appendChild(el);
+  scrollChat();
+}
+
+function hideTyping() {
+  document.getElementById('typing')?.remove();
+}
+
+function scrollChat() {
+  const msgs = document.getElementById('chatMessages');
+  setTimeout(() => msgs.scrollTop = msgs.scrollHeight, 50);
+}
+
+function escHtml(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+function formatMd(s) {
+  return escHtml(s)
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<strong>$1</strong>')
+    .replace(/_(.+?)_/g, '<em>$1</em>')
+    .replace(/\n/g, '<br>');
+}
+
+// ── ConsultantEngine → обработка ввода ──
+function processInput(text) {
+  showTyping();
+  setTimeout(() => {
+    hideTyping();
+    const result = consultantEngine.handleInput(text);
+    if (!result) return;
+    addBotMessage(result.message, result.buttons);
+  }, 700 + Math.random() * 500);
+}
+
+// ── Переход из консультанта в раздел каталога ──
+function goToSectionFromConsultant(sectionId) {
+  goTo('catalog');
+  // Сначала показываем список линеек, потом открываем нужную
+  showSections();
+  setTimeout(() => openSection(sectionId), 150);
+}
+
+function restartConsultant() {
+  document.getElementById('chatMessages').innerHTML = '';
+  initConsultant();
+}
+
+/* ════════════════════════════════════════
+   TOAST
+════════════════════════════════════════ */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+/* ════════════════════════════════════════
+   REVIEWS
+════════════════════════════════════════ */
+function getSectionReviews(sectionId) {
+  try {
+    const all = JSON.parse(localStorage.getItem('donatti_reviews') || '{}');
+    return all[sectionId] || [];
+  } catch { return []; }
+}
+
+function saveReview(sectionId, rating, text, name) {
+  try {
+    const all = JSON.parse(localStorage.getItem('donatti_reviews') || '{}');
+    if (!all[sectionId]) all[sectionId] = [];
+    all[sectionId].unshift({
+      userId: TG_USER ? String(TG_USER.id) : 'guest_' + Date.now(),
+      name: name || (TG_USER ? TG_USER.first_name : t('guest')),
+      rating,
+      text,
+      date: new Date().toLocaleDateString(window.LANG === 'pt' ? 'pt-BR' : window.LANG === 'uz' ? 'uz-UZ' : 'ru-RU')
+    });
+    localStorage.setItem('donatti_reviews', JSON.stringify(all));
+  } catch(e) { console.warn(e); }
+}
+
+function renderReviewsBlock(sectionId) {
+  const block = document.getElementById('reviewsBlock');
+  if (!block) return;
+  const reviews = getSectionReviews(sectionId);
+  const stars = n => '★'.repeat(n) + '☆'.repeat(5 - n);
+
+  const reviewItems = reviews.length
+    ? reviews.map(r => `
+      <div class="review-card">
+        <div class="review-header">
+          <div class="review-avatar">${(r.name || '?')[0].toUpperCase()}</div>
+          <div class="review-meta">
+            <div class="review-name">${r.name}</div>
+            <div class="review-date">${r.date}</div>
+          </div>
+          <div class="review-stars">${stars(r.rating)}</div>
+        </div>
+        <div class="review-text">${r.text}</div>
+      </div>`).join('')
+    : `<div class="reviews-empty">${t('reviews_empty')}</div>`;
+
+  block.innerHTML = `
+    <div class="reviews-block">
+      <div class="reviews-title">${t('reviews_title')}</div>
+      ${reviewItems}
+      <button class="review-write-btn" onclick="showReviewForm('${sectionId}')">${t('reviews_write')}</button>
+      <div id="reviewForm" style="display:none">
+        <div class="review-form">
+          ${!TG_USER ? `<input class="review-name-input" id="reviewNameInput" placeholder="${t('reviews_name')}">` : ''}
+          <div class="review-stars-input" id="starsInput">
+            ${[1,2,3,4,5].map(n => `<button class="star-btn" data-val="${n}" onclick="setReviewStar(${n})">☆</button>`).join('')}
+          </div>
+          <textarea class="review-textarea" id="reviewTextInput" placeholder="${t('reviews_ph')}"></textarea>
+          <div class="review-form-btns">
+            <button class="review-submit-btn" onclick="submitReview('${sectionId}')">${t('reviews_send')}</button>
+            <button class="review-cancel-btn" onclick="document.getElementById('reviewForm').style.display='none'">${t('reviews_cancel')}</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
+let _reviewRating = 0;
+
+function showReviewForm(sectionId) {
+  _reviewRating = 0;
+  const f = document.getElementById('reviewForm');
+  if (f) f.style.display = 'block';
+  const block = document.getElementById('reviewsBlock');
+  if (block) block.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function setReviewStar(n) {
+  _reviewRating = n;
+  document.querySelectorAll('#starsInput .star-btn').forEach(btn => {
+    btn.textContent = Number(btn.dataset.val) <= n ? '★' : '☆';
+  });
+}
+
+function submitReview(sectionId) {
+  const text = (document.getElementById('reviewTextInput')?.value || '').trim();
+  if (!text) return;
+  if (!_reviewRating) { setReviewStar(5); }
+  const nameInput = document.getElementById('reviewNameInput');
+  const name = TG_USER ? TG_USER.first_name : (nameInput?.value.trim() || t('reviews_name'));
+  saveReview(sectionId, _reviewRating || 5, text, name);
+  renderReviewsBlock(sectionId);
+  if (tg?.showAlert) tg.showAlert(t('reviews_thanks'));
+  else alert(t('reviews_thanks'));
+}
+
+/* ════════════════════════════════════════
+   INIT
+════════════════════════════════════════ */
+applyLang();
+if (TG_USER) {
+  const badge = document.getElementById('userBadge');
+  if (badge) badge.textContent = '👤 ' + TG_USER.first_name;
+}
+updateCartDot();
+initConsultant();
+renderSections();
+</script>
 </body>
 </html>
