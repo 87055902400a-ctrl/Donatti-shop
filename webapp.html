@@ -214,7 +214,8 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
   margin:12px 12px 0;
   background:#ffffff;
   border:1px solid var(--border);border-radius:var(--radius);
-  padding:18px;
+  overflow:hidden;
+  padding:0;
 }
 .banner-name{
   font-family:'Playfair Display',serif;
@@ -528,7 +529,7 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
 <div id="app">
 
   <!-- ═══ HOME ═══ -->
-  <div class="screen active" id="screen-home">
+  <div class="screen" id="screen-home">
     <div class="home-hero">
       <div class="home-hero-top">
         <div id="userBadge" class="user-badge"></div>
@@ -592,7 +593,7 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
   </div>
 
   <!-- ═══ CATALOG ═══ -->
-  <div class="screen" id="screen-catalog">
+  <div class="screen active" id="screen-catalog">
     <div class="page-header">
       <div class="page-title" data-i18n="catalog_title">Каталог</div>
       <div class="page-sub" data-i18n="catalog_sub">12 линеек · 165 позиций</div>
@@ -653,11 +654,11 @@ body{font-family:'Inter',sans-serif;color:var(--text);display:flex;flex-directio
 
 <!-- ── BOTTOM NAV ── -->
 <nav class="nav">
-  <button class="nav-btn active" id="nav-home" onclick="goTo('home')">
+  <button class="nav-btn" id="nav-home" onclick="goTo('home')">
     <span class="icon">🏠</span>
     <span data-i18n="nav_home">Главная</span>
   </button>
-  <button class="nav-btn" id="nav-catalog" onclick="goTo('catalog')">
+  <button class="nav-btn active" id="nav-catalog" onclick="goTo('catalog')">
     <span class="icon">📦</span>
     <span data-i18n="nav_catalog">Каталог</span>
   </button>
@@ -935,9 +936,19 @@ function openSection(id) {
   const icon = SECTION_ICONS[id] || '•';
   const desc = getSectionDesc(currentSection);
   const bannerPhoto = SECTION_PHOTOS[id];
-  document.getElementById('sectionBanner').innerHTML = `
-    <div style="display:flex;align-items:center;gap:16px;">
-      ${bannerPhoto ? `<img src="${bannerPhoto}" alt="${currentSection.name}" style="width:90px;height:90px;object-fit:contain;border-radius:10px;background:#fff;flex-shrink:0;">` : `<div style="font-size:2.5rem">${icon}</div>`}
+  document.getElementById('sectionBanner').innerHTML = bannerPhoto ? `
+    <div style="position:relative;margin:-16px -16px 16px -16px;border-radius:14px 14px 0 0;overflow:hidden;">
+      <img src="${bannerPhoto}" alt="${currentSection.name}" style="width:100%;height:200px;object-fit:cover;display:block;">
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(0,0,0,0.75));">
+        <div style="font-size:.65rem;color:var(--gold);letter-spacing:3px;margin-bottom:2px;">${t('section_label')}</div>
+        <div class="banner-name" style="font-size:1.3rem;">${currentSection.name}</div>
+        <div class="banner-desc" style="font-size:.75rem;opacity:.85;">${desc}</div>
+        <div style="font-size:.65rem;color:rgba(255,255,255,.7);margin-top:4px;">${currentSection.product_count} ${t('positions_word')}</div>
+      </div>
+    </div>
+  ` : `
+    <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
+      <div style="font-size:2.5rem">${icon}</div>
       <div>
         <div style="font-size:.7rem;color:var(--gold);letter-spacing:3px;margin-bottom:4px;">${t('section_label')}</div>
         <div class="banner-name">${currentSection.name}</div>
@@ -961,8 +972,12 @@ function showSections() {
 }
 
 function productCardHTML(p) {
+  const imgHtml = p.image
+    ? `<div style="text-align:center;margin-bottom:8px;"><img src="${p.image}" alt="${p.name}" loading="lazy" style="max-width:100%;max-height:110px;object-fit:contain;border-radius:8px;background:#fff;"></div>`
+    : '';
   return `
     <div class="product-card" onclick="openDetail(${p.number})">
+      ${imgHtml}
       <div class="prod-art">${t('article_prefix')} ${p.number}</div>
       <div class="prod-name">${getProductName(p)}</div>
       <div class="prod-price">${fmt(p.price_sum)} ${t('sum_currency')}</div>
@@ -980,10 +995,10 @@ function openDetail(num) {
   if (!product) return;
 
   const icon = SECTION_ICONS[section.id] || '•';
-  const sectionPhoto = SECTION_PHOTOS[section.id];
+  const productPhoto = product.image || SECTION_PHOTOS[section.id];
   document.getElementById('detailContent').innerHTML = `
-    ${sectionPhoto ? `<div style="text-align:center;background:#fff;border-radius:12px;padding:12px;margin-bottom:14px;border:1px solid var(--border);">
-      <img src="${sectionPhoto}" alt="${product.name}" style="max-width:100%;max-height:200px;object-fit:contain;">
+    ${productPhoto ? `<div style="text-align:center;background:#fff;border-radius:12px;padding:12px;margin-bottom:14px;border:1px solid var(--border);">
+      <img src="${productPhoto}" alt="${product.name}" style="max-width:100%;max-height:220px;object-fit:contain;">
     </div>` : ''}
     <div class="detail-art">${t('article_prefix')} ${product.number}</div>
     <div class="detail-name">${getProductName(product)}</div>
