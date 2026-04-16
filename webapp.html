@@ -937,20 +937,22 @@ function openSection(id) {
   const desc = getSectionDesc(currentSection);
   const bannerPhoto = SECTION_PHOTOS[id];
   document.getElementById('sectionBanner').innerHTML = bannerPhoto ? `
-    <div style="position:relative;margin:-16px -16px 16px -16px;border-radius:14px 14px 0 0;overflow:hidden;">
-      <img src="${bannerPhoto}" alt="${currentSection.name}" style="width:100%;height:200px;object-fit:cover;display:block;">
-      <div style="position:absolute;bottom:0;left:0;right:0;padding:16px;background:linear-gradient(transparent,rgba(0,0,0,0.75));">
-        <div style="font-size:.65rem;color:var(--gold);letter-spacing:3px;margin-bottom:2px;">${t('section_label')}</div>
-        <div class="banner-name" style="font-size:1.3rem;">${currentSection.name}</div>
-        <div class="banner-desc" style="font-size:.75rem;opacity:.85;">${desc}</div>
-        <div style="font-size:.65rem;color:rgba(255,255,255,.7);margin-top:4px;">${currentSection.product_count} ${t('positions_word')}</div>
+    <div style="position:relative;overflow:hidden;border-radius:var(--radius);box-shadow:0 4px 20px rgba(0,0,0,0.15);">
+      <img src="${bannerPhoto}" alt="${currentSection.name}"
+           style="width:100%;height:240px;object-fit:cover;display:block;filter:brightness(0.88);">
+      <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(0,0,0,0.08) 0%,rgba(0,0,0,0.62) 100%);"></div>
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 20px 18px;">
+        <div style="font-size:.6rem;color:var(--gold);letter-spacing:4px;text-transform:uppercase;margin-bottom:4px;">Donatti Professional</div>
+        <div style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:800;color:#fff;letter-spacing:2px;line-height:1.1;text-shadow:0 2px 8px rgba(0,0,0,0.4);">${currentSection.name}</div>
+        <div style="font-size:.72rem;color:rgba(255,255,255,0.82);margin-top:5px;font-style:italic;">${desc}</div>
+        <div style="display:inline-block;margin-top:10px;font-size:.62rem;color:#fff;background:rgba(201,162,54,0.85);border-radius:20px;padding:3px 10px;letter-spacing:1px;">${currentSection.product_count} ${t('positions_word')}</div>
       </div>
     </div>
   ` : `
-    <div style="display:flex;align-items:center;gap:16px;margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:16px;padding:18px;">
       <div style="font-size:2.5rem">${icon}</div>
       <div>
-        <div style="font-size:.7rem;color:var(--gold);letter-spacing:3px;margin-bottom:4px;">${t('section_label')}</div>
+        <div style="font-size:.7rem;color:var(--gold);letter-spacing:3px;margin-bottom:4px;">Donatti Professional</div>
         <div class="banner-name">${currentSection.name}</div>
         <div class="banner-desc">${desc}</div>
         <div style="font-size:.7rem;color:var(--muted);margin-top:6px;">${currentSection.product_count} ${t('positions_word')}</div>
@@ -1214,10 +1216,17 @@ function getQuickTopics() {
     [t('qt_dandruff'),   t('qt_dandruff_q')  ],
     [t('qt_oily'),       t('qt_oily_q')      ],
     [t('qt_dry'),        t('qt_dry_q')       ],
-    [t('qt_irritation'), t('qt_irritation_q')],
     [t('qt_curly'),      t('qt_curly_q')     ],
+    [t('qt_split'),      t('qt_split_q')     ],
+    [t('qt_yellow'),     t('qt_yellow_q')    ],
     [t('qt_bleached'),   t('qt_bleached_q')  ],
+    [t('qt_keratin'),    t('qt_keratin_q')   ],
     [t('qt_colored'),    t('qt_colored_q')   ],
+    [t('qt_detox'),      t('qt_detox_q')     ],
+    [t('qt_structure'),  t('qt_structure_q') ],
+    [t('qt_ph'),         t('qt_ph_q')        ],
+    [t('qt_heat'),       t('qt_heat_q')      ],
+    [t('qt_postpartum'), t('qt_postpartum_q')],
   ];
 }
 

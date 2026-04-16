@@ -77,6 +77,14 @@ const TRANSLATIONS = {
   qt_curly:      { ru: '🌀 Кудрявые',      uz: '🌀 Jingalak',        pt: '🌀 Cacheado'        },
   qt_bleached:   { ru: '⚗️ После осветл.', uz: '⚗️ Oqartirilgan',   pt: '⚗️ Pós-descoloração'},
   qt_colored:    { ru: '🎨 Окрашенные',    uz: '🎨 Bo\'yalgan',      pt: '🎨 Tingido'         },
+  qt_split:      { ru: '✂️ Секущиеся',     uz: '✂️ Yoriladigan',     pt: '✂️ Pontas duplas'   },
+  qt_yellow:     { ru: '👱 Желтизна блонд',uz: '👱 Sariq sochlar',   pt: '👱 Amarelamento'    },
+  qt_keratin:    { ru: '💎 Кератин',       uz: '💎 Keratin',          pt: '💎 Queratina'       },
+  qt_detox:      { ru: '🌿 Детокс',        uz: '🌿 Detoks',           pt: '🌿 Detox'           },
+  qt_structure:  { ru: '🧬 Структура',     uz: '🧬 Tuzilish',         pt: '🧬 Estrutura'       },
+  qt_ph:         { ru: '⚖️ pH баланс',     uz: '⚖️ pH balans',        pt: '⚖️ pH do cabelo'    },
+  qt_heat:       { ru: '♨️ Термозащита',   uz: '♨️ Issiqlikdan himoya',pt: '♨️ Proteção térmica'},
+  qt_postpartum: { ru: '🤱 После родов',   uz: '🤱 Tug\'ruqdan keyin',pt: '🤱 Pós-parto'       },
 
   /* ── Быстрые темы — запросы ── */
   qt_hairloss_q: {
@@ -118,6 +126,46 @@ const TRANSLATIONS = {
     ru: 'окрашенные волосы, цвет быстро вымывается, желтизна',
     uz: 'bo\'yalgan sochlar, rang tez yuviladi, sariqlik bor',
     pt: 'cabelo tingido, a cor desboa rápido, amarelamento'
+  },
+  qt_split_q: {
+    ru: 'секущиеся кончики, волосы сильно ломаются',
+    uz: 'yorilgan uchlar, sochlar ko\'p sinadi',
+    pt: 'pontas duplas, cabelo quebrando muito'
+  },
+  qt_yellow_q: {
+    ru: 'желтизна на осветлённых волосах, хочу холодный блонд',
+    uz: 'oqartirilgan sochlarda sariqlik, sovuq blond istayapman',
+    pt: 'amarelamento no cabelo descolorido, quero loiro frio'
+  },
+  qt_keratin_q: {
+    ru: 'расскажи о кератиновом выпрямлении Baobá, как это работает',
+    uz: 'Baobá keratin tekislash haqida aytib bering',
+    pt: 'fale sobre o alisamento de queratina Baobá, como funciona'
+  },
+  qt_detox_q: {
+    ru: 'детокс кожи головы, хочу очистить от силиконов и накоплений',
+    uz: 'bosh terisi detoksi, silikonlardan tozamoqchiman',
+    pt: 'detox do couro cabeludo, quero remover silicones e resíduos'
+  },
+  qt_structure_q: {
+    ru: 'расскажи о строении волоса, почему он повреждается',
+    uz: 'soch tuzilishi haqida aytib bering, nima uchun shikastlanadi',
+    pt: 'explique a estrutura do fio de cabelo, por que ele se danifica'
+  },
+  qt_ph_q: {
+    ru: 'что такое pH баланс волос и почему он важен',
+    uz: 'sochning pH balansi nima va nima uchun muhim',
+    pt: 'o que é pH do cabelo e por que é importante'
+  },
+  qt_heat_q: {
+    ru: 'как защитить волосы от утюжка и фена, термозащита',
+    uz: 'sochlarni dazmol va fen ta\'siridan qanday himoyalash',
+    pt: 'como proteger o cabelo do chapinha e secador, proteção térmica'
+  },
+  qt_postpartum_q: {
+    ru: 'выпадение волос после родов, что делать и какие средства помогут',
+    uz: 'tug\'ruqdan keyin soch to\'kilishi, nima qilish kerak',
+    pt: 'queda de cabelo pós-parto, o que fazer e quais produtos ajudam'
   },
 
   /* ── Консультант — сообщения движка ── */

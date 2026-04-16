@@ -1,12 +1,12 @@
 const CATALOG_DATA = {
-  "total_products": 165,
+  "total_products": 164,
   "sections": [
     {
       "id": "SPECIALE",
       "name": "SPECIALE",
       "description": "Preparação - Линия подготовки и питания волос",
-      "description_pt": "Preparação e nutrição capilar",
-      "description_uz": "Sochlarni tayyorlash va oziqlanish liniyasi",
+      "description_pt": "",
+      "description_uz": "",
       "product_count": 10,
       "products": [
         {
@@ -69,7 +69,8 @@ const CATALOG_DATA = {
           "price_eur_base": 0.4,
           "cost_sum": 8227,
           "price_sum": 20568,
-          "price_eur": 1.45
+          "price_eur": 1.45,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/SPECIALE.jpeg"
         },
         {
           "number": 178,
@@ -77,7 +78,8 @@ const CATALOG_DATA = {
           "price_eur_base": 0.4,
           "cost_sum": 8227,
           "price_sum": 20568,
-          "price_eur": 1.45
+          "price_eur": 1.45,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/SPECIALE.jpeg"
         },
         {
           "number": 189,
@@ -85,7 +87,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.22,
           "cost_sum": 46662,
           "price_sum": 116656,
-          "price_eur": 8.25
+          "price_eur": 8.25,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/SPECIALE.jpeg"
         },
         {
           "number": 190,
@@ -93,24 +96,17 @@ const CATALOG_DATA = {
           "price_eur_base": 1.94,
           "cost_sum": 41641,
           "price_sum": 104103,
-          "price_eur": 7.36
+          "price_eur": 7.36,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/SPECIALE.jpeg"
         }
-      ],
-      "videos": [
-        {
-          "page": 6,
-          "url": "https://youtu.be/wbEaN_tE2pk?si=cQLZ7yqZxbctKyYA"
-        }
-      ],
-      "has_professional": true,
-      "has_maintenance": true
+      ]
     },
     {
       "id": "THEION",
-      "name": "THEION EVOLUTION",
+      "name": "THEION",
       "description": "Proteção - Защита для блонд-волос",
-      "description_pt": "Proteção especializada para cabelos loiros e descoloridos",
-      "description_uz": "Blond va oqartirilgan sochlarni himoya qilish liniyasi",
+      "description_pt": "",
+      "description_uz": "",
       "product_count": 8,
       "products": [
         {
@@ -173,7 +169,8 @@ const CATALOG_DATA = {
           "price_eur_base": 0.4,
           "cost_sum": 8227,
           "price_sum": 20568,
-          "price_eur": 1.45
+          "price_eur": 1.45,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/THEION.jpeg"
         },
         {
           "number": 183,
@@ -181,24 +178,17 @@ const CATALOG_DATA = {
           "price_eur_base": 0.4,
           "cost_sum": 8227,
           "price_sum": 20568,
-          "price_eur": 1.45
+          "price_eur": 1.45,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/THEION.jpeg"
         }
-      ],
-      "videos": [
-        {
-          "page": 8,
-          "url": "https://youtu.be/H5qF-G1dDek?si=j2keRhiXqIFacmGP"
-        }
-      ],
-      "has_professional": true,
-      "has_maintenance": true
+      ]
     },
     {
       "id": "COLORE",
       "name": "COLORE",
       "description": "Transformação - Профессиональное окрашивание",
-      "description_pt": "Coloração profissional e cuidado para cabelos coloridos",
-      "description_uz": "Professional soch bo'yash va bo'yalgan sochlarni parvarishi",
+      "description_pt": "",
+      "description_uz": "",
       "product_count": 55,
       "products": [
         {
@@ -324,7 +314,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.63,
           "cost_sum": 51379,
           "price_sum": 128446,
-          "price_eur": 9.08
+          "price_eur": 9.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/COLORE.jpeg"
         },
         {
           "number": 102,
@@ -695,30 +686,14 @@ const CATALOG_DATA = {
           "price_eur": 9.08,
           "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/COLORE/coloracaotom (41).png"
         }
-      ],
-      "videos": [
-        {
-          "page": 10,
-          "url": "https://www.youtube.com/watch?v=tXRGXTPNqlI"
-        },
-        {
-          "page": 11,
-          "url": "https://www.youtube.com/watch?v=tXRGXTPNqlI"
-        },
-        {
-          "page": 12,
-          "url": "https://www.youtube.com/watch?v=tXRGXTPNqlI"
-        }
-      ],
-      "has_professional": false,
-      "has_maintenance": false
+      ]
     },
     {
       "id": "CREAM BLOND",
       "name": "CREAM BLOND",
       "description": "Descoloração - Осветляющий крем (безопаснее в 15 раз)",
-      "description_pt": "Creme descolorante — 15x mais seguro que o convencional",
-      "description_uz": "Oqartiruvchi krem — oddiydan 15 marta xavfsizroq",
+      "description_pt": "",
+      "description_uz": "",
       "product_count": 2,
       "products": [
         {
@@ -739,22 +714,14 @@ const CATALOG_DATA = {
           "price_eur": 81.55,
           "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/CREAM_BLOND/creamblonde34.jpg"
         }
-      ],
-      "videos": [
-        {
-          "page": 13,
-          "url": "https://youtu.be/LgqoL1Tavuc?si=Z6H2aymKugppLh_B"
-        }
-      ],
-      "has_professional": false,
-      "has_maintenance": false
+      ]
     },
     {
       "id": "BAOBÁ REDUCE",
       "name": "BAOBÁ REDUCE",
       "description": "K-Drive Technology - Разглаживание и сокращение объёма",
-      "description_pt": "Alisamento capilar e redução de volume com K-Drive Technology",
-      "description_uz": "K-Drive texnologiyasi bilan sochni tekislash va hajmni kamaytirish",
+      "description_pt": "",
+      "description_uz": "",
       "product_count": 9,
       "products": [
         {
@@ -838,30 +805,14 @@ const CATALOG_DATA = {
           "price_eur": 118.73,
           "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/BAOBA_REDUCE/baoba9.png"
         }
-      ],
-      "videos": [
-        {
-          "page": 14,
-          "url": "https://youtu.be/uYG0lVK3ZLM?si=viW1CtCIi0hz3gbJ"
-        },
-        {
-          "page": 16,
-          "url": "https://youtu.be/zWdlN47b7To?si=043WuvpUuqS860tQ"
-        },
-        {
-          "page": 17,
-          "url": "https://youtu.be/zWdlN47b7To?si=043WuvpUuqS860tQ"
-        }
-      ],
-      "has_professional": true,
-      "has_maintenance": true
+      ]
     },
     {
       "id": "DNAVANZE",
       "name": "DNAVANZE",
       "description": "Reconstrução - Регенерация и реставрация волос",
-      "description_pt": "Reconstrução e regeneração capilar com Mimetecnol Technology",
-      "description_uz": "Mimetecnol texnologiyasi bilan sochlarni regeneratsiya va tiklash",
+      "description_pt": "",
+      "description_uz": "",
       "product_count": 6,
       "products": [
         {
@@ -918,26 +869,14 @@ const CATALOG_DATA = {
           "price_eur": 17.55,
           "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/DNAVANZE/dna34.jpg"
         }
-      ],
-      "videos": [
-        {
-          "page": 19,
-          "url": "https://youtu.be/OkAnZdwgCeA?si=QZR_ogYrQvZvQWNS"
-        },
-        {
-          "page": 20,
-          "url": "https://youtu.be/70xT_lWEsRA?si=qiPVa6AIcfRUEMv0"
-        }
-      ],
-      "has_professional": true,
-      "has_maintenance": true
+      ]
     },
     {
       "id": "BIODETOX",
       "name": "BIODETOX",
       "description": "Limpeza Profunda - Глубокая детоксикация углеродом",
-      "description_pt": "Limpeza profunda e desintoxicação com carvão ativado",
-      "description_uz": "Faollashtirilgan ko'mir bilan chuqur tozalash va detoksifikatsiya",
+      "description_pt": "",
+      "description_uz": "",
       "product_count": 10,
       "products": [
         {
@@ -955,7 +894,8 @@ const CATALOG_DATA = {
           "price_eur_base": 4.42,
           "cost_sum": 99292,
           "price_sum": 248230,
-          "price_eur": 17.55
+          "price_eur": 17.55,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/BIODETOX/biodetox43.jpg"
         },
         {
           "number": 12,
@@ -963,7 +903,8 @@ const CATALOG_DATA = {
           "price_eur_base": 5.29,
           "cost_sum": 114893,
           "price_sum": 287232,
-          "price_eur": 20.31
+          "price_eur": 20.31,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/BIODETOX/biodetox41.jpg"
         },
         {
           "number": 13,
@@ -971,7 +912,8 @@ const CATALOG_DATA = {
           "price_eur_base": 9.44,
           "cost_sum": 173495,
           "price_sum": 433738,
-          "price_eur": 30.67
+          "price_eur": 30.67,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/BIODETOX/biodetox18.jpg"
         },
         {
           "number": 14,
@@ -988,7 +930,8 @@ const CATALOG_DATA = {
           "price_eur_base": 14.57,
           "cost_sum": 321894,
           "price_sum": 804736,
-          "price_eur": 56.91
+          "price_eur": 56.91,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/BIODETOX/biodetox7.jpg"
         },
         {
           "number": 16,
@@ -1005,7 +948,8 @@ const CATALOG_DATA = {
           "price_eur_base": 14.99,
           "cost_sum": 276708,
           "price_sum": 691770,
-          "price_eur": 48.92
+          "price_eur": 48.92,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/BIODETOX/biodetox18.jpg"
         },
         {
           "number": 179,
@@ -1013,7 +957,8 @@ const CATALOG_DATA = {
           "price_eur_base": 0.4,
           "cost_sum": 8227,
           "price_sum": 20568,
-          "price_eur": 1.45
+          "price_eur": 1.45,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/BIODETOX.jpeg"
         },
         {
           "number": 180,
@@ -1021,28 +966,17 @@ const CATALOG_DATA = {
           "price_eur_base": 0.4,
           "cost_sum": 8227,
           "price_sum": 20568,
-          "price_eur": 1.45
+          "price_eur": 1.45,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/BIODETOX.jpeg"
         }
-      ],
-      "videos": [
-        {
-          "page": 23,
-          "url": "https://youtu.be/ymV62650xCA?si=4kXh8oHflJctf4Eu"
-        },
-        {
-          "page": 24,
-          "url": "https://youtu.be/ukA7EH_g5Ts?si=_TZ-Aspt4B-GR6K_"
-        }
-      ],
-      "has_professional": true,
-      "has_maintenance": true
+      ]
     },
     {
       "id": "MIO RICCI",
       "name": "MIO RICCI",
       "description": "Cachos - Уход за кудрями без сульфатов",
-      "description_pt": "Cuidado para cachos e cabelos crespos sem sulfatos",
-      "description_uz": "Sulfatsiz jingalak va to'lqinli sochlarni parvarishi",
+      "description_pt": "",
+      "description_uz": "",
       "product_count": 8,
       "products": [
         {
@@ -1052,7 +986,7 @@ const CATALOG_DATA = {
           "cost_sum": 99292,
           "price_sum": 248230,
           "price_eur": 17.55,
-          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/MIO_RICCI/mioricci12.jpg"
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/MIO_RICCI/mioricci20.jpg"
         },
         {
           "number": 40,
@@ -1061,7 +995,7 @@ const CATALOG_DATA = {
           "cost_sum": 171379,
           "price_sum": 428447,
           "price_eur": 30.3,
-          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/MIO_RICCI/mioricci3.jpg"
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/MIO_RICCI/mioricci13.jpg"
         },
         {
           "number": 41,
@@ -1070,7 +1004,7 @@ const CATALOG_DATA = {
           "cost_sum": 199474,
           "price_sum": 498685,
           "price_eur": 35.27,
-          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/MIO_RICCI/mioricci10.jpg"
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/MIO_RICCI/mioricci14.jpg"
         },
         {
           "number": 42,
@@ -1079,7 +1013,7 @@ const CATALOG_DATA = {
           "cost_sum": 214178,
           "price_sum": 535446,
           "price_eur": 37.86,
-          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/MIO_RICCI/mioricci9.jpg"
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/MIO_RICCI/mioricci43.jpg"
         },
         {
           "number": 43,
@@ -1087,7 +1021,8 @@ const CATALOG_DATA = {
           "price_eur_base": 6.79,
           "cost_sum": 129666,
           "price_sum": 324164,
-          "price_eur": 22.92
+          "price_eur": 22.92,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/MIO_RICCI/mioricci28.jpg"
         },
         {
           "number": 44,
@@ -1095,7 +1030,8 @@ const CATALOG_DATA = {
           "price_eur_base": 16.88,
           "cost_sum": 363317,
           "price_sum": 908293,
-          "price_eur": 64.23
+          "price_eur": 64.23,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/MIO_RICCI/mioricci34.jpg"
         },
         {
           "number": 45,
@@ -1103,7 +1039,8 @@ const CATALOG_DATA = {
           "price_eur_base": 15.19,
           "cost_sum": 333012,
           "price_sum": 832531,
-          "price_eur": 58.87
+          "price_eur": 58.87,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/MIO_RICCI/mioricci34.jpg"
         },
         {
           "number": 46,
@@ -1111,24 +1048,17 @@ const CATALOG_DATA = {
           "price_eur_base": 15.01,
           "cost_sum": 329785,
           "price_sum": 824461,
-          "price_eur": 58.3
+          "price_eur": 58.3,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/MIO_RICCI/mioricci34.jpg"
         }
-      ],
-      "videos": [
-        {
-          "page": 25,
-          "url": "https://youtu.be/UHIC3gO9Px0?si=JxbYujGhLuJEmcLT"
-        }
-      ],
-      "has_professional": true,
-      "has_maintenance": true
+      ]
     },
     {
       "id": "NATURALE",
       "name": "NATURALE",
       "description": "Máscaras Ultra Hidratantes - Monoi Tahiti и Ojon",
-      "description_pt": "Máscaras ultra hidratantes com Monoi Tahiti e Óleo de Ojon",
-      "description_uz": "Monoi Tahiti va Ojon yog'i bilan ultra namlashtiruvchi maskalar",
+      "description_pt": "",
+      "description_uz": "",
       "product_count": 4,
       "products": [
         {
@@ -1164,28 +1094,17 @@ const CATALOG_DATA = {
           "price_eur_base": 9.32,
           "cost_sum": 227752,
           "price_sum": 569379,
-          "price_eur": 40.26
+          "price_eur": 40.26,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/images/NATURALE/naturale4.jpg"
         }
-      ],
-      "videos": [
-        {
-          "page": 26,
-          "url": "https://www.youtube.com/watch?v=vSvRpkdHkN8"
-        },
-        {
-          "page": 28,
-          "url": "https://youtu.be/vWzTd327_UY?si=pRMIeHlAmlbbC19T"
-        }
-      ],
-      "has_professional": true,
-      "has_maintenance": true
+      ]
     },
     {
       "id": "LUXURY",
-      "name": "GLAMOROUS LUXURY",
+      "name": "LUXURY",
       "description": "Линия премиум-стайлинга и финишеров",
-      "description_pt": "Linha premium de styling e finalizadores com ouro e caviar",
-      "description_uz": "Oltin va ikra bilan premium stayling va yakunlovchi liniyasi",
+      "description_pt": "",
+      "description_uz": "",
       "product_count": 7,
       "products": [
         {
@@ -1194,7 +1113,8 @@ const CATALOG_DATA = {
           "price_eur_base": 5.62,
           "cost_sum": 108685,
           "price_sum": 271713,
-          "price_eur": 19.21
+          "price_eur": 19.21,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/LUXURY.jpeg"
         },
         {
           "number": 54,
@@ -1202,7 +1122,8 @@ const CATALOG_DATA = {
           "price_eur_base": 3.84,
           "cost_sum": 73076,
           "price_sum": 182690,
-          "price_eur": 12.92
+          "price_eur": 12.92,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/LUXURY.jpeg"
         },
         {
           "number": 55,
@@ -1210,7 +1131,8 @@ const CATALOG_DATA = {
           "price_eur_base": 3.94,
           "cost_sum": 74869,
           "price_sum": 187173,
-          "price_eur": 13.24
+          "price_eur": 13.24,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/LUXURY.jpeg"
         },
         {
           "number": 191,
@@ -1218,7 +1140,8 @@ const CATALOG_DATA = {
           "price_eur_base": 5.43,
           "cost_sum": 107914,
           "price_sum": 269785,
-          "price_eur": 19.08
+          "price_eur": 19.08,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/LUXURY.jpeg"
         },
         {
           "number": 192,
@@ -1226,7 +1149,8 @@ const CATALOG_DATA = {
           "price_eur_base": 8.48,
           "cost_sum": 210053,
           "price_sum": 525132,
-          "price_eur": 37.14
+          "price_eur": 37.14,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/LUXURY.jpeg"
         },
         {
           "number": 193,
@@ -1234,7 +1158,8 @@ const CATALOG_DATA = {
           "price_eur_base": 5.91,
           "cost_sum": 121793,
           "price_sum": 304483,
-          "price_eur": 21.53
+          "price_eur": 21.53,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/LUXURY.jpeg"
         },
         {
           "number": 194,
@@ -1242,24 +1167,17 @@ const CATALOG_DATA = {
           "price_eur_base": 7.1,
           "cost_sum": 143132,
           "price_sum": 357831,
-          "price_eur": 25.3
+          "price_eur": 25.3,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/LUXURY.jpeg"
         }
-      ],
-      "videos": [
-        {
-          "page": 29,
-          "url": "https://youtu.be/aQgbWBNAlGk?si=QC0vjZ5f-Jf2H_dA"
-        }
-      ],
-      "has_professional": true,
-      "has_maintenance": false
+      ]
     },
     {
       "id": "PREMIUM VIOLET",
       "name": "PREMIUM VIOLET",
       "description": "Нейтрализация желтизны для блондинок",
-      "description_pt": "Neutralização do amarelamento para loiras e descoloridas",
-      "description_uz": "Blond va oqartirilgan sochlar uchun sariqlikni neytralizatsiya",
+      "description_pt": "",
+      "description_uz": "",
       "product_count": 5,
       "products": [
         {
@@ -1268,7 +1186,8 @@ const CATALOG_DATA = {
           "price_eur_base": 4.57,
           "cost_sum": 101982,
           "price_sum": 254955,
-          "price_eur": 18.03
+          "price_eur": 18.03,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 19,
@@ -1276,7 +1195,8 @@ const CATALOG_DATA = {
           "price_eur_base": 4.83,
           "cost_sum": 106644,
           "price_sum": 266611,
-          "price_eur": 18.85
+          "price_eur": 18.85,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 20,
@@ -1284,7 +1204,8 @@ const CATALOG_DATA = {
           "price_eur_base": 7.83,
           "cost_sum": 160440,
           "price_sum": 401100,
-          "price_eur": 28.36
+          "price_eur": 28.36,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 21,
@@ -1292,7 +1213,8 @@ const CATALOG_DATA = {
           "price_eur_base": 13.1,
           "cost_sum": 295534,
           "price_sum": 738836,
-          "price_eur": 52.25
+          "price_eur": 52.25,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 22,
@@ -1300,24 +1222,17 @@ const CATALOG_DATA = {
           "price_eur_base": 14.96,
           "cost_sum": 328888,
           "price_sum": 822220,
-          "price_eur": 58.14
+          "price_eur": 58.14,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         }
-      ],
-      "videos": [
-        {
-          "page": 30,
-          "url": "https://www.youtube.com/watch?v=4bJDp3XNZ9E"
-        }
-      ],
-      "has_professional": true,
-      "has_maintenance": true
+      ]
     },
     {
       "id": "EXTRA",
-      "name": "ДОПОЛНИТЕЛЬНЫЕ ПРОДУКТЫ",
+      "name": "EXTRA",
       "description": "Специализированные линии и аксессуары",
-      "description_pt": "Linhas especializadas, acessórios e produtos adicionais",
-      "description_uz": "Ixtisoslashtirilgan liniyalar, aksessuarlar va qo'shimcha mahsulotlar",
+      "description_pt": "",
+      "description_uz": "",
       "product_count": 40,
       "products": [
         {
@@ -1326,7 +1241,8 @@ const CATALOG_DATA = {
           "price_eur_base": 7.92,
           "cost_sum": 289632,
           "price_sum": 724079,
-          "price_eur": 51.2
+          "price_eur": 51.2,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 30,
@@ -1334,7 +1250,8 @@ const CATALOG_DATA = {
           "price_eur_base": 8.41,
           "cost_sum": 298418,
           "price_sum": 746046,
-          "price_eur": 52.76
+          "price_eur": 52.76,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 31,
@@ -1342,7 +1259,8 @@ const CATALOG_DATA = {
           "price_eur_base": 7.92,
           "cost_sum": 289632,
           "price_sum": 724079,
-          "price_eur": 51.2
+          "price_eur": 51.2,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 32,
@@ -1350,7 +1268,8 @@ const CATALOG_DATA = {
           "price_eur_base": 8.41,
           "cost_sum": 298418,
           "price_sum": 746046,
-          "price_eur": 52.76
+          "price_eur": 52.76,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 33,
@@ -1358,7 +1277,8 @@ const CATALOG_DATA = {
           "price_eur_base": 11.54,
           "cost_sum": 529431,
           "price_sum": 1323578,
-          "price_eur": 93.6
+          "price_eur": 93.6,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 34,
@@ -1366,7 +1286,8 @@ const CATALOG_DATA = {
           "price_eur_base": 11.54,
           "cost_sum": 529431,
           "price_sum": 1323578,
-          "price_eur": 93.6
+          "price_eur": 93.6,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 35,
@@ -1374,7 +1295,8 @@ const CATALOG_DATA = {
           "price_eur_base": 11.54,
           "cost_sum": 529431,
           "price_sum": 1323578,
-          "price_eur": 93.6
+          "price_eur": 93.6,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 36,
@@ -1382,7 +1304,8 @@ const CATALOG_DATA = {
           "price_eur_base": 11.54,
           "cost_sum": 529431,
           "price_sum": 1323578,
-          "price_eur": 93.6
+          "price_eur": 93.6,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 37,
@@ -1390,7 +1313,8 @@ const CATALOG_DATA = {
           "price_eur_base": 6.79,
           "cost_sum": 153389,
           "price_sum": 383472,
-          "price_eur": 27.12
+          "price_eur": 27.12,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 38,
@@ -1398,7 +1322,8 @@ const CATALOG_DATA = {
           "price_eur_base": 10.36,
           "cost_sum": 217406,
           "price_sum": 543515,
-          "price_eur": 38.44
+          "price_eur": 38.44,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 51,
@@ -1406,7 +1331,8 @@ const CATALOG_DATA = {
           "price_eur_base": 9.44,
           "cost_sum": 229904,
           "price_sum": 574759,
-          "price_eur": 40.64
+          "price_eur": 40.64,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 52,
@@ -1414,7 +1340,8 @@ const CATALOG_DATA = {
           "price_eur_base": 16.18,
           "cost_sum": 350765,
           "price_sum": 876912,
-          "price_eur": 62.01
+          "price_eur": 62.01,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 56,
@@ -1422,7 +1349,8 @@ const CATALOG_DATA = {
           "price_eur_base": 4.42,
           "cost_sum": 99292,
           "price_sum": 248230,
-          "price_eur": 17.55
+          "price_eur": 17.55,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 57,
@@ -1430,7 +1358,8 @@ const CATALOG_DATA = {
           "price_eur_base": 5.29,
           "cost_sum": 114893,
           "price_sum": 287232,
-          "price_eur": 20.31
+          "price_eur": 20.31,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 58,
@@ -1438,7 +1367,8 @@ const CATALOG_DATA = {
           "price_eur_base": 4.42,
           "cost_sum": 99292,
           "price_sum": 248230,
-          "price_eur": 17.55
+          "price_eur": 17.55,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 59,
@@ -1446,7 +1376,8 @@ const CATALOG_DATA = {
           "price_eur_base": 19.04,
           "cost_sum": 361457,
           "price_sum": 903644,
-          "price_eur": 63.9
+          "price_eur": 63.9,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 60,
@@ -1454,7 +1385,8 @@ const CATALOG_DATA = {
           "price_eur_base": 15.82,
           "cost_sum": 303717,
           "price_sum": 759291,
-          "price_eur": 53.69
+          "price_eur": 53.69,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 61,
@@ -1462,7 +1394,8 @@ const CATALOG_DATA = {
           "price_eur_base": 4.42,
           "cost_sum": 99292,
           "price_sum": 248230,
-          "price_eur": 17.55
+          "price_eur": 17.55,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 62,
@@ -1470,7 +1403,8 @@ const CATALOG_DATA = {
           "price_eur_base": 4.42,
           "cost_sum": 99292,
           "price_sum": 248230,
-          "price_eur": 17.55
+          "price_eur": 17.55,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 63,
@@ -1478,7 +1412,8 @@ const CATALOG_DATA = {
           "price_eur_base": 5.29,
           "cost_sum": 114893,
           "price_sum": 287232,
-          "price_eur": 20.31
+          "price_eur": 20.31,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 64,
@@ -1486,7 +1421,8 @@ const CATALOG_DATA = {
           "price_eur_base": 4.42,
           "cost_sum": 99292,
           "price_sum": 248230,
-          "price_eur": 17.55
+          "price_eur": 17.55,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 65,
@@ -1494,7 +1430,8 @@ const CATALOG_DATA = {
           "price_eur_base": 11.99,
           "cost_sum": 275630,
           "price_sum": 689075,
-          "price_eur": 48.73
+          "price_eur": 48.73,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 66,
@@ -1502,7 +1439,8 @@ const CATALOG_DATA = {
           "price_eur_base": 16.1,
           "cost_sum": 349330,
           "price_sum": 873326,
-          "price_eur": 61.76
+          "price_eur": 61.76,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 67,
@@ -1510,7 +1448,8 @@ const CATALOG_DATA = {
           "price_eur_base": 11.21,
           "cost_sum": 232648,
           "price_sum": 581620,
-          "price_eur": 41.13
+          "price_eur": 41.13,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 80,
@@ -1518,7 +1457,8 @@ const CATALOG_DATA = {
           "price_eur_base": 37.98,
           "cost_sum": 619196,
           "price_sum": 1547991,
-          "price_eur": 109.47
+          "price_eur": 109.47,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 81,
@@ -1526,7 +1466,8 @@ const CATALOG_DATA = {
           "price_eur_base": 48.2,
           "cost_sum": 885408,
           "price_sum": 2213519,
-          "price_eur": 156.53
+          "price_eur": 156.53,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 82,
@@ -1534,7 +1475,8 @@ const CATALOG_DATA = {
           "price_eur_base": 1.13,
           "cost_sum": 20666,
           "price_sum": 51666,
-          "price_eur": 3.65
+          "price_eur": 3.65,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 83,
@@ -1542,7 +1484,8 @@ const CATALOG_DATA = {
           "price_eur_base": 1.01,
           "cost_sum": 19417,
           "price_sum": 48542,
-          "price_eur": 3.43
+          "price_eur": 3.43,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 84,
@@ -1550,7 +1493,8 @@ const CATALOG_DATA = {
           "price_eur_base": 1.13,
           "cost_sum": 20666,
           "price_sum": 51666,
-          "price_eur": 3.65
+          "price_eur": 3.65,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 92,
@@ -1558,7 +1502,8 @@ const CATALOG_DATA = {
           "price_eur_base": 63.92,
           "cost_sum": 1241104,
           "price_sum": 3102759,
-          "price_eur": 219.42
+          "price_eur": 219.42,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 143,
@@ -1566,7 +1511,8 @@ const CATALOG_DATA = {
           "price_eur_base": 78.84,
           "cost_sum": 1545551,
           "price_sum": 3863878,
-          "price_eur": 273.24
+          "price_eur": 273.24,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 181,
@@ -1574,7 +1520,8 @@ const CATALOG_DATA = {
           "price_eur_base": 0.4,
           "cost_sum": 8227,
           "price_sum": 20568,
-          "price_eur": 1.45
+          "price_eur": 1.45,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 184,
@@ -1582,7 +1529,8 @@ const CATALOG_DATA = {
           "price_eur_base": 0.4,
           "cost_sum": 8227,
           "price_sum": 20568,
-          "price_eur": 1.45
+          "price_eur": 1.45,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 185,
@@ -1590,7 +1538,8 @@ const CATALOG_DATA = {
           "price_eur_base": 2.22,
           "cost_sum": 46662,
           "price_sum": 116656,
-          "price_eur": 8.25
+          "price_eur": 8.25,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 186,
@@ -1598,7 +1547,8 @@ const CATALOG_DATA = {
           "price_eur_base": 1.94,
           "cost_sum": 41641,
           "price_sum": 104103,
-          "price_eur": 7.36
+          "price_eur": 7.36,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 187,
@@ -1606,7 +1556,8 @@ const CATALOG_DATA = {
           "price_eur_base": 0.4,
           "cost_sum": 8227,
           "price_sum": 20568,
-          "price_eur": 1.45
+          "price_eur": 1.45,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 188,
@@ -1614,7 +1565,8 @@ const CATALOG_DATA = {
           "price_eur_base": 0.4,
           "cost_sum": 8227,
           "price_sum": 20568,
-          "price_eur": 1.45
+          "price_eur": 1.45,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 195,
@@ -1622,7 +1574,8 @@ const CATALOG_DATA = {
           "price_eur_base": 6.97,
           "cost_sum": 156617,
           "price_sum": 391542,
-          "price_eur": 27.69
+          "price_eur": 27.69,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 196,
@@ -1630,7 +1583,8 @@ const CATALOG_DATA = {
           "price_eur_base": 6.97,
           "cost_sum": 156617,
           "price_sum": 391542,
-          "price_eur": 27.69
+          "price_eur": 27.69,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         },
         {
           "number": 197,
@@ -1638,12 +1592,10 @@ const CATALOG_DATA = {
           "price_eur_base": 6.97,
           "cost_sum": 156617,
           "price_sum": 391542,
-          "price_eur": 27.69
+          "price_eur": 27.69,
+          "image": "https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg"
         }
-      ],
-      "videos": [],
-      "has_professional": false,
-      "has_maintenance": false
+      ]
     }
   ]
 };
