@@ -1246,9 +1246,11 @@ const HAIR_LABELS = {
 
 /* ── Catalog init ────────────────────────── */
 function initCatalog() {
-  if (!window.CATALOG_DATA?.sections) return;
-  catalog = CATALOG_DATA.sections;
-  renderCatGrid();
+  try {
+    if (!CATALOG_DATA?.sections) return;
+    catalog = CATALOG_DATA.sections;
+    renderCatGrid();
+  } catch(e) { console.error('initCatalog:', e); }
 }
 
 function renderCatGrid() {
@@ -1350,7 +1352,7 @@ function renderProducts(sec) {
 function goProduct(num) {
   hap('light');
   let p=null, sid=null;
-  for(const s of catalog){ const x=s.products?.find(p=>p.number===num); if(x){p=x;sid=s.id;break;} }
+  for(const s of catalog){ const x=s.products?.find(pr=>pr.number===num); if(x){p=x;sid=s.id;break;} }
   if(!p) return;
   curProduct={...p,sectionId:sid};
   dQtyVal=1;
@@ -1551,7 +1553,7 @@ function showCResults(){
 function qAdd(num){
   hap('medium');
   let p=null,sid=null;
-  for(const s of catalog){const x=s.products?.find(p=>p.number===num);if(x){p=x;sid=s.id;break;}}
+  for(const s of catalog){const x=s.products?.find(pr=>pr.number===num);if(x){p=x;sid=s.id;break;}}
   if(!p) return;
   const ex=cart.find(i=>i.num===num);
   if(ex) ex.qty++;
