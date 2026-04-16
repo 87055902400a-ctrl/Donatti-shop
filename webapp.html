@@ -1193,7 +1193,16 @@ function checkout() {
   const discountAmt = Math.round(subtotal * tier.pct);
   const total     = subtotal - discountAmt;
 
-  const orderData = JSON.stringify({ cart, total, discount: discountAmt, tier: tier.name });
+  const items = cart.map(i => ({ number: i.num, name: i.name, qty: i.qty, price: i.price }));
+  const orderData = JSON.stringify({
+    type: "order",
+    items,
+    total,
+    discount: discountAmt,
+    name: window.TG_USER?.first_name || "—",
+    phone: "—",
+    delivery: "—"
+  });
 
   if (tg) {
     tg.sendData(orderData);
