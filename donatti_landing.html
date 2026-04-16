@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donatti Professionale — Официальный дистрибьютор в Узбекистане</title>
+<meta name="description" content="Donatti Professionale — бразильская профессиональная косметика для волос. Партнёрство для салонов Узбекистана. Официальный дистрибьютор — Malini Beauty Group.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ===================== RESET & BASE ===================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background: #0A0806;
+  color: #F5F0E8;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ===================== CSS VARS ===================== */
+:root {
+  --bg:      #0A0806;
+  --bg-2:    #120E0A;
+  --bg-3:    #1A1612;
+  --gold:    #C9A84C;
+  --gold-l:  #E8D5A3;
+  --gold-bg: rgba(201,168,76,.12);
+  --text:    #F5F0E8;
+  --text-2:  #B8A898;
+  --text-3:  #8A7A6A;
+  --div:     #2A2420;
+}
+
+/* ===================== TYPOGRAPHY ===================== */
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  line-height: 1.15;
+}
+.label-gold {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+.section-title {
+  font-size: clamp(36px, 5vw, 64px);
+  color: var(--text);
+}
+.section-sub {
+  font-size: clamp(14px, 2vw, 17px);
+  color: var(--text-3);
+  font-weight: 300;
+  max-width: 520px;
+}
+
+/* ===================== BUTTONS ===================== */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 34px;
+  border: 1.5px solid var(--gold);
+  background: var(--gold-bg);
+  color: var(--gold-l);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all .3s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.btn-gold:hover {
+  background: var(--gold);
+  color: #0A0806;
+}
+.btn-gold-fill {
+  background: var(--gold);
+  color: #0A0806;
+}
+.btn-gold-fill:hover {
+  background: var(--gold-l);
+}
+
+/* ===================== ANIMATIONS ===================== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-up.delay-1 { transition-delay: .15s; }
+.fade-up.delay-2 { transition-delay: .3s; }
+.fade-up.delay-3 { transition-delay: .45s; }
+.fade-up.delay-4 { transition-delay: .6s; }
+
+/* ===================== NAV ===================== */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 22px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  transition: background .4s ease, backdrop-filter .4s ease;
+}
+#nav.scrolled {
+  background: rgba(10,8,6,.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--div);
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: var(--text-2);
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color .2s;
+}
+.nav-links a:hover { color: var(--gold-l); }
+.nav-cta { margin-left: 16px; }
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+.burger span {
+  display: block;
+  width: 24px;
+  height: 1.5px;
+  background: var(--gold);
+  transition: all .3s;
+}
+
+/* mobile menu */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 99;
+  background: rgba(10,8,6,.97);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+.mobile-menu a:hover { color: var(--gold); }
+.mobile-close {
+  position: absolute;
+  top: 22px; right: 5%;
+  font-size: 28px;
+  color: var(--text-3);
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+/* ===================== SECTION 1 — HERO ===================== */
+#hero {
+  position: relative;
+  height: 100svh;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('https://87055902400a-ctrl.github.io/Donatti-shop/DNAVANZE.jpeg') center 20%/cover no-repeat;
+  filter: brightness(.45) saturate(.7);
+  transform: scale(1.05);
+  transition: transform 8s ease;
+}
+#hero.loaded .hero-bg { transform: scale(1); }
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10,8,6,.3) 0%,
+    rgba(10,8,6,.1) 40%,
+    rgba(10,8,6,.7) 80%,
+    rgba(10,8,6,1) 100%
+  );
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 0 5%;
+  max-width: 800px;
+}
+.hero-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: fadeUp .8s .3s forwards;
+}
+.hero-title {
+  font-size: clamp(44px, 7vw, 88px);
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.05;
+  margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeUp .8s .5s forwards;
+}
+.hero-sub {
+  font-size: clamp(14px, 2vw, 18px);
+  color: var(--text-2);
+  font-weight: 300;
+  margin-bottom: 44px;
+  opacity: 0;
+  animation: fadeUp .8s .7s forwards;
+}
+.hero-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp .8s .9s forwards;
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 2;
+  opacity: 0;
+  animation: fadeUp .8s 1.2s forwards;
+}
+.hero-scroll span {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--text-3);
+  text-transform: uppercase;
+}
+.scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollAnim 2s infinite;
+}
+@keyframes scrollAnim {
+  0%   { transform: scaleY(0); transform-origin: top; }
+  50%  { transform: scaleY(1); transform-origin: top; }
+  51%  { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ===================== SECTION 2 — О БРЕНДЕ ===================== */
+#about {
+  padding: 120px 5%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  margin-bottom: 80px;
+}
+.about-text .label-gold { margin-bottom: 20px; display: block; }
+.about-text h2 {
+  font-size: clamp(34px, 4.5vw, 58px);
+  margin-bottom: 28px;
+}
+.about-text p {
+  font-size: 16px;
+  color: var(--text-2);
+  line-height: 1.8;
+  max-width: 440px;
+}
+.about-photo {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+}
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.85) saturate(.8);
+  transition: transform .6s ease;
+}
+.about-photo:hover img { transform: scale(1.03); }
+.about-photo::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border: 1px solid var(--div);
+  z-index: 1;
+  pointer-events: none;
+}
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--div);
+  border: 1px solid var(--div);
+}
+.stat-item {
+  background: var(--bg-2);
+  padding: 36px 24px;
+  text-align: center;
+}
+.stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--text-3);
+  letter-spacing: 1px;
+}
+
+/* ===================== SECTION 3 — ЛИНЕЙКИ ===================== */
+#lines {
+  padding: 120px 5%;
+  background: var(--bg-2);
+}
+.section-header {
+  max-width: 1300px;
+  margin: 0 auto 64px;
+}
+.section-header .label-gold { display: block; margin-bottom: 16px; }
+.lines-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.line-card {
+  position: relative;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  cursor: pointer;
+}
+.line-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.6) saturate(.7);
+  transition: transform .6s ease, filter .4s ease;
+}
+.line-card:hover img {
+  transform: scale(1.06);
+  filter: brightness(.7) saturate(.9);
+}
+.line-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,8,6,.9) 0%, transparent 50%);
+}
+.line-card:hover .line-card-overlay {
+  box-shadow: inset 0 0 0 1.5px var(--gold);
+}
+.line-card-info {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 16px 14px;
+}
+.line-card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--gold-l);
+  margin-bottom: 3px;
+}
+.line-card-desc {
+  font-size: 11px;
+  color: var(--text-3);
+  line-height: 1.3;
+}
+
+/* ===================== SECTION 4 — ПОЧЕМУ DONATTI ===================== */
+#why {
+  padding: 120px 5%;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3px;
+  margin-top: 64px;
+  background: var(--div);
+  border: 1px solid var(--div);
+}
+.why-card {
+  background: var(--bg);
+  padding: 52px 44px;
+  transition: background .3s;
+}
+.why-card:hover { background: var(--bg-3); }
+.why-icon {
+  font-size: 24px;
+  color: var(--gold);
+  margin-bottom: 20px;
+  font-family: 'Cormorant Garamond', serif;
+}
+.why-card h3 {
+  font-size: 26px;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.why-card p {
+  font-size: 15px;
+  color: var(--text-3);
+  line-height: 1.7;
+}
+.why-highlight {
+  color: var(--gold);
+  font-weight: 500;
+}
+
+/* ===================== SECTION 5 — КАК СТАТЬ ПАРТНЁРОМ ===================== */
+#steps {
+  padding: 120px 5%;
+  background: var(--bg-2);
+}
+.steps-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.steps-inner .label-gold { display: block; margin-bottom: 16px; }
+.steps-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  margin-top: 64px;
+  background: var(--div);
+  border: 1px solid var(--div);
+}
+.step-card {
+  background: var(--bg-2);
+  padding: 52px 44px;
+  position: relative;
+  transition: background .3s;
+}
+.step-card:hover { background: var(--bg-3); }
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 64px;
+  font-weight: 300;
+  color: var(--div);
+  line-height: 1;
+  margin-bottom: 24px;
+  transition: color .3s;
+}
+.step-card:hover .step-num { color: var(--gold); opacity: .4; }
+.step-card h3 {
+  font-size: 24px;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.step-card p {
+  font-size: 14px;
+  color: var(--text-3);
+  line-height: 1.7;
+}
+.step-connector {
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  opacity: .3;
+  z-index: 1;
+}
+
+/* ===================== SECTION 6 — ФОРМА ===================== */
+#form-section {
+  padding: 120px 5%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.form-header { text-align: center; margin-bottom: 56px; }
+.form-header .label-gold { display: block; margin-bottom: 16px; }
+.form-header h2 { font-size: clamp(32px, 4vw, 52px); margin-bottom: 16px; }
+.form-header p { font-size: 16px; color: var(--text-3); margin: 0 auto; max-width: 480px; }
+.contact-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.form-group.full { grid-column: 1 / -1; }
+.form-group label {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: var(--bg-3);
+  border: 1px solid var(--div);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  padding: 14px 18px;
+  outline: none;
+  transition: border-color .2s;
+  -webkit-appearance: none;
+}
+.form-group input::placeholder,
+.form-group textarea::placeholder { color: var(--text-3); }
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus { border-color: var(--gold); }
+.form-group select option { background: var(--bg-3); }
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-submit {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 8px;
+}
+.form-submit .btn-gold {
+  padding: 18px 48px;
+  font-size: 13px;
+}
+.form-note {
+  font-size: 13px;
+  color: var(--text-3);
+  margin-top: 16px;
+}
+.form-success {
+  display: none;
+  text-align: center;
+  padding: 48px;
+  background: var(--bg-3);
+  border: 1px solid var(--div);
+}
+.form-success h3 {
+  font-size: 32px;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.form-success p { color: var(--text-3); font-size: 15px; }
+
+/* ===================== SECTION 7 — КОНТАКТЫ + FOOTER ===================== */
+#contacts {
+  padding: 80px 5% 60px;
+  background: var(--bg-2);
+  border-top: 1px solid var(--div);
+}
+.contacts-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 60px;
+}
+.contacts-brand .nav-logo {
+  font-size: 20px;
+  display: block;
+  margin-bottom: 14px;
+}
+.contacts-brand p {
+  font-size: 13px;
+  color: var(--text-3);
+  line-height: 1.7;
+  max-width: 260px;
+}
+.contacts-col h4 {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-3);
+  margin-bottom: 20px;
+}
+.contacts-col ul { list-style: none; }
+.contacts-col ul li {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--text-2);
+}
+.contacts-col ul li a {
+  color: var(--text-2);
+  text-decoration: none;
+  transition: color .2s;
+}
+.contacts-col ul li a:hover { color: var(--gold-l); }
+.footer-bottom {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding-top: 32px;
+  border-top: 1px solid var(--div);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.footer-bottom p {
+  font-size: 12px;
+  color: var(--text-3);
+}
+.footer-bottom a {
+  color: var(--text-3);
+  text-decoration: none;
+  transition: color .2s;
+}
+.footer-bottom a:hover { color: var(--gold); }
+
+/* ===================== DIVIDER ===================== */
+.gold-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 24px 0;
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 1100px) {
+  .lines-grid { grid-template-columns: repeat(4, 1fr); }
+  .about-grid { gap: 48px; }
+}
+
+@media (max-width: 900px) {
+  .nav-links, .nav-cta { display: none; }
+  .burger { display: flex; }
+  .about-grid { grid-template-columns: 1fr; }
+  .about-photo { aspect-ratio: 16/10; max-height: 380px; }
+  .about-photo img { object-position: center 30%; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+  .lines-grid { grid-template-columns: repeat(3, 1fr); }
+  .why-grid { grid-template-columns: 1fr; }
+  .steps-row { grid-template-columns: 1fr; }
+  .step-connector { display: none; }
+  .contacts-inner { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  #about, #why, #form-section { padding: 80px 5%; }
+  #lines, #steps, #contacts { padding: 80px 5%; }
+  .lines-grid { grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .contact-form { grid-template-columns: 1fr; }
+  .form-group.full { grid-column: auto; }
+  .why-card, .step-card { padding: 36px 28px; }
+  .contacts-inner { grid-template-columns: 1fr; gap: 36px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 380px) {
+  .lines-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-btns { flex-direction: column; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== МОБИЛЬНОЕ МЕНЮ ===================== -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="closeMobileMenu()">✕</button>
+  <a href="#about" onclick="closeMobileMenu()">О бренде</a>
+  <a href="#lines" onclick="closeMobileMenu()">Продукция</a>
+  <a href="#why" onclick="closeMobileMenu()">Партнёрство</a>
+  <a href="#form-section" onclick="closeMobileMenu()">Заявка</a>
+  <a href="#contacts" onclick="closeMobileMenu()">Контакты</a>
+  <a href="#form-section" class="btn-gold" style="margin-top:20px" onclick="closeMobileMenu()">Запросить КП</a>
+</div>
+
+<!-- ===================== НАВИГАЦИЯ ===================== -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">Donatti</a>
+  <ul class="nav-links">
+    <li><a href="#about">О бренде</a></li>
+    <li><a href="#lines">Продукция</a></li>
+    <li><a href="#why">Партнёрство</a></li>
+    <li><a href="#contacts">Контакты</a></li>
+  </ul>
+  <a href="#form-section" class="btn-gold nav-cta">Запросить КП</a>
+  <div class="burger" onclick="openMobileMenu()" aria-label="Меню">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ===================== СЕКЦИЯ 1 — HERO ===================== -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-label">Donatti Professionale</p>
+    <h1 class="hero-title">Бразильская<br>профессиональная<br>косметика</h1>
+    <p class="hero-sub">Официальный дистрибьютор в Узбекистане</p>
+    <div class="hero-btns">
+      <a href="#form-section" class="btn-gold btn-gold-fill">Стать партнёром</a>
+      <a href="#about" class="btn-gold">Узнать больше</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ===================== СЕКЦИЯ 2 — О БРЕНДЕ ===================== -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <span class="label-gold fade-up">Основан в Бразилии</span>
+      <h2 class="fade-up delay-1">30 лет экспертизы<br>в профессиональном<br>уходе за волосами</h2>
+      <div class="gold-divider fade-up delay-2"></div>
+      <p class="fade-up delay-2">
+        Donatti Professionale — бразильский бренд профессиональной косметики для волос.
+        12 линеек, 165 продуктов, используется в лучших салонах мира.
+        Мы — официальный дистрибьютор в Узбекистане.
+      </p>
+      <br>
+      <a href="#form-section" class="btn-gold fade-up delay-3" style="margin-top:12px">Стать дистрибьютором</a>
+    </div>
+    <div class="about-photo fade-up delay-1">
+      <img src="https://87055902400a-ctrl.github.io/Donatti-shop/BIODETOX.jpeg" alt="Donatti Biodetox">
+    </div>
+  </div>
+  <div class="stats-row">
+    <div class="stat-item fade-up">
+      <div class="stat-num">30<span style="font-size:.6em">+</span></div>
+      <div class="stat-label">Лет бренду</div>
+    </div>
+    <div class="stat-item fade-up delay-1">
+      <div class="stat-num">12</div>
+      <div class="stat-label">Линеек продуктов</div>
+    </div>
+    <div class="stat-item fade-up delay-2">
+      <div class="stat-num">165</div>
+      <div class="stat-label">Продуктов</div>
+    </div>
+    <div class="stat-item fade-up delay-3">
+      <div class="stat-num">50<span style="font-size:.6em">+</span></div>
+      <div class="stat-label">Стран присутствия</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== СЕКЦИЯ 3 — ЛИНЕЙКИ ===================== -->
+<section id="lines">
+  <div class="section-header fade-up">
+    <span class="label-gold">Коллекции</span>
+    <h2 class="section-title" style="margin-top:16px">12 профессиональных<br>линеек</h2>
+  </div>
+  <div class="lines-grid">
+    <div class="line-card fade-up">
+      <img src="https://87055902400a-ctrl.github.io/Donatti-shop/DNAVANZE.jpeg" alt="DNAvanze">
+      <div class="line-card-overlay"></div>
+      <div class="line-card-info">
+        <div class="line-card-name">DNAvanze</div>
+        <div class="line-card-desc">Восстановление ДНК волоса за 1 процедуру</div>
+      </div>
+    </div>
+    <div class="line-card fade-up delay-1">
+      <img src="https://87055902400a-ctrl.github.io/Donatti-shop/BIODETOX.jpeg" alt="Biodetox">
+      <div class="line-card-overlay"></div>
+      <div class="line-card-info">
+        <div class="line-card-name">Biodetox</div>
+        <div class="line-card-desc">Детокс и восстановление структуры</div>
+      </div>
+    </div>
+    <div class="line-card fade-up delay-2">
+      <img src="https://87055902400a-ctrl.github.io/Donatti-shop/SPECIALE.jpeg" alt="Speciale">
+      <div class="line-card-overlay"></div>
+      <div class="line-card-info">
+        <div class="line-card-name">Speciale</div>
+        <div class="line-card-desc">Глубокое питание и восстановление</div>
+      </div>
+    </div>
+    <div class="line-card fade-up delay-3">
+      <img src="https://87055902400a-ctrl.github.io/Donatti-shop/THEION.jpeg" alt="Theion">
+      <div class="line-card-overlay"></div>
+      <div class="line-card-info">
+        <div class="line-card-name">Theion Evolution</div>
+        <div class="line-card-desc">Уход за окрашенными и осветлёнными волосами</div>
+      </div>
+    </div>
+    <div class="line-card fade-up">
+      <img src="https://87055902400a-ctrl.github.io/Donatti-shop/BAOBA_REDUCE.jpeg" alt="Baobá">
+      <div class="line-card-overlay"></div>
+      <div class="line-card-info">
+        <div class="line-card-name">Baobá Reduce</div>
+        <div class="line-card-desc">Разглаживание и контроль объёма</div>
+      </div>
+    </div>
+    <div class="line-card fade-up delay-1">
+      <img src="https://87055902400a-ctrl.github.io/Donatti-shop/MIO_RICCI.jpeg" alt="Mio Ricci">
+      <div class="line-card-overlay"></div>
+      <div class="line-card-info">
+        <div class="line-card-name">Mio Ricci</div>
+        <div class="line-card-desc">Уход за вьющимися волосами</div>
+      </div>
+    </div>
+    <div class="line-card fade-up delay-2">
+      <img src="https://87055902400a-ctrl.github.io/Donatti-shop/NATURALE.jpeg" alt="Naturale">
+      <div class="line-card-overlay"></div>
+      <div class="line-card-info">
+        <div class="line-card-name">Naturale</div>
+        <div class="line-card-desc">Натуральные масла и экзотические ингредиенты</div>
+      </div>
+    </div>
+    <div class="line-card fade-up delay-3">
+      <img src="https://87055902400a-ctrl.github.io/Donatti-shop/PREMIUM_VIOLET.jpeg" alt="Premium Violet">
+      <div class="line-card-overlay"></div>
+      <div class="line-card-info">
+        <div class="line-card-name">Premium Violet</div>
+        <div class="line-card-desc">Нейтрализация желтизны для блондинок</div>
+      </div>
+    </div>
+    <div class="line-card fade-up">
+      <img src="https://87055902400a-ctrl.github.io/Donatti-shop/COLORE.jpeg" alt="Colore">
+      <div class="line-card-overlay"></div>
+      <div class="line-card-info">
+        <div class="line-card-name">Colore</div>
+        <div class="line-card-desc">Профессиональное окрашивание и осветление</div>
+      </div>
+    </div>
+    <div class="line-card fade-up delay-1">
+      <img src="https://87055902400a-ctrl.github.io/Donatti-shop/CREAM_BLOND.jpeg" alt="Cream Blond">
+      <div class="line-card-overlay"></div>
+      <div class="line-card-info">
+        <div class="line-card-name">Cream Blond</div>
+        <div class="line-card-desc">Осветляющий крем для точного блондинга</div>
+      </div>
+    </div>
+    <div class="line-card fade-up delay-2">
+      <img src="https://87055902400a-ctrl.github.io/Donatti-shop/LUXURY.jpeg" alt="Luxury">
+      <div class="line-card-overlay"></div>
+      <div class="line-card-info">
+        <div class="line-card-name">Luxury</div>
+        <div class="line-card-desc">Глянец, блеск и финишный уход</div>
+      </div>
+    </div>
+    <!-- 12-я линейка — Extra / Lavandino -->
+    <div class="line-card fade-up delay-3" style="background: var(--bg-3);">
+      <div style="width:100%;height:100%;background:linear-gradient(135deg,#1A1612 0%,#0D0B09 100%);display:flex;align-items:center;justify-content:center;">
+        <span style="font-family:'Cormorant Garamond',serif;font-size:32px;color:var(--div);font-style:italic">Extra</span>
+      </div>
+      <div class="line-card-overlay"></div>
+      <div class="line-card-info">
+        <div class="line-card-name">Extra / Lavandino</div>
+        <div class="line-card-desc">Профессиональные объёмные форматы для салонов</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== СЕКЦИЯ 4 — ПОЧЕМУ DONATTI ===================== -->
+<section id="why">
+  <div class="section-header fade-up">
+    <span class="label-gold">Для партнёров</span>
+    <h2 class="section-title" style="margin-top:16px">Почему выбирают<br>Donatti</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card fade-up">
+      <div class="why-icon">✦</div>
+      <h3>Эксклюзивность</h3>
+      <p>Вы первые в Узбекистане. Мы — официальный дистрибьютор Donatti Professionale. Ваш салон получает доступ к бренду, которого нет у конкурентов.</p>
+    </div>
+    <div class="why-card fade-up delay-1">
+      <div class="why-icon">✦</div>
+      <h3>Маржинальность</h3>
+      <p>До <span class="why-highlight">40% маржи</span> на каждой продаже. Прозрачное ценообразование, гибкие условия поставки, отсутствие скрытых платежей.</p>
+    </div>
+    <div class="why-card fade-up delay-2">
+      <div class="why-icon">✦</div>
+      <h3>Поддержка</h3>
+      <p>Обучение мастеров, маркетинговые материалы, поддержка по продажам. Мы вкладываемся в успех каждого партнёра.</p>
+    </div>
+    <div class="why-card fade-up delay-3">
+      <div class="why-icon">✦</div>
+      <h3>Качество</h3>
+      <p>Сертифицировано для профессионального использования. 30+ лет на рынке, 50+ стран присутствия. Репутация, которой доверяют.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== СЕКЦИЯ 5 — КАК СТАТЬ ПАРТНЁРОМ ===================== -->
+<section id="steps">
+  <div class="steps-inner">
+    <span class="label-gold fade-up">Процесс</span>
+    <h2 class="section-title fade-up delay-1" style="margin-top:16px">Как стать<br>партнёром</h2>
+    <div class="steps-row">
+      <div class="step-card fade-up">
+        <div class="step-num">01</div>
+        <h3>Оставьте заявку</h3>
+        <p>Заполните форму ниже — укажите название салона, город и контакты. Мы свяжемся с вами в течение дня.</p>
+      </div>
+      <div class="step-card fade-up delay-1">
+        <div class="step-num">02</div>
+        <h3>Получите КП и условия</h3>
+        <p>Подготовим персональное коммерческое предложение с ценами, минимальными заказами и условиями партнёрства.</p>
+      </div>
+      <div class="step-card fade-up delay-2">
+        <div class="step-num">03</div>
+        <h3>Начните продавать</h3>
+        <p>Первая поставка, обучение команды и все необходимые материалы для старта. Вы не одни — мы поддерживаем каждого партнёра.</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:52px" class="fade-up delay-2">
+      <a href="#form-section" class="btn-gold btn-gold-fill">Оставить заявку</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== СЕКЦИЯ 6 — ФОРМА ===================== -->
+<section id="form-section">
+  <div class="form-header fade-up">
+    <span class="label-gold">Партнёрство</span>
+    <h2>Получить коммерческое<br>предложение</h2>
+    <p>Заполните форму — мы пришлём условия сотрудничества в течение рабочего дня</p>
+  </div>
+  <div id="formWrapper">
+    <form class="contact-form fade-up" id="partnerForm" onsubmit="submitForm(event)">
+      <div class="form-group">
+        <label>Название салона / компании</label>
+        <input type="text" name="salon" placeholder="Beauty Studio..." required>
+      </div>
+      <div class="form-group">
+        <label>Ваше имя</label>
+        <input type="text" name="name" placeholder="Имя и фамилия" required>
+      </div>
+      <div class="form-group">
+        <label>Телефон</label>
+        <input type="tel" name="phone" placeholder="+998 90 000 00 00" required>
+      </div>
+      <div class="form-group">
+        <label>Город</label>
+        <select name="city">
+          <option value="">Выберите город</option>
+          <option>Ташкент</option>
+          <option>Самарканд</option>
+          <option>Бухара</option>
+          <option>Наманган</option>
+          <option>Андижан</option>
+          <option>Фергана</option>
+          <option>Другой</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Telegram</label>
+        <input type="text" name="telegram" placeholder="@username">
+      </div>
+      <div class="form-group">
+        <label>WhatsApp</label>
+        <input type="tel" name="whatsapp" placeholder="+998 90 000 00 00">
+      </div>
+      <div class="form-group full">
+        <label>Дополнительно</label>
+        <textarea name="comment" placeholder="Количество кресел, специализация салона..."></textarea>
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="btn-gold btn-gold-fill" id="submitBtn">
+          Получить коммерческое предложение
+        </button>
+        <p class="form-note">Нажимая кнопку, вы соглашаетесь на обработку персональных данных</p>
+      </div>
+    </form>
+    <div class="form-success" id="formSuccess">
+      <h3>Заявка принята!</h3>
+      <p>Мы свяжемся с вами в течение рабочего дня.<br>Ожидайте сообщения в Telegram или WhatsApp.</p>
+      <br>
+      <a href="https://t.me/malini_donatti_bot" class="btn-gold" style="margin-top:8px">Открыть Telegram</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== СЕКЦИЯ 7 — КОНТАКТЫ + FOOTER ===================== -->
+<footer id="contacts">
+  <div class="contacts-inner">
+    <div class="contacts-brand">
+      <a class="nav-logo">Donatti</a>
+      <p>Malini Beauty Group — официальный дистрибьютор Donatti Professionale в Узбекистане.</p>
+    </div>
+    <div class="contacts-col">
+      <h4>Навигация</h4>
+      <ul>
+        <li><a href="#about">О бренде</a></li>
+        <li><a href="#lines">Продукция</a></li>
+        <li><a href="#why">Партнёрство</a></li>
+        <li><a href="#form-section">Заявка</a></li>
+      </ul>
+    </div>
+    <div class="contacts-col">
+      <h4>Контакты</h4>
+      <ul>
+        <li>Ташкент, Узбекистан</li>
+        <li><a href="https://t.me/malini_donatti_bot">Telegram: @malini_donatti_bot</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Malini Beauty Group. Все права защищены.</p>
+    <p>Разработано <a href="#">AXON STUDIO</a></p>
+  </div>
+</footer>
+
+<script>
+// ===================== NAV SCROLL =====================
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// ===================== HERO ANIMATION =====================
+document.getElementById('hero').classList.add('loaded');
+
+// ===================== МОБИЛЬНОЕ МЕНЮ =====================
+function openMobileMenu() {
+  document.getElementById('mobileMenu').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ===================== INTERSECTION OBSERVER =====================
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ===================== ФОРМА → GOOGLE SHEETS =====================
+// TODO: Замените этот URL на URL вашего Google Apps Script
+// Инструкция в README_LANDING.md
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/REPLACE_WITH_YOUR_SCRIPT_ID/exec';
+
+async function submitForm(e) {
+  e.preventDefault();
+  const form = e.target;
+  const btn = document.getElementById('submitBtn');
+
+  // Собираем данные
+  const data = {
+    salon:    form.salon.value.trim(),
+    name:     form.name.value.trim(),
+    phone:    form.phone.value.trim(),
+    city:     form.city.value,
+    telegram: form.telegram.value.trim(),
+    whatsapp: form.whatsapp.value.trim(),
+    comment:  form.comment.value.trim(),
+    date:     new Date().toLocaleString('ru-RU', { timeZone: 'Asia/Tashkent' })
+  };
+
+  // Простая валидация
+  if (!data.salon || !data.name || !data.phone) {
+    showError('Пожалуйста, заполните обязательные поля');
+    return;
+  }
+
+  btn.textContent = 'Отправляем...';
+  btn.disabled = true;
+
+  try {
+    // Попытка отправить в Google Sheets
+    if (APPS_SCRIPT_URL.includes('REPLACE_WITH_YOUR_SCRIPT_ID')) {
+      // Режим демо — просто показываем успех
+      await new Promise(r => setTimeout(r, 1200));
+    } else {
+      await fetch(APPS_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    }
+    // Показываем успех
+    document.getElementById('partnerForm').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  } catch (err) {
+    console.error('Ошибка отправки:', err);
+    btn.textContent = 'Получить коммерческое предложение';
+    btn.disabled = false;
+    showError('Ошибка отправки. Свяжитесь с нами напрямую в Telegram.');
+  }
+}
+
+function showError(msg) {
+  let el = document.getElementById('formError');
+  if (!el) {
+    el = document.createElement('p');
+    el.id = 'formError';
+    el.style.cssText = 'color:#e05a5a;text-align:center;margin-top:12px;font-size:14px;grid-column:1/-1';
+    document.querySelector('.contact-form .form-submit').after(el);
+  }
+  el.textContent = msg;
+  setTimeout(() => el.textContent = '', 5000);
+}
+</script>
+</body>
+</html>
