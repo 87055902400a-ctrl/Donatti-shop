@@ -54,8 +54,7 @@ html, body {
 }
 .screen.active { transform: translateX(0); z-index: 20; }
 .screen.prev   { transform: translateX(-40%); }
-#screen-home { transform: translateX(0); z-index: 10; }
-#screen-home.active { z-index: 20; }
+/* home screen uses same .screen rules — no override needed */
 
 /* ── HEADER ── */
 .header {
@@ -913,27 +912,27 @@ html, body {
     <div class="consultant-step active" id="consult-step-1">
       <div class="step-question">Какой у вас тип волос?</div>
       <div class="step-options">
-        <div class="step-option" onclick="consultSelect(1,'straight')">
+        <div class="step-option" onclick="consultSelect(1,'straight',this)">
           <span class="step-option-icon">💫</span>
           <div><div class="step-option-text">Прямые</div><div class="step-option-sub">Гладкие, без завитков</div></div>
         </div>
-        <div class="step-option" onclick="consultSelect(1,'wavy')">
+        <div class="step-option" onclick="consultSelect(1,'wavy',this)">
           <span class="step-option-icon">🌊</span>
           <div><div class="step-option-text">Волнистые</div><div class="step-option-sub">Лёгкие волны</div></div>
         </div>
-        <div class="step-option" onclick="consultSelect(1,'curly')">
+        <div class="step-option" onclick="consultSelect(1,'curly',this)">
           <span class="step-option-icon">🌀</span>
           <div><div class="step-option-text">Кудрявые / Афро</div><div class="step-option-sub">Выраженные локоны</div></div>
         </div>
-        <div class="step-option" onclick="consultSelect(1,'bleached')">
+        <div class="step-option" onclick="consultSelect(1,'bleached',this)">
           <span class="step-option-icon">👱‍♀️</span>
           <div><div class="step-option-text">Осветлённые</div><div class="step-option-sub">Блонд, мелирование</div></div>
         </div>
-        <div class="step-option" onclick="consultSelect(1,'colored')">
+        <div class="step-option" onclick="consultSelect(1,'colored',this)">
           <span class="step-option-icon">🎨</span>
           <div><div class="step-option-text">Окрашенные</div><div class="step-option-sub">Постоянное окрашивание</div></div>
         </div>
-        <div class="step-option" onclick="consultSelect(1,'damaged')">
+        <div class="step-option" onclick="consultSelect(1,'damaged',this)">
           <span class="step-option-icon">🔥</span>
           <div><div class="step-option-text">Повреждённые</div><div class="step-option-sub">Ломкость, секущиеся концы</div></div>
         </div>
@@ -944,27 +943,27 @@ html, body {
     <div class="consultant-step" id="consult-step-2">
       <div class="step-question">Главная проблема?</div>
       <div class="step-options">
-        <div class="step-option" onclick="consultSelect(2,'dryness')">
+        <div class="step-option" onclick="consultSelect(2,'dryness',this)">
           <span class="step-option-icon">🌵</span>
           <div><div class="step-option-text">Сухость и ломкость</div><div class="step-option-sub">Нет увлажнения, ощущение соломы</div></div>
         </div>
-        <div class="step-option" onclick="consultSelect(2,'frizz')">
+        <div class="step-option" onclick="consultSelect(2,'frizz',this)">
           <span class="step-option-icon">💨</span>
           <div><div class="step-option-text">Пушистость и фриз</div><div class="step-option-sub">Неуправляемые, пушатся</div></div>
         </div>
-        <div class="step-option" onclick="consultSelect(2,'loss')">
+        <div class="step-option" onclick="consultSelect(2,'loss',this)">
           <span class="step-option-icon">🍂</span>
           <div><div class="step-option-text">Выпадение</div><div class="step-option-sub">Слабые корни, редение</div></div>
         </div>
-        <div class="step-option" onclick="consultSelect(2,'reconstruction')">
+        <div class="step-option" onclick="consultSelect(2,'reconstruction',this)">
           <span class="step-option-icon">⚡</span>
           <div><div class="step-option-text">Восстановление</div><div class="step-option-sub">Химические повреждения</div></div>
         </div>
-        <div class="step-option" onclick="consultSelect(2,'gloss')">
+        <div class="step-option" onclick="consultSelect(2,'gloss',this)">
           <span class="step-option-icon">✨</span>
           <div><div class="step-option-text">Блеск и гладкость</div><div class="step-option-sub">Хочу сияния и шёлка</div></div>
         </div>
-        <div class="step-option" onclick="consultSelect(2,'detox')">
+        <div class="step-option" onclick="consultSelect(2,'detox',this)">
           <span class="step-option-icon">🌿</span>
           <div><div class="step-option-text">Очищение и детокс</div><div class="step-option-sub">Накопление примесей</div></div>
         </div>
@@ -975,15 +974,15 @@ html, body {
     <div class="consultant-step" id="consult-step-3">
       <div class="step-question">Какой формат ухода?</div>
       <div class="step-options">
-        <div class="step-option" onclick="consultSelect(3,'home')">
+        <div class="step-option" onclick="consultSelect(3,'home',this)">
           <span class="step-option-icon">🏠</span>
           <div><div class="step-option-text">Домашний уход</div><div class="step-option-sub">300мл, маски, шампуни</div></div>
         </div>
-        <div class="step-option" onclick="consultSelect(3,'salon')">
+        <div class="step-option" onclick="consultSelect(3,'salon',this)">
           <span class="step-option-icon">💈</span>
           <div><div class="step-option-text">Профессиональный</div><div class="step-option-sub">1л+, для мастеров</div></div>
         </div>
-        <div class="step-option" onclick="consultSelect(3,'both')">
+        <div class="step-option" onclick="consultSelect(3,'both',this)">
           <span class="step-option-icon">🌟</span>
           <div><div class="step-option-text">Любой</div><div class="step-option-sub">Покажите лучшее</div></div>
         </div>
@@ -1587,14 +1586,14 @@ function afterSuccess() {
 // ═══════════════════════════════════════════════
 //   AI CONSULTANT
 // ═══════════════════════════════════════════════
-function consultSelect(step, value) {
+function consultSelect(step, value, el) {
   hapticSelect();
   consultAnswers['step' + step] = value;
 
   // Highlight
   const stepEl = document.getElementById(`consult-step-${step}`);
-  stepEl?.querySelectorAll('.step-option').forEach(el => el.classList.remove('selected'));
-  event?.currentTarget?.classList.add('selected');
+  stepEl?.querySelectorAll('.step-option').forEach(o => o.classList.remove('selected'));
+  el?.classList.add('selected');
 
   setTimeout(() => {
     if (step < 3) {
