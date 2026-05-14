@@ -6,42 +6,65 @@
 <title>Donatti Professionale</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <style>
 /* ════════════════════════════════════════════
-   DONATTI PROFESSIONALE — DARK LUXURY THEME
+   DONATTI PROFESSIONALE — EDITORIAL CREAM
+   matched to v5/deploy site palette
    ════════════════════════════════════════════ */
 :root {
-  --bg:       #0D0B09;
-  --bg-2:     #1A1612;
-  --bg-3:     #221C17;
-  --bg-4:     #2A2420;
-  --gold:     #C9A84C;
-  --gold-l:   #E8D5A3;
-  --gold-dim: rgba(201,168,76,.15);
-  --gold-brd: rgba(201,168,76,.3);
-  --text:     #F5F0E8;
-  --text-2:   #B8A898;
-  --text-3:   #8A7A6A;
-  --div:      #2A2420;
-  --danger:   #E05045;
-  --success:  #4CAF7A;
+  --bg:        #FAF7F2;
+  --bg-2:      #F2ECE3;
+  --bg-3:      #EAE2D4;
+  --bg-card:   #EDE6DA;
+  --bg-4:      #E4DCCD;
 
-  --nav-h:    58px;
-  --r:        12px;
-  --r-lg:     18px;
-  --sh:       0 2px 12px rgba(0,0,0,.4);
-  --sh-gold:  0 0 0 1.5px var(--gold-brd);
-  --t:        .22s;
-  --ease:     cubic-bezier(.4,0,.2,1);
+  --text:      #2A2520;
+  --text-2:    #6B5F52;
+  --text-3:    #9A8D7E;
+
+  --olive:     #8A7A48;
+  --olive-l:   #A89A58;
+  --amber:     #B8833E;
+  --amber-l:   #C69A52;
+  --champagne: #8C7A5E;
+  --gold-matte:#A98756;
+
+  /* Алиасы для совместимости с прошлыми правилами */
+  --gold:      var(--amber);
+  --gold-l:    var(--amber-l);
+  --gold-dim:  rgba(184,131,62,.10);
+  --gold-brd:  rgba(140,122,94,.28);
+
+  --div:       #E4DCCD;
+  --border-2:  #D4C9B5;
+  --danger:    #C84A4A;
+  --success:   #2E9F60;
+
+  --nav-h:     64px;
+  --r:         14px;
+  --r-lg:      20px;
+  --sh:        0 2px 16px rgba(60,40,20,.06);
+  --sh-card:   0 1px 10px rgba(60,40,20,.05);
+  --sh-gold:   0 0 0 1.5px var(--gold-brd);
+  --t:         .22s;
+  --ease:      cubic-bezier(.22,1,.36,1);
+}
+
+/* Зернистая текстура — премиальный финиш */
+body::after {
+  content:''; position:fixed; inset:-100px;
+  width:calc(100% + 200px); height:calc(100% + 200px);
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:.025; pointer-events:none; z-index:9000;
 }
 
 *,*::before,*::after { box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent; }
 html { height:100%; }
 body {
   height:100%; background:var(--bg);
-  font-family:'DM Sans',sans-serif; font-size:14px;
+  font-family:'Inter',sans-serif; font-size:14px;
   color:var(--text); overscroll-behavior:none;
   -webkit-font-smoothing:antialiased;
 }
@@ -105,8 +128,9 @@ body {
 /* ── BOTTOM NAV ──────────────────────────── */
 .bnav {
   position:fixed; bottom:0; left:0; right:0;
-  height:var(--nav-h); background:var(--bg);
-  border-top:1px solid var(--gold-brd);
+  height:var(--nav-h); background:rgba(255,255,255,.96);
+  backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  border-top:1px solid var(--div);
   display:flex; z-index:100;
   padding-bottom:env(safe-area-inset-bottom,0);
 }
@@ -114,7 +138,7 @@ body {
   flex:1; display:flex; flex-direction:column;
   align-items:center; justify-content:center; gap:3px;
   border:none; background:transparent; cursor:pointer;
-  font-family:'DM Sans',sans-serif; font-size:10px; font-weight:500;
+  font-family:'Inter',sans-serif; font-size:10px; font-weight:500;
   color:var(--text-3); transition:color var(--t);
   letter-spacing:.03em; padding:6px 4px 4px;
 }
@@ -142,14 +166,14 @@ body {
   display:flex; align-items:center; justify-content:space-between;
   flex-shrink:0;
 }
-.home-logo { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:600; color:var(--gold); letter-spacing:.02em; }
-.home-logo-sub { font-size:9px; color:var(--text-3); letter-spacing:.18em; text-transform:uppercase; margin-top:2px; }
+.home-logo { font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:500; color:var(--text); letter-spacing:.32em; text-transform:uppercase; }
+.home-logo-sub { font-size:9px; color:var(--text-3); letter-spacing:.32em; text-transform:uppercase; margin-top:4px; font-family:'Inter',sans-serif; font-weight:400; }
 .home-actions { display:flex; align-items:center; gap:8px; }
 .icon-btn {
-  width:36px; height:36px; border:none; background:var(--bg-2);
-  border-radius:50%; color:var(--text-2); font-size:17px;
+  width:38px; height:38px; border:none; background:var(--bg-2);
+  border-radius:50%; color:var(--text); font-size:17px;
   display:flex; align-items:center; justify-content:center; cursor:pointer;
-  position:relative;
+  position:relative; transition:background var(--t);
 }
 
 /* Greeting */
@@ -163,37 +187,86 @@ body {
 .home-greet-hi strong { font-style:normal; font-weight:600; color:var(--gold-l); }
 .home-greet-sub { font-size:12px; color:var(--text-3); margin-top:3px; }
 
-/* Banner */
-.banner-wrap { overflow:hidden; margin:0 0 4px; position:relative; }
-.banner-track {
-  display:flex; transition:transform .5s var(--ease); will-change:transform;
+/* ── Apple-style line carousel ── */
+.lines-section { margin:8px 0 18px; }
+.lines-header {
+  display:flex; align-items:baseline; justify-content:space-between;
+  padding:0 16px 12px;
 }
-.banner-slide {
-  min-width:100vw; height:200px; position:relative;
-  overflow:hidden; cursor:pointer; flex-shrink:0;
-}
-.banner-slide img {
-  width:100%; height:100%; object-fit:cover; object-position:center 25%;
-  transition:transform 8s ease;
-}
-.banner-slide::after {
-  content:''; position:absolute; inset:0;
-  background:linear-gradient(135deg, rgba(13,11,9,.85) 0%, rgba(13,11,9,.35) 60%, rgba(13,11,9,.15) 100%);
-}
-.banner-cnt {
-  position:absolute; bottom:0; left:0; right:0; padding:0 18px 18px; z-index:2;
-}
-.banner-tag {
-  display:inline-block; background:var(--gold); color:var(--bg);
-  font-size:9px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
-  padding:3px 10px; border-radius:2px; margin-bottom:8px;
-}
-.banner-title {
+.lines-header h2 {
   font-family:'Cormorant Garamond',serif;
-  font-size:28px; font-weight:600; font-style:italic;
-  color:var(--text); line-height:1.15; letter-spacing:-.01em;
+  font-size:22px; font-weight:500; color:var(--text);
+  letter-spacing:.01em;
 }
-.banner-sub { font-size:12px; color:var(--text-2); margin-top:5px; }
+.lines-header .count {
+  font-size:11px; color:var(--text-3); letter-spacing:.1em; text-transform:uppercase;
+}
+.lines-scroll {
+  display:flex; gap:14px;
+  overflow-x:auto; scroll-snap-type:x mandatory;
+  padding:4px 16px 16px;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.lines-scroll::-webkit-scrollbar { display:none; }
+.line-card {
+  flex:0 0 78vw; max-width:340px; height:380px;
+  position:relative; border-radius:18px; overflow:hidden;
+  scroll-snap-align:center;
+  background:var(--bg-3);
+  box-shadow:0 8px 28px rgba(60,40,20,.10);
+  cursor:pointer; transition:transform .25s var(--ease);
+}
+.line-card:active { transform:scale(.98); }
+.line-card img {
+  width:100%; height:100%; object-fit:cover; object-position:center 30%;
+  transition:transform 1.2s ease;
+}
+.line-card:hover img { transform:scale(1.04); }
+.line-card::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(180deg,
+    rgba(0,0,0,0) 0%,
+    rgba(0,0,0,0.05) 45%,
+    rgba(0,0,0,0.55) 78%,
+    rgba(0,0,0,0.82) 100%);
+}
+.line-card-cnt {
+  position:absolute; left:0; right:0; bottom:0; padding:22px 22px 24px;
+  z-index:2; color:#fff;
+}
+.line-card-tag {
+  display:inline-block;
+  font-family:'Inter',sans-serif;
+  font-size:9.5px; font-weight:500; letter-spacing:.32em; text-transform:uppercase;
+  color:rgba(255,255,255,.78); margin-bottom:8px;
+}
+.line-card-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:30px; font-weight:500; font-style:italic;
+  line-height:1.05; letter-spacing:-.01em;
+  text-shadow:0 2px 14px rgba(0,0,0,.5);
+  margin-bottom:6px;
+}
+.line-card-sub {
+  font-size:12px; color:rgba(255,255,255,.88);
+  text-shadow:0 1px 6px rgba(0,0,0,.4);
+  line-height:1.4; max-width:90%;
+}
+.line-card-cta {
+  display:inline-flex; align-items:center; gap:8px;
+  margin-top:14px;
+  font-family:'Inter',sans-serif;
+  font-size:10px; font-weight:500; letter-spacing:.22em; text-transform:uppercase;
+  color:#fff; padding:8px 16px;
+  border:1px solid rgba(255,255,255,.45);
+  border-radius:30px;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  background:rgba(255,255,255,.08);
+}
+.banner-sub { font-size:12px; color:rgba(255,255,255,.92); margin-top:5px; text-shadow:0 1px 6px rgba(0,0,0,.4); }
+.banner-tag { color:#fff; }
 .banner-dots {
   position:absolute; bottom:14px; right:16px; z-index:3;
   display:flex; gap:5px;
@@ -206,7 +279,16 @@ body {
 
 /* Category pills */
 .cat-pills-wrap {
-  padding:14px 0 6px;
+  padding:8px 0 12px;
+}
+.cat-pills-wrap.top-pills {
+  padding:4px 0 14px;
+  position:sticky; top:0; z-index:50;
+  background:rgba(255,255,255,.92);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--div);
+  margin-bottom:10px;
 }
 .cat-pills-title {
   padding:0 16px 10px;
@@ -214,18 +296,22 @@ body {
   letter-spacing:.1em; text-transform:uppercase;
 }
 .cat-pills {
-  display:flex; gap:8px; overflow-x:auto; padding:0 16px;
+  display:flex; gap:8px; overflow-x:auto; padding:8px 16px;
   scrollbar-width:none;
 }
 .cat-pills::-webkit-scrollbar { display:none; }
 .cat-pill {
-  flex-shrink:0; height:32px; padding:0 14px;
-  border-radius:16px; border:1px solid var(--gold-brd);
-  background:transparent; color:var(--gold-l);
-  font-family:'DM Sans',sans-serif; font-size:12px; font-weight:500;
+  flex-shrink:0; height:34px; padding:0 16px;
+  border-radius:18px; border:1px solid rgba(0,0,0,.12);
+  background:#fff; color:var(--text-2);
+  font-family:'Inter',sans-serif; font-size:12.5px; font-weight:500;
   white-space:nowrap; cursor:pointer; transition:all var(--t);
 }
-.cat-pill.on { background:var(--gold); color:var(--bg); border-color:var(--gold); }
+.cat-pill:hover { border-color:var(--gold-brd); color:var(--text); }
+.cat-pill.on {
+  background:var(--text); color:#fff; border-color:var(--text);
+  box-shadow:0 2px 8px rgba(0,0,0,.15);
+}
 
 /* Product grid */
 .section-lbl {
@@ -243,14 +329,15 @@ body {
   gap:10px; padding:0 12px 4px;
 }
 .pcard {
-  background:var(--bg-2); border-radius:var(--r);
+  background:#fff; border-radius:var(--r);
   overflow:hidden; cursor:pointer; position:relative;
-  border:1px solid var(--div); transition:transform .18s;
+  box-shadow:var(--sh-card); transition:transform .18s, box-shadow .18s;
 }
 .pcard:active { transform:scale(.97); }
+.pcard:hover { box-shadow:0 4px 16px rgba(60,40,20,.08), 0 0 0 1px rgba(0,0,0,.06); }
 .pcard-img {
   width:100%; aspect-ratio:1; overflow:hidden;
-  background:var(--bg-3); display:flex; align-items:center; justify-content:center;
+  background:var(--bg-2); display:flex; align-items:center; justify-content:center;
 }
 .pcard-img img { width:100%; height:100%; object-fit:cover; }
 .pcard-img .ph { font-size:30px; opacity:.15; }
@@ -274,7 +361,7 @@ body {
   font-family:'Cormorant Garamond',serif;
   font-size:17px; font-weight:600; color:var(--gold);
 }
-.pcard-price em { font-size:10px; color:var(--text-3); font-family:'DM Sans'; font-style:normal; }
+.pcard-price em { font-size:10px; color:var(--text-3); font-family:'Inter'; font-style:normal; }
 .pcard-add {
   width:28px; height:28px; background:var(--gold-dim);
   border:1px solid var(--gold-brd); border-radius:8px;
@@ -303,9 +390,10 @@ body {
 }
 .sec-banner-name {
   font-family:'Cormorant Garamond',serif;
-  font-size:24px; font-weight:600; font-style:italic; color:var(--text);
+  font-size:24px; font-weight:600; font-style:italic; color:#fff;
+  text-shadow:0 2px 10px rgba(0,0,0,.4);
 }
-.sec-banner-cnt { font-size:11px; color:var(--text-3); margin-top:4px; letter-spacing:.08em; }
+.sec-banner-cnt { font-size:11px; color:rgba(255,255,255,.85); margin-top:4px; letter-spacing:.08em; text-shadow:0 1px 4px rgba(0,0,0,.4); }
 
 /* ════════════════════════════════════════════
    PRODUCT DETAIL
@@ -378,7 +466,7 @@ body {
 .add-cta {
   flex:1; height:46px; background:var(--gold); color:var(--bg);
   border:none; border-radius:var(--r);
-  font-family:'DM Sans',sans-serif; font-size:14px; font-weight:700;
+  font-family:'Inter',sans-serif; font-size:14px; font-weight:700;
   cursor:pointer; letter-spacing:.04em; transition:background var(--t);
 }
 .add-cta:active { background:var(--gold-l); }
@@ -402,7 +490,7 @@ body {
 .outline-gold {
   background:transparent; border:1.5px solid var(--gold-brd);
   color:var(--gold-l); border-radius:var(--r); height:44px; padding:0 24px;
-  font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500; cursor:pointer;
+  font-family:'Inter',sans-serif; font-size:13px; font-weight:500; cursor:pointer;
 }
 
 .cart-list { flex:1; overflow-y:auto; padding:10px 14px; }
@@ -442,11 +530,11 @@ body {
 .cart-total-row { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; }
 .ct-lbl { font-size:13px; color:var(--text-3); }
 .ct-val { font-family:'Cormorant Garamond',serif; font-size:26px; font-weight:600; color:var(--gold); }
-.ct-cur { font-size:13px; font-family:'DM Sans'; color:var(--text-3); font-weight:400; }
+.ct-cur { font-size:13px; font-family:'Inter'; color:var(--text-3); font-weight:400; }
 .go-co {
   width:100%; height:50px; background:var(--gold); color:var(--bg);
   border:none; border-radius:var(--r);
-  font-family:'DM Sans',sans-serif; font-size:15px; font-weight:700;
+  font-family:'Inter',sans-serif; font-size:15px; font-weight:700;
   cursor:pointer; letter-spacing:.04em;
 }
 .go-co:active { background:var(--gold-l); }
@@ -473,7 +561,7 @@ body {
   width:100%; height:46px; background:var(--bg-2);
   border:1.5px solid var(--div); border-radius:var(--r);
   padding:0 14px; color:var(--text);
-  font-family:'DM Sans',sans-serif; font-size:14px; outline:none;
+  font-family:'Inter',sans-serif; font-size:14px; outline:none;
   transition:border-color var(--t);
 }
 .field input:focus { border-color:var(--gold); box-shadow:var(--sh-gold); }
@@ -517,14 +605,14 @@ body {
 .co-next {
   width:100%; height:50px; background:var(--gold); color:var(--bg);
   border:none; border-radius:var(--r);
-  font-family:'DM Sans',sans-serif; font-size:15px; font-weight:700;
+  font-family:'Inter',sans-serif; font-size:15px; font-weight:700;
   cursor:pointer; letter-spacing:.04em; margin-top:4px;
 }
 .co-next:active { background:var(--gold-l); }
 .co-back-btn {
   width:100%; height:44px; background:transparent;
   border:1.5px solid var(--div); border-radius:var(--r);
-  color:var(--text-3); font-family:'DM Sans',sans-serif; font-size:13px;
+  color:var(--text-3); font-family:'Inter',sans-serif; font-size:13px;
   cursor:pointer; margin-top:8px;
 }
 
@@ -554,7 +642,7 @@ body {
 .suc-btn {
   background:var(--bg-2); border:1.5px solid var(--gold-brd);
   color:var(--gold-l); border-radius:var(--r); height:46px; width:220px;
-  font-family:'DM Sans',sans-serif; font-size:14px; font-weight:500; cursor:pointer;
+  font-family:'Inter',sans-serif; font-size:14px; font-weight:500; cursor:pointer;
   margin-top:4px;
 }
 
@@ -630,7 +718,7 @@ body {
 .restart-btn {
   width:100%; height:44px; background:transparent;
   border:1.5px solid var(--div); border-radius:var(--r);
-  color:var(--text-3); font-family:'DM Sans',sans-serif; font-size:13px;
+  color:var(--text-3); font-family:'Inter',sans-serif; font-size:13px;
   cursor:pointer; margin-top:16px;
 }
 
@@ -676,14 +764,14 @@ body {
 .search-inp {
   flex:1; background:var(--bg-2); border:1.5px solid var(--div);
   border-radius:20px; height:40px; padding:0 16px;
-  color:var(--text); font-family:'DM Sans',sans-serif; font-size:14px; outline:none;
+  color:var(--text); font-family:'Inter',sans-serif; font-size:14px; outline:none;
   transition:border-color var(--t);
 }
 .search-inp:focus { border-color:var(--gold-brd); }
 .search-inp::placeholder { color:var(--text-3); }
 .search-cancel {
   background:transparent; border:none; color:var(--text-3);
-  font-family:'DM Sans',sans-serif; font-size:13px; cursor:pointer; padding:6px 4px;
+  font-family:'Inter',sans-serif; font-size:13px; cursor:pointer; padding:6px 4px;
 }
 .search-body { flex:1; overflow-y:auto; padding:12px 14px; }
 .search-body::-webkit-scrollbar { display:none; }
@@ -717,6 +805,183 @@ body {
   background:linear-gradient(90deg, var(--bg-2) 25%, var(--bg-3) 50%, var(--bg-2) 75%);
   background-size:200% 100%; animation:shimmer 1.4s infinite; border-radius:6px;
 }
+
+/* ══════════════ FLOATING MANAGER CHAT ══════════════ */
+.fab-mgr {
+  position:fixed; right:16px; bottom:calc(var(--nav-h) + 18px);
+  width:56px; height:56px; border-radius:50%;
+  background:var(--text); color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-size:24px; cursor:pointer; z-index:250;
+  box-shadow:0 6px 22px rgba(60,40,20,.25), 0 0 0 1px rgba(0,0,0,.08);
+  transition:transform .25s var(--ease), box-shadow .25s;
+  animation:pulseFab 2.6s ease-in-out infinite;
+}
+.fab-mgr:hover { transform:scale(1.06); }
+.fab-mgr.hidden { display:none; }
+.fab-pulse {
+  position:absolute; inset:-4px; border-radius:50%;
+  border:2px solid var(--amber); opacity:0;
+  animation:fabRing 2.6s ease-in-out infinite;
+}
+@keyframes pulseFab {
+  0%,100% { box-shadow:0 6px 22px rgba(60,40,20,.25), 0 0 0 1px rgba(0,0,0,.08); }
+  50%     { box-shadow:0 6px 22px rgba(60,40,20,.25), 0 0 0 1px rgba(0,0,0,.08), 0 0 0 8px rgba(184,131,62,0); }
+}
+@keyframes fabRing {
+  0%   { transform:scale(.9); opacity:.7; }
+  100% { transform:scale(1.45); opacity:0; }
+}
+.fab-mgr-tip {
+  position:absolute; right:70px; top:50%; transform:translateY(-50%);
+  background:#fff; padding:10px 14px; border-radius:16px 16px 4px 16px;
+  box-shadow:0 4px 18px rgba(60,40,20,.15);
+  font-size:13px; color:var(--text); white-space:nowrap;
+  opacity:0; pointer-events:none;
+  transition:opacity .35s, transform .35s var(--ease);
+  border:1px solid var(--div);
+}
+.fab-mgr-tip.on { opacity:1; transform:translateY(-50%) translateX(-4px); }
+
+.mgr-overlay {
+  position:fixed; inset:0; z-index:299; background:rgba(0,0,0,.32);
+  opacity:0; pointer-events:none; transition:opacity .25s;
+  backdrop-filter:blur(2px); -webkit-backdrop-filter:blur(2px);
+}
+.mgr-overlay.on { opacity:1; pointer-events:auto; }
+
+.mgr-panel {
+  position:fixed; right:12px; bottom:calc(var(--nav-h) + 18px);
+  width:calc(100vw - 24px); max-width:380px;
+  height:min(72vh, 580px);
+  background:var(--bg); border-radius:24px;
+  z-index:300; display:flex; flex-direction:column; overflow:hidden;
+  transform:translateY(20px) scale(.96); opacity:0; pointer-events:none;
+  transition:all .32s var(--ease);
+  box-shadow:0 18px 48px rgba(60,40,20,.25), 0 0 0 1px rgba(0,0,0,.06);
+}
+.mgr-panel.on { transform:translateY(0) scale(1); opacity:1; pointer-events:auto; }
+.mgr-head {
+  padding:18px 20px 14px; display:flex; align-items:center; gap:12px;
+  border-bottom:1px solid var(--div); flex-shrink:0;
+  background:linear-gradient(180deg, var(--bg-2), var(--bg));
+}
+.mgr-avatar {
+  width:42px; height:42px; border-radius:50%;
+  background:linear-gradient(135deg, var(--amber), var(--olive));
+  display:flex; align-items:center; justify-content:center;
+  color:#fff; font-size:18px; font-weight:600;
+  font-family:'Cormorant Garamond',serif;
+  flex-shrink:0;
+}
+.mgr-head-info { flex:1; min-width:0; }
+.mgr-head-name {
+  font-family:'Inter',sans-serif; font-size:14px; font-weight:600; color:var(--text);
+}
+.mgr-head-stat { font-size:11px; color:var(--success); margin-top:1px; display:flex; align-items:center; gap:5px; }
+.mgr-head-stat::before {
+  content:''; width:7px; height:7px; border-radius:50%; background:var(--success);
+}
+.mgr-close {
+  border:none; background:transparent; cursor:pointer;
+  width:32px; height:32px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--text-3); font-size:18px;
+  transition:background .2s;
+}
+.mgr-close:hover { background:var(--bg-3); color:var(--text); }
+
+.mgr-msgs {
+  flex:1; overflow-y:auto; padding:18px 16px;
+  display:flex; flex-direction:column; gap:12px;
+}
+.mgr-msgs::-webkit-scrollbar { width:3px; }
+.mgr-msgs::-webkit-scrollbar-thumb { background:var(--border-2); border-radius:2px; }
+
+.mgr-msg {
+  max-width:84%; padding:11px 14px; border-radius:18px;
+  font-size:13.5px; line-height:1.5;
+  animation:msgIn .35s var(--ease);
+}
+@keyframes msgIn { from{opacity:0;transform:translateY(8px);} to{opacity:1;transform:translateY(0);} }
+.mgr-msg.bot { background:var(--bg-2); color:var(--text); align-self:flex-start; border-bottom-left-radius:6px; }
+.mgr-msg.user { background:var(--text); color:#fff; align-self:flex-end; border-bottom-right-radius:6px; }
+.mgr-typing {
+  display:inline-flex; gap:3px; padding:14px 16px; background:var(--bg-2);
+  border-radius:18px 18px 18px 6px; align-self:flex-start;
+}
+.mgr-typing span {
+  width:6px; height:6px; border-radius:50%; background:var(--text-3);
+  animation:typeBounce 1.2s ease-in-out infinite;
+}
+.mgr-typing span:nth-child(2) { animation-delay:.2s; }
+.mgr-typing span:nth-child(3) { animation-delay:.4s; }
+@keyframes typeBounce {
+  0%,60%,100% { transform:translateY(0); opacity:.4; }
+  30%         { transform:translateY(-5px); opacity:1; }
+}
+
+.mgr-rec-card {
+  display:flex; gap:10px; padding:10px;
+  background:#fff; border-radius:14px;
+  border:1px solid var(--div);
+  margin-top:4px; cursor:pointer;
+  transition:transform .15s, box-shadow .15s;
+  align-self:flex-start; max-width:84%; width:100%;
+}
+.mgr-rec-card:hover { transform:translateX(2px); box-shadow:0 2px 10px rgba(0,0,0,.06); }
+.mgr-rec-img {
+  width:54px; height:54px; border-radius:10px; overflow:hidden;
+  background:var(--bg-2); flex-shrink:0;
+}
+.mgr-rec-img img { width:100%; height:100%; object-fit:cover; }
+.mgr-rec-body { flex:1; min-width:0; }
+.mgr-rec-line {
+  font-family:'Inter',sans-serif; font-size:9px; font-weight:500;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--amber);
+}
+.mgr-rec-name {
+  font-size:12px; color:var(--text); line-height:1.3; margin-top:2px;
+  display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
+}
+.mgr-rec-price {
+  font-family:'Cormorant Garamond',serif; font-size:15px;
+  color:var(--text); margin-top:4px; font-weight:500;
+}
+
+.mgr-quick {
+  padding:0 16px 12px; display:flex; flex-wrap:wrap; gap:6px;
+}
+.mgr-quick-btn {
+  padding:7px 12px; border-radius:18px;
+  background:#fff; border:1px solid var(--div);
+  font-family:'Inter',sans-serif; font-size:12px; color:var(--text-2);
+  cursor:pointer; white-space:nowrap;
+  transition:all .2s;
+}
+.mgr-quick-btn:hover { border-color:var(--text); color:var(--text); }
+
+.mgr-input-wrap {
+  display:flex; gap:8px; padding:12px 14px 14px;
+  border-top:1px solid var(--div); flex-shrink:0;
+  background:var(--bg);
+}
+.mgr-input {
+  flex:1; height:42px; padding:0 16px;
+  border:1px solid var(--div); border-radius:21px;
+  background:var(--bg-2); color:var(--text);
+  font-family:'Inter',sans-serif; font-size:13.5px;
+  outline:none; transition:border-color .2s, background .2s;
+}
+.mgr-input:focus { border-color:var(--text); background:#fff; }
+.mgr-send {
+  width:42px; height:42px; border-radius:50%; border:none;
+  background:var(--text); color:#fff; font-size:16px; cursor:pointer;
+  flex-shrink:0; transition:transform .15s, background .2s;
+  display:flex; align-items:center; justify-content:center;
+}
+.mgr-send:hover { transform:scale(1.05); }
+.mgr-send:disabled { background:var(--text-3); cursor:not-allowed; }
 </style>
 </head>
 <body>
@@ -743,52 +1008,20 @@ body {
       <div class="home-greet-sub">Профессиональная косметика из Бразилии</div>
     </div>
 
-    <!-- Banner carousel -->
-    <div class="banner-wrap">
-      <div class="banner-track" id="btrack">
-        <div class="banner-slide" onclick="goSec('SPECIALE')">
-          <img src="https://87055902400a-ctrl.github.io/Donatti-shop/SPECIALE.jpeg" alt="">
-          <div class="banner-cnt">
-            <div class="banner-tag">Питание</div>
-            <div class="banner-title">Speciale Nutri</div>
-            <div class="banner-sub">Восстановление за одну процедуру</div>
-          </div>
-        </div>
-        <div class="banner-slide" onclick="goSec('THEION')">
-          <img src="https://87055902400a-ctrl.github.io/Donatti-shop/THEION.jpeg" alt="">
-          <div class="banner-cnt">
-            <div class="banner-tag">Блонд</div>
-            <div class="banner-title">Theion Evolution</div>
-            <div class="banner-sub">Уход для окрашенных волос</div>
-          </div>
-        </div>
-        <div class="banner-slide" onclick="goSec('DNAVANZE')">
-          <img src="https://87055902400a-ctrl.github.io/Donatti-shop/DNAVANZE.jpeg" alt="">
-          <div class="banner-cnt">
-            <div class="banner-tag">Реконструкция</div>
-            <div class="banner-title">DNAvanze</div>
-            <div class="banner-sub">Профессиональное восстановление структуры</div>
-          </div>
-        </div>
-        <div class="banner-slide" onclick="goSec('MIO RICCI')">
-          <img src="https://87055902400a-ctrl.github.io/Donatti-shop/MIO_RICCI.jpeg" alt="">
-          <div class="banner-cnt">
-            <div class="banner-tag">Кудри</div>
-            <div class="banner-title">Mio Ricci</div>
-            <div class="banner-sub">Новая коллекция</div>
-          </div>
-        </div>
-      </div>
-      <div class="banner-dots" id="bdots">
-        <div class="bdot on"></div><div class="bdot"></div>
-        <div class="bdot"></div><div class="bdot"></div>
+    <!-- Category pills (теперь выше hero) -->
+    <div class="cat-pills-wrap top-pills">
+      <div class="cat-pills" id="cat-pills">
+        <!-- filled by JS -->
       </div>
     </div>
 
-    <!-- Category pills -->
-    <div class="cat-pills-wrap">
-      <div class="cat-pills-title">Линейки</div>
-      <div class="cat-pills" id="cat-pills">
+    <!-- Apple-style line carousel -->
+    <div class="lines-section">
+      <div class="lines-header">
+        <h2>Линейки</h2>
+        <span class="count" id="lines-count">17 коллекций</span>
+      </div>
+      <div class="lines-scroll" id="lines-scroll">
         <!-- filled by JS -->
       </div>
     </div>
@@ -1053,13 +1286,39 @@ body {
 
 <div class="toast" id="toast"></div>
 
+<!-- ══════════════ FLOATING MANAGER CHAT ══════════════ -->
+<div class="fab-mgr-tip" id="fab-tip">Здравствуйте, чем я могу помочь?</div>
+<div class="fab-mgr hidden" id="fab-mgr" onclick="mgrOpen()">
+  <div class="fab-pulse"></div>
+  <span>💬</span>
+</div>
+<div class="mgr-overlay" id="mgr-overlay" onclick="mgrClose()"></div>
+<div class="mgr-panel" id="mgr-panel">
+  <div class="mgr-head">
+    <div class="mgr-avatar">D</div>
+    <div class="mgr-head-info">
+      <div class="mgr-head-name">Donatti Консультант</div>
+      <div class="mgr-head-stat">Онлайн · отвечает мгновенно</div>
+    </div>
+    <button class="mgr-close" onclick="mgrClose()">✕</button>
+  </div>
+  <div class="mgr-msgs" id="mgr-msgs"></div>
+  <div class="mgr-quick" id="mgr-quick"></div>
+  <form class="mgr-input-wrap" onsubmit="mgrSend(event)">
+    <input class="mgr-input" id="mgr-input" type="text"
+           placeholder="Опишите проблему с волосами..."
+           autocomplete="off">
+    <button class="mgr-send" type="submit" id="mgr-send-btn">→</button>
+  </form>
+</div>
+
 <script>
 /* ── Telegram ─────────────── */
 const tg = window.Telegram?.WebApp;
 if (tg) {
   tg.ready(); tg.expand();
-  try { tg.setHeaderColor?.('#0D0B09'); } catch(e){}
-  try { tg.setBackgroundColor?.('#0D0B09'); } catch(e){}
+  try { tg.setHeaderColor?.('#FAF7F2'); } catch(e){}
+  try { tg.setBackgroundColor?.('#FAF7F2'); } catch(e){}
 }
 const TGU = tg?.initDataUnsafe?.user || null;
 const hap = (t='light') => tg?.HapticFeedback?.impactOccurred?.(t);
@@ -1070,12 +1329,23 @@ let catalog = [], curSec = null, curProd = null, dqv = 1;
 let cart = [], stack = [], delivMode = 'pickup', cAns = {}, coStep_cur = 1;
 const BASE = 'https://87055902400a-ctrl.github.io/Donatti-shop/';
 const META = {
-  'SPECIALE':{'i':'SPECIALE.jpeg'},      'THEION':{'i':'THEION.jpeg'},
-  'COLORE':{'i':'COLORE.jpeg'},          'CREAM BLOND':{'i':'CREAM_BLOND.jpeg'},
-  'BAOBÁ REDUCE':{'i':'BAOBA_REDUCE.jpeg'}, 'DNAVANZE':{'i':'DNAVANZE.jpeg'},
-  'BIODETOX':{'i':'BIODETOX.jpeg'},      'MIO RICCI':{'i':'MIO_RICCI.jpeg'},
-  'NATURALE':{'i':'NATURALE.jpeg'},      'LUXURY':{'i':'LUXURY.jpeg'},
-  'PREMIUM VIOLET':{'i':'PREMIUM_VIOLET.jpeg'}, 'EXTRA':{'i':'PREMIUM_VIOLET.jpeg'},
+  'SPECIALE':       {i:'SPECIALE.jpeg',       tag:'Питание',        sub:'Глубокое восстановление и питание'},
+  'THEION':         {i:'THEION.jpeg',         tag:'Блонд',          sub:'Реконструкция с серой для повреждённых'},
+  'COLORE':         {i:'COLORE.jpeg',         tag:'Окрашивание',    sub:'Профессиональные крем-краски и тонирование'},
+  'CREAM BLOND':    {i:'CREAM_BLOND.jpeg',    tag:'Осветление',     sub:'Безопасное осветление до 7 уровней'},
+  'BAOBÁ REDUCE':   {i:'BAOBA_REDUCE.jpeg',   tag:'Выпрямление',    sub:'Кератиновое разглаживание без формальдегида'},
+  'DNAVANZE':       {i:'DNAVANZE.jpeg',       tag:'Реконструкция',  sub:'Замена дисульфидных связей — Mimetecnol'},
+  'BIODETOX':       {i:'BIODETOX.jpeg',       tag:'Детокс',         sub:'Очищение кожи головы активированным углём'},
+  'MIO RICCI':      {i:'MIO_RICCI.jpeg',      tag:'Кудри',          sub:'Curly Girl Method для кудрявых волос'},
+  'NATURALE':       {i:'NATURALE.jpeg',       tag:'Натуральное',    sub:'Масла Ojon и Mukua, природный уход'},
+  'LUXURY':         {i:'LUXURY.jpeg',         tag:'Премиум',        sub:'Финишные средства и блеск'},
+  'PREMIUM VIOLET': {i:'PREMIUM_VIOLET.jpeg', tag:'Антижелтизна',   sub:'Фиолетовая нейтрализация желтых тонов'},
+  'EXTRA':          {i:'PREMIUM_VIOLET.jpeg', tag:'Дополнительно',  sub:'Объёмные форматы и аксессуары'},
+  'COMPLESSO_BLOND':{i:'COMPLESSO_BLOND.jpeg',tag:'Блонд',          sub:'Поддержка холодного тона и нейтрализация'},
+  'PH_EQUILIBRIO':  {i:'PH_EQUILIBRIO.jpeg',  tag:'pH баланс',      sub:'Восстановление кислотности после химии'},
+  'RESTAURATTI':    {i:'RESTAURATTI.jpeg',    tag:'Восстановление', sub:'Film Protector — защитная плёнка'},
+  'SOLUZIONE':      {i:'SOLUZIONE.jpeg',      tag:'Реструктуризация',sub:'Nutri Polimeric восстановление структуры'},
+  'VIGORE':         {i:'VIGORE.jpeg',         tag:'Уход за кожей',  sub:'Капсулы, тоник и скраб против выпадения'},
 };
 const RMAP = {
   straight:{dryness:['SPECIALE','BIODETOX'],frizz:['BAOBÁ REDUCE','SPECIALE'],loss:['EXTRA'],reconstruction:['DNAVANZE','SPECIALE'],gloss:['LUXURY','SPECIALE'],detox:['BIODETOX']},
@@ -1094,8 +1364,33 @@ function initCatalog() {
     if (!CATALOG_DATA?.sections) return;
     catalog = CATALOG_DATA.sections;
     renderPills();
+    renderLineCarousel();
     renderGrid(null);
+    const lc = document.getElementById('lines-count');
+    if (lc) lc.textContent = catalog.length + ' коллекций';
   } catch(e) { console.error(e); }
+}
+
+function renderLineCarousel() {
+  const el = document.getElementById('lines-scroll');
+  if (!el) return;
+  el.innerHTML = catalog.map(s => {
+    const m = META[s.id] || {};
+    const img = m.i ? (BASE + m.i) : '';
+    const tag = m.tag || s.name;
+    const sub = s.products?.[0]?.line_tagline || m.sub || (s.products?.length + ' позиций');
+    return `
+      <div class="line-card" onclick="goSec('${esc(s.id)}')">
+        ${img ? `<img src="${img}" alt="${esc(s.name)}" loading="lazy">` : ''}
+        <div class="line-card-cnt">
+          <div class="line-card-tag">${esc(tag)}</div>
+          <div class="line-card-title">${esc(s.name)}</div>
+          <div class="line-card-sub">${esc(sub)}</div>
+          <span class="line-card-cta">Открыть · ${s.products?.length || 0}</span>
+        </div>
+      </div>
+    `;
+  }).join('');
 }
 
 function renderPills() {
@@ -1471,12 +1766,310 @@ function fmt(n){return n?Math.round(n).toLocaleString('ru-RU'):'0';}
 function esc(s){return s?String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'):''; }
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),2200);}
 
+/* ══════════════ FLOATING MANAGER CHAT ══════════════ */
+const MGR_QUICK = [
+  'Сухие и ломкие',
+  'Кудри и пушистость',
+  'Желтизна блонд',
+  'После осветления',
+  'Выпадение',
+  'Перхоть и зуд',
+  'Окрашенные',
+  'Кератин',
+];
+
+// Ключевые слова → вес для поиска
+const MGR_KEYWORDS = {
+  // Тип волос
+  'сух':       {hair_type:['сух','dry'], complaint:['сух','недостаток влаги','тусклые']},
+  'жирн':      {complaint:['жирн','избыток'], description_ru:['detox','biodetox']},
+  'кудряв':    {hair_type:['кудряв','curly','афро'], description_ru:['кудряв','curly','mio ricci']},
+  'кудри':     {hair_type:['кудряв','curly','афро'], description_ru:['кудряв','curly','mio ricci']},
+  'волнист':   {hair_type:['волнист','wavy']},
+  'прям':      {hair_type:['прям']},
+  'тонк':      {hair_type:['тонк','thin']},
+  'густ':      {hair_type:['густ','непослушн']},
+  // Состояние
+  'осветл':    {description_ru:['theion','dnavanze','осветл'], complaint:['осветл','блонд']},
+  'обесцвеч':  {description_ru:['theion','dnavanze','обесцвеч']},
+  'окраш':     {description_ru:['colore','окраш','тон'], complaint:['окрашен']},
+  'блонд':     {description_ru:['theion','complesso blond','cream blond','блонд'], complaint:['блонд','желт']},
+  'желтизн':   {description_ru:['complesso blond','premium violet','violet','желт']},
+  'выпрям':    {description_ru:['baoba','выпрям','кератин','прогрессивн']},
+  'кератин':   {description_ru:['baoba','кератин']},
+  // Проблемы
+  'выпаден':   {description_ru:['vigore','выпаден','капсул','тоник'], complaint:['выпаден','слаб']},
+  'выпада':    {description_ru:['vigore','выпаден','капсул','тоник']},
+  'ломк':      {complaint:['ломк','секущ'], description_ru:['speciale','reconstruct','soluzione']},
+  'секущ':     {complaint:['секущ','ломк'], description_ru:['restauratti','speciale']},
+  'повреж':    {complaint:['повреж'], description_ru:['dnavanze','speciale','theion']},
+  'тускл':     {complaint:['тускл','без блеск'], description_ru:['speciale','baoba']},
+  'пушист':    {complaint:['пушист','фриз'], description_ru:['baoba','mio ricci']},
+  'фриз':      {description_ru:['baoba','mio ricci']},
+  'перхот':    {complaint:['перхот','зуд','себ'], description_ru:['biodetox']},
+  'зуд':       {complaint:['зуд','перхот','раздраж'], description_ru:['biodetox']},
+  'детокс':    {description_ru:['biodetox','очист']},
+  'очист':     {description_ru:['biodetox','очист']},
+  'восстан':   {description_ru:['dnavanze','soluzione','theion','speciale']},
+  'реконст':   {description_ru:['dnavanze','restauratti','soluzione']},
+  'блеск':     {description_ru:['speciale','baoba','luxury','блеск']},
+  'питан':     {description_ru:['speciale','nutri','питан']},
+  'увлаж':     {description_ru:['speciale','увлаж','moisture']},
+  'роды':      {complaint:['выпаден'], description_ru:['vigore','speciale']},
+  'химия':     {description_ru:['dnavanze','theion','ph equilibrio','speciale']},
+  'химиотерап':{description_ru:['vigore','naturale']},
+};
+
+let mgrOpened = false, mgrAutoTimer = null;
+
+function mgrInit() {
+  // Показываем FAB через 4с, тултип на 7с, авто-открытие чата на 10с
+  setTimeout(() => {
+    document.getElementById('fab-mgr')?.classList.remove('hidden');
+  }, 4000);
+  setTimeout(() => {
+    document.getElementById('fab-tip')?.classList.add('on');
+  }, 7000);
+  mgrAutoTimer = setTimeout(() => {
+    if (!mgrOpened) mgrOpen(true);
+  }, 10000);
+}
+
+function mgrOpen(auto = false) {
+  clearTimeout(mgrAutoTimer);
+  document.getElementById('fab-tip')?.classList.remove('on');
+  document.getElementById('mgr-panel')?.classList.add('on');
+  document.getElementById('mgr-overlay')?.classList.add('on');
+  if (!mgrOpened) {
+    mgrOpened = true;
+    mgrGreet();
+  }
+  if (!auto) setTimeout(() => document.getElementById('mgr-input')?.focus(), 350);
+  hap('light');
+}
+
+function mgrClose() {
+  document.getElementById('mgr-panel')?.classList.remove('on');
+  document.getElementById('mgr-overlay')?.classList.remove('on');
+}
+
+async function mgrGreet() {
+  const msgs = document.getElementById('mgr-msgs');
+  msgs.innerHTML = '';
+  const name = TGU?.first_name ? `, ${TGU.first_name}` : '';
+  const greet1 = `Здравствуйте${name}! 👋`;
+  const greet2 = `Я консультант Donatti — подберу профессиональный уход под ваши волосы.`;
+  const greet3 = `Расскажите про вашу ситуацию или выберите тему ниже:`;
+
+  await mgrTypePause(greet1);
+  mgrAddMsg(esc(greet1), 'bot');
+  await new Promise(r => setTimeout(r, 350));
+  await mgrTypePause(greet2);
+  mgrAddMsg(esc(greet2), 'bot');
+  await new Promise(r => setTimeout(r, 400));
+  await mgrTypePause(greet3);
+  mgrAddMsg(esc(greet3), 'bot');
+
+  // Quick replies — появляются после приветствия
+  const q = document.getElementById('mgr-quick');
+  q.innerHTML = MGR_QUICK.map(t =>
+    `<button type="button" class="mgr-quick-btn" onclick="mgrAsk('${esc(t)}')">${esc(t)}</button>`
+  ).join('');
+}
+
+function mgrAsk(text) {
+  const input = document.getElementById('mgr-input');
+  input.value = text;
+  mgrSend({preventDefault: () => {}});
+}
+
+function mgrAddMsg(text, type) {
+  const msgs = document.getElementById('mgr-msgs');
+  const div = document.createElement('div');
+  div.className = `mgr-msg ${type}`;
+  div.innerHTML = text;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+  return div;
+}
+
+function mgrAddTyping() {
+  const msgs = document.getElementById('mgr-msgs');
+  const div = document.createElement('div');
+  div.className = 'mgr-typing';
+  div.id = 'mgr-typing';
+  div.innerHTML = '<span></span><span></span><span></span>';
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function mgrRemoveTyping() {
+  document.getElementById('mgr-typing')?.remove();
+}
+
+function mgrAddProduct(p, sid) {
+  const msgs = document.getElementById('mgr-msgs');
+  const price = p.price_sum ? fmt(p.price_sum) + ' сум' : '';
+  const img = p.image || '';
+  const div = document.createElement('div');
+  div.className = 'mgr-rec-card';
+  div.onclick = () => { mgrClose(); goProd(p.number); };
+  div.innerHTML = `
+    <div class="mgr-rec-img">${img ? `<img src="${esc(img)}" alt="" loading="lazy">` : ''}</div>
+    <div class="mgr-rec-body">
+      <div class="mgr-rec-line">${esc(sid)}</div>
+      <div class="mgr-rec-name">${esc(p.name)}</div>
+      <div class="mgr-rec-price">${price}</div>
+    </div>
+  `;
+  msgs.appendChild(div);
+  msgs.scrollTop = msgs.scrollHeight;
+}
+
+function mgrFindProducts(query) {
+  const q = query.toLowerCase();
+  // Ищем по совпадениям ключевых слов
+  const matched = [];
+  for (const [kw, weights] of Object.entries(MGR_KEYWORDS)) {
+    if (q.includes(kw)) matched.push({kw, weights});
+  }
+  // Если ни одно ключевое слово не сработало — fallback по самому тексту
+  const fallbackTerms = q.split(/\s+/).filter(t => t.length > 3);
+
+  // Скорим товары
+  const scores = [];
+  for (const section of catalog) {
+    for (const p of section.products) {
+      let score = 0;
+      const haystack = [
+        (p.name || '').toLowerCase(),
+        (p.description_ru || '').toLowerCase(),
+        (p.hair_type || '').toLowerCase(),
+        (p.complaint || '').toLowerCase(),
+        (p.key_ingredients || '').toLowerCase(),
+        (p.short_description || '').toLowerCase(),
+        section.id.toLowerCase(),
+      ].join(' ');
+
+      for (const {weights} of matched) {
+        for (const [field, kws] of Object.entries(weights)) {
+          const text = (p[field] || section.id || '').toString().toLowerCase();
+          for (const k of kws) {
+            if (text.includes(k)) score += field === 'hair_type' || field === 'complaint' ? 3 : 2;
+          }
+        }
+      }
+      // Fallback — прямой поиск в полнотексте
+      if (matched.length === 0) {
+        for (const t of fallbackTerms) {
+          if (haystack.includes(t)) score += 1;
+        }
+      }
+      if (score > 0) scores.push({p, sid: section.id, score});
+    }
+  }
+  scores.sort((a, b) => b.score - a.score);
+  return scores.slice(0, 4);
+}
+
+// Случайные варианты осмысленных ответов — чтобы консультант звучал естественно
+const MGR_ACKS = [
+  'Понимаю вас.',
+  'Хороший вопрос.',
+  'Спасибо, давайте разберёмся.',
+  'Так, минутку…',
+  'Поняла, расскажу.',
+  'Хорошо, посмотрю что подойдёт.',
+];
+
+const MGR_INTROS = [
+  'По вашему описанию я бы рекомендовала вот эти средства:',
+  'Думаю, вам подойдёт следующее — посмотрите:',
+  'Подобрала для вас несколько вариантов:',
+  'Вот что я бы посоветовала именно в вашем случае:',
+  'На основе того, что вы описали — вот мои рекомендации:',
+];
+
+const MGR_OUTROS = [
+  'Откройте карточку — там подробный состав, технология и можно добавить в корзину.',
+  'Загляните в карточку любого средства — там описание и опт-цена.',
+  'Если останутся вопросы — спросите, я расскажу подробнее.',
+  'Внутри карточки увидите состав и ингредиенты — могу дополнить если нужно.',
+];
+
+function pick(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+// Адаптивная задержка — типа человек печатает (40-60 знаков в секунду)
+function typingTime(text) {
+  const base = 900;
+  const perChar = 28; // ms на знак
+  return Math.min(4500, base + text.length * perChar);
+}
+
+async function mgrTypePause(text) {
+  mgrAddTyping();
+  await new Promise(r => setTimeout(r, typingTime(text)));
+  mgrRemoveTyping();
+}
+
+async function mgrSend(ev) {
+  ev.preventDefault();
+  const input = document.getElementById('mgr-input');
+  const send  = document.getElementById('mgr-send-btn');
+  const q = input.value.trim();
+  if (!q) return;
+  mgrAddMsg(esc(q), 'user');
+  input.value = '';
+  send.disabled = true;
+  document.getElementById('mgr-quick').innerHTML = '';
+  hapS();
+
+  // Шаг 1 — короткое подтверждение (как реальный консультант)
+  const ack = pick(MGR_ACKS);
+  await mgrTypePause(ack);
+  mgrAddMsg(ack, 'bot');
+
+  // Шаг 2 — думает (пауза без сообщения)
+  await new Promise(r => setTimeout(r, 600));
+
+  // Шаг 3 — ищем товары
+  const results = mgrFindProducts(q);
+
+  if (results.length === 0) {
+    const fallback = 'Расскажите чуть подробнее — какой у вас тип волос и главная проблема? Например: "сухие после осветления" или "выпадают, кожа жирная".';
+    await mgrTypePause(fallback);
+    mgrAddMsg(fallback, 'bot');
+    send.disabled = false;
+    return;
+  }
+
+  // Шаг 4 — вступление к рекомендациям
+  const intro = pick(MGR_INTROS);
+  await mgrTypePause(intro);
+  mgrAddMsg(intro, 'bot');
+
+  // Шаг 5 — товары появляются с задержкой между ними (как будто консультант листает каталог)
+  for (const r of results) {
+    await new Promise(res => setTimeout(res, 550 + Math.random() * 250));
+    mgrAddProduct(r.p, r.sid);
+  }
+
+  // Шаг 6 — финальный комментарий
+  await new Promise(r => setTimeout(r, 700));
+  const outro = pick(MGR_OUTROS);
+  await mgrTypePause(outro);
+  mgrAddMsg(outro, 'bot');
+  send.disabled = false;
+  document.getElementById('mgr-input')?.focus();
+}
+
 /* ── Init ────────────────── */
 document.addEventListener('DOMContentLoaded',()=>{
-  loadCart(); updBadges(); initBanner(); initGreeting(); renderProf();
+  loadCart(); updBadges(); initGreeting(); renderProf();
   stack=['screen-home'];
+  mgrInit();
 });
 </script>
-<script src="https://87055902400a-ctrl.github.io/Donatti-shop/catalog_data_embed.js?v=5" onload="initCatalog()" onerror="console.warn('offline')"></script>
+<script src="catalog_data_embed.js?v=6" onload="initCatalog()" onerror="console.warn('offline')"></script>
 </body>
 </html>
